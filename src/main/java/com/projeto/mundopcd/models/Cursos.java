@@ -7,13 +7,7 @@ public class Cursos {
     private int cargaHoraria;
     private int idEmpresa;
 
-    public Cursos(int cargaHoraria, String descricao, int idCurso, int idEmpresa, String titulo) {
-        this.cargaHoraria = cargaHoraria;
-        this.descricao = descricao;
-        this.idCurso = idCurso;
-        this.idEmpresa = idEmpresa;
-        this.titulo = titulo;
-    }
+    public Cursos() {}
 
     public int getCargaHoraria() {
         return cargaHoraria;
