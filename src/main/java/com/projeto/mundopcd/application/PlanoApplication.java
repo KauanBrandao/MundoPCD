@@ -25,6 +25,10 @@ public class PlanoApplication {
         return facade.buscarPorId(id).orElse(null);
     }
 
+    public void atualizar(Plano plano) {
+    facade.atualizar(plano);
+    }
+
     public void deletar(int id) {
         facade.deletar(id);
     }
