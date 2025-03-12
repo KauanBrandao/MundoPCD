@@ -3,12 +3,12 @@ package com.projeto.mundopcd.models;
 public class AdministradorEmpresa {
 
     private int idAdmin;
-    private  int idEmpresa;
+    private  Empresas idEmpresa;
     private String nomeEmpresa;
     private String email;
     private String senha;
 
-    public AdministradorEmpresa(int idAdmin, int idEmpresa, String nomeEmpresa, String email, String senha) {
+    public AdministradorEmpresa(int idAdmin, Empresas idEmpresa, String nomeEmpresa, String email, String senha) {
         this.idAdmin = idAdmin;
         this.idEmpresa = idEmpresa;
         this.nomeEmpresa = nomeEmpresa;
@@ -24,12 +24,12 @@ public class AdministradorEmpresa {
         this.idAdmin = idAdmin;
     }
 
-    public int getIdEmpresa() {
+    public Empresas getIdEmpresa() {
         return idEmpresa;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setIdEmpresa(Empresas idEmpresa) {
+         this.idEmpresa = idEmpresa;
     }
 
     public String getNomeEmpresa() {

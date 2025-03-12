@@ -28,4 +28,8 @@ public class EmpresasApplication {
     public void deletar(int id) {
         empresasRepository.deletar(id);
     }
+
+    public void atualizar(Empresas empresa) {
+        empresasRepository.atualizar(empresa);
+    }
 }

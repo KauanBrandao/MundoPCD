@@ -15,20 +15,12 @@ public class EmpresasRepository {
         return empresas.stream().anyMatch(emp -> emp.getIdEmpresa() == id);
     }
 
-    public Object buscarPorId(int id) {
-        try {
-            if (existsById(id)) {
-                for (Empresas empresa : empresas) {
-                    if (empresa.getIdEmpresa() == id) {
-                        return empresa;
-                    }
-                }
-            }
-            return "Não existe empresa com o id " + id;
-        } catch (Exception e) {
-            return "Erro: " + e.getMessage();
-        }
+    public Empresas buscarPorId(int id) {
+        return empresas.stream().filter(emp -> emp.getIdEmpresa() == id).
+                findFirst().
+                orElse(null);
     }
+
 
     public List<Empresas> listar() {
         return empresas;
