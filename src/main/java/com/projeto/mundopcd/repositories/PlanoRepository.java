@@ -33,3 +33,13 @@ public class PlanoRepository {
         planos.removeIf(plano -> plano.getIdPlano() == id);
     }
 }
+
+public void atualizar(Plano planoAtualizado) {
+    for (int i = 0; i < planos.size(); i++) {
+        Plano plano = planos.get(i);
+        if (plano.getIdPlano() == planoAtualizado.getIdPlano()) {
+            planos.set(i, planoAtualizado);
+            break;
+        }
+    }
+}
