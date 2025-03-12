@@ -26,6 +26,10 @@ public class PlanoFacade {
         return repository.buscarPorId(id);
     }
 
+    public void atualizar(Plano plano) {
+    repository.atualizar(plano);
+}
+
     public void deletar(int id) {
         repository.deletar(id);
     }
