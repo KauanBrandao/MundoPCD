@@ -29,6 +29,15 @@ public class InscricoesCursosRepository {
                 .findFirst();
     }
 
+public void atualizar(InscricoesCursos inscricaoAtualizada) {
+    for (int i = 0; i < inscricoes.size(); i++) {
+        InscricoesCursos inscricao = inscricoes.get(i);
+        if (inscricao.getIdInscricaoCurso() == inscricaoAtualizada.getIdInscricaoCurso()) {
+            inscricoes.set(i, inscricaoAtualizada);
+            break;
+        }
+   }
+
     public void deletar(int id) {
         inscricoes.removeIf(inscricao -> inscricao.getIdInscricaoCurso() == id);
     }
