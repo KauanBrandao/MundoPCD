@@ -26,6 +26,10 @@ public class InscricoesCursosFacade {
         return repository.buscarPorId(id);
     }
 
+    public void atualizar(InscricoesCursos inscricao) {
+    repository.atualizar(inscricao);
+    }
+
     public void deletar(int id) {
         repository.deletar(id);
     }
