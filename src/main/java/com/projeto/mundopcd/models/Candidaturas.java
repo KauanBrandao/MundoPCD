@@ -9,13 +9,7 @@ public class Candidaturas {
     private Date dataAplicacao;
     private String status;
 
-    public Candidaturas(Date dataAplicacao, int idCandidato, int idCandidatura, int idVaga, String status) {
-        this.dataAplicacao = dataAplicacao;
-        this.idCandidato = idCandidato;
-        this.idCandidatura = idCandidatura;
-        this.idVaga = idVaga;
-        this.status = status;
-    }
+    public Candidaturas() {}
 
     public Date getDataAplicacao() {
         return dataAplicacao;

@@ -13,19 +13,7 @@ public class Candidatos {
     private int idPlano;
     private int idEnderecoCandidato;
 
-    public Candidatos(String curriculo, String email, String experiencia, String formacao, String habilidades, int idCandidato, int idEnderecoCandidato, int idPlano, String nome, String telefone, String tipoDeficiencia) {
-        this.curriculo = curriculo;
-        this.email = email;
-        this.experiencia = experiencia;
-        this.formacao = formacao;
-        this.habilidades = habilidades;
-        this.idCandidato = idCandidato;
-        this.idEnderecoCandidato = idEnderecoCandidato;
-        this.idPlano = idPlano;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.tipoDeficiencia = tipoDeficiencia;
-    }
+    public Candidatos(){}
 
     public String getCurriculo() {
         return curriculo;
@@ -114,7 +102,6 @@ public class Candidatos {
     public void setTipoDeficiencia(String tipoDeficiencia) {
         this.tipoDeficiencia = tipoDeficiencia;
     }
-
 
 
 }
