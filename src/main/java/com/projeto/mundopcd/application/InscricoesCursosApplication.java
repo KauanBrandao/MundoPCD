@@ -25,6 +25,10 @@ public class InscricoesCursosApplication {
         return facade.buscarPorId(id).orElse(null);
     }
 
+    public void atualizar(InscricoesCursos inscricao) {
+    facade.atualizar(inscricao);
+    }
+
     public void deletar(int id) {
         facade.deletar(id);
     }
