@@ -28,4 +28,8 @@ public class EmpresasFacade {
     public void deletar(int id) {
         empresasApplication.deletar(id);
     }
+
+    public void atualizar(Empresas empresa) {
+        empresasApplication.atualizar(empresa);
+    }
 }

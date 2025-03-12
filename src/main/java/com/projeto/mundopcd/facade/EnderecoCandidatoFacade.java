@@ -28,4 +28,8 @@ public class EnderecoCandidatoFacade {
     public void deletar(int id) {
         enderecoCandidatoApplication.deletar(id);
     }
+
+    public void atualizar(EnderecoCandidato endereco) {
+        enderecoCandidatoApplication.atualizar(endereco);
+    }
 }

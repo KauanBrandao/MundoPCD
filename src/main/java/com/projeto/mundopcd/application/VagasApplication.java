@@ -28,4 +28,8 @@ public class VagasApplication {
     public void deletar(int id) {
         vagasRepository.deletar(id);
     }
+
+    public void atualizar(Vagas vaga) {
+        vagasRepository.atualizar(vaga);
+    }
 }
