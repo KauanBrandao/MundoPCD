@@ -1,4 +1,4 @@
-package com.projeto.mundopcd.repository;
+package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.AdministradorEmpresa;
 import com.projeto.mundopcd.models.Empresas;

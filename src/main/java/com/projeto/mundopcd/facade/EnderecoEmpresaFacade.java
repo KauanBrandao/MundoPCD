@@ -2,7 +2,6 @@ package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.Application.EnderecoEmpresaApplication;
 import com.projeto.mundopcd.models.EnderecoEmpresa;
-import com.projeto.mundopcd.repository.EnderecoEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

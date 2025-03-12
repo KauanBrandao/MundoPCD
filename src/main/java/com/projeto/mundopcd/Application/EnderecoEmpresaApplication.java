@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.Application;
 
 import com.projeto.mundopcd.models.EnderecoEmpresa;
-import com.projeto.mundopcd.repository.EnderecoEmpresaRepository;
+import com.projeto.mundopcd.repositories.EnderecoEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,15 +13,15 @@ public class EnderecoEmpresaApplication {
     @Autowired
     private EnderecoEmpresaRepository enderecoEmpresaRepository;
 
-    public Object bucarporId(int id){
+    public Object bucarporId(int id) {
         return enderecoEmpresaRepository.buscarPorId(id);
     }
 
-    public List<EnderecoEmpresa> listarEnderecos(){
+    public List<EnderecoEmpresa> listarEnderecos() {
         return enderecoEmpresaRepository.listarEnderecos();
     }
 
-    public void removerEndereco(int id){
+    public void removerEndereco(int id) {
         enderecoEmpresaRepository.removerEndereco(id);
     }
 

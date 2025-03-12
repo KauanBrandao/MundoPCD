@@ -2,7 +2,7 @@ package com.projeto.mundopcd.application;
 
 import com.projeto.mundopcd.models.AdministradorEmpresa;
 import com.projeto.mundopcd.models.Empresas;
-import com.projeto.mundopcd.repository.AdministradorEmpresaRepository;
+import com.projeto.mundopcd.repositories.AdministradorEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
