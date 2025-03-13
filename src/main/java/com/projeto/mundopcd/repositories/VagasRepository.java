@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
+import com.projeto.mundopcd.models.Empresas;
 import com.projeto.mundopcd.models.Vagas;
 import org.springframework.stereotype.Repository;
 
@@ -36,18 +37,17 @@ public class VagasRepository {
         }
     }
 
-    public void atualizar(Vagas vaga) {
-        for (Vagas v : vagas) {
-            if (v.getIdVaga() == vaga.getIdVaga()) {
-                v.setTitulo(vaga.getTitulo());
-                v.setDescricao(vaga.getDescricao());
-                v.setRequisitos(vaga.getRequisitos());
-                v.setSalario(vaga.getSalario());
-                v.setTipoContratacao(vaga.getTipoContratacao());
-                v.setLocalizacao(vaga.getLocalizacao());
-                v.setIdEmpresa(vaga.getIdEmpresa());
-            }
-        }
+    public void atualizar(Vagas vaga, int id) {
+        Vagas vagaAtual = buscarPorId(id);
+
+        vagaAtual.setIdVaga(vaga.getIdVaga());
+        vagaAtual.setTitulo(vaga.getTitulo());
+        vagaAtual.setDescricao(vaga.getDescricao());
+        vagaAtual.setRequisitos(vaga.getRequisitos());
+        vagaAtual.setSalario(vaga.getSalario());
+        vagaAtual.setTipoContratacao(vaga.getTipoContratacao());
+        vagaAtual.setLocalizacao(vaga.getLocalizacao());
+        vagaAtual.setIdEmpresa(vaga.getIdEmpresa());
     }
 
 }
