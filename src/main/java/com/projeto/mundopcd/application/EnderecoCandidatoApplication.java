@@ -29,7 +29,7 @@ public class EnderecoCandidatoApplication {
         enderecoCandidatoRepository.deletar(id);
     }
 
-    public void atualizar(EnderecoCandidato endereco) {
-        enderecoCandidatoRepository.atualizar(endereco);
+    public void atualizar(EnderecoCandidato endereco, int id) {
+        enderecoCandidatoRepository.atualizar(endereco, id);
     }
 }

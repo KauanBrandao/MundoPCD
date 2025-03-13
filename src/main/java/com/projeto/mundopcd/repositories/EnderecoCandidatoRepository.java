@@ -37,17 +37,15 @@ public class EnderecoCandidatoRepository {
         }
     }
 
-    public void atualizar(EnderecoCandidato enderecoCandidato) {
-        for (EnderecoCandidato ec : enderecos) {
-            if (ec.getIdEnderecoCandidato() == enderecoCandidato.getIdEnderecoCandidato()) {
-                ec.setIdEnderecoCandidato(enderecoCandidato.getIdEnderecoCandidato());
-                ec.setLogradouro(enderecoCandidato.getLogradouro());
-                ec.setNumero(enderecoCandidato.getNumero());
-                ec.setCidade(enderecoCandidato.getCidade());
-                ec.setEstado(enderecoCandidato.getEstado());
-                ec.setCep(enderecoCandidato.getCep());
-            }
-        }
+    public void atualizar(EnderecoCandidato endereco, int id) {
+        EnderecoCandidato enderecoAtual = buscarPorId(id);
+
+        enderecoAtual.setIdEnderecoCandidato(endereco.getIdEnderecoCandidato());
+        enderecoAtual.setLogradouro(endereco.getLogradouro());
+        enderecoAtual.setNumero(endereco.getNumero());
+        enderecoAtual.setCidade(endereco.getCidade());
+        enderecoAtual.setEstado(endereco.getEstado());
+        enderecoAtual.setCep(endereco.getCep());
     }
 
 }
