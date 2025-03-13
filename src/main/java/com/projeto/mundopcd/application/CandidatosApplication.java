@@ -14,7 +14,7 @@ public class CandidatosApplication {
         this.candidatosRepository = candidatosRepository;
     }
 
-    public Object buscarPorId(int id){
+    public Candidatos buscarPorId(int id){
         return candidatosRepository.buscarPorId(id);
     }
 
