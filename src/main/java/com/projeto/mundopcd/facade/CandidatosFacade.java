@@ -14,7 +14,7 @@ public class CandidatosFacade {
         this.candidatosApplication = candidatosApplication;
     }
 
-    public Object buscarPorId(int id){
+    public Candidatos buscarPorId(int id){
         return candidatosApplication.buscarPorId(id);
     }
 

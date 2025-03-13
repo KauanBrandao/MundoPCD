@@ -1,4 +1,5 @@
 package com.projeto.mundopcd.repositories;
+import com.projeto.mundopcd.models.Candidatos;
 import com.projeto.mundopcd.models.Cursos;
 import org.springframework.stereotype.Repository;
 
@@ -22,16 +23,14 @@ public class CursosRepository {
         }
     }
 
-    public Object buscarPorId(int id) {
-        try{
-            if(cursos.get(id) != null) {
-                return "Não existe um curso cadastrado com o id " + id;
-            }else{
-                return existsById(id);
-            }
-        } catch(Exception e){
-            return "Erro: " + e.getMessage();
-        }
+    public Cursos buscarPorId(int id) {
+        Cursos curso = cursos
+                .stream()
+                .filter(p -> p.getIdCurso() == id)
+                .findFirst()
+                .get();
+
+        return curso;
     }
 
     public Cursos cadastrar(Cursos curso){
@@ -39,17 +38,16 @@ public class CursosRepository {
         return curso;
     }
 
-    public void atualizar(Cursos curso){
-        for(Cursos cursos: cursos) {
-            cursos.setTitulo(curso.getTitulo());
-            cursos.setDescricao(curso.getDescricao());
-            cursos.setCargaHoraria(curso.getCargaHoraria());
-            cursos.setIdEmpresa(curso.getIdEmpresa());
-        }
+    public void atualizar(Cursos curso, int id) {
+        Cursos cursoAtual = buscarPorId(id);
+
+        cursoAtual.setTitulo(curso.getTitulo());
+        cursoAtual.setDescricao(curso.getDescricao());
+        cursoAtual.setCargaHoraria(curso.getCargaHoraria());
+        cursoAtual.setIdEmpresa(curso.getIdEmpresa());
     }
 
-    public String deletar(int id){
-        cursos.remove(id);
-        return "Curso com id " + id + " deletado com sucesso!";
+    public void deletar(int id){
+        cursos.removeIf(p -> p.getIdCurso() == id);
     }
 }
