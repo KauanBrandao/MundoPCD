@@ -15,19 +15,10 @@ public class VagasRepository {
         return vagas.stream().anyMatch(vaga -> vaga.getIdVaga() == id);
     }
 
-    public Object buscarPorId(int id) {
-        try {
-            if (existsById(id)) {
-                for (Vagas vaga : vagas) {
-                    if (vaga.getIdVaga() == id) {
-                        return vaga;
-                    }
-                }
-            }
-            return "Não existe vaga com o id " + id;
-        } catch (Exception e) {
-            return "Erro: " + e.getMessage();
-        }
+    public Vagas buscarPorId(int id) {
+        return vagas.stream().filter(vaga -> vaga.getIdVaga() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     public List<Vagas> listar() {
@@ -44,4 +35,19 @@ public class VagasRepository {
             vagas.removeIf(vaga -> vaga.getIdVaga() == id);
         }
     }
+
+    public void atualizar(Vagas vaga) {
+        for (Vagas v : vagas) {
+            if (v.getIdVaga() == vaga.getIdVaga()) {
+                v.setTitulo(vaga.getTitulo());
+                v.setDescricao(vaga.getDescricao());
+                v.setRequisitos(vaga.getRequisitos());
+                v.setSalario(vaga.getSalario());
+                v.setTipoContratacao(vaga.getTipoContratacao());
+                v.setLocalizacao(vaga.getLocalizacao());
+                v.setIdEmpresa(vaga.getIdEmpresa());
+            }
+        }
+    }
+
 }
