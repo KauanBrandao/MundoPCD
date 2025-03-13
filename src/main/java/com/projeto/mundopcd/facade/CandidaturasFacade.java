@@ -14,7 +14,7 @@ public class CandidaturasFacade {
         this.candidaturasApplication = candidaturasApplication;
     }
 
-    public List Listar(){
+    public List listar(){
         return this.candidaturasApplication.listar();
     }
 }

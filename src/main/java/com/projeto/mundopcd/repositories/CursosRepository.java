@@ -10,6 +10,7 @@ import java.util.List;
 public class CursosRepository {
 
     private List<Cursos> cursos = new ArrayList<Cursos>();
+    private int proximoId = 1;
 
     public List listar() {
         return cursos;
@@ -34,6 +35,7 @@ public class CursosRepository {
     }
 
     public Cursos cadastrar(Cursos curso){
+        curso.setIdCurso(proximoId++);
         cursos.add(curso);
         return curso;
     }
