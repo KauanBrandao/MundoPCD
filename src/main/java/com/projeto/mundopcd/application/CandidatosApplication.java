@@ -22,6 +22,10 @@ public class CandidatosApplication {
         return candidatosRepository.listar();
     }
 
+    public void atualizar(Candidatos candidato, int id){
+        candidatosRepository.atualizar(candidato, id);
+    }
+
     public Candidatos cadastrar(Candidatos candidatos){
         return candidatosRepository.cadastrar(candidatos);
     }

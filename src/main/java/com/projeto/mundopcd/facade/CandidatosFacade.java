@@ -22,6 +22,10 @@ public class CandidatosFacade {
         return candidatosApplication.listar();
     }
 
+    public void atualizar(Candidatos candidato, int id){
+        candidatosApplication.atualizar(candidato, id);
+    }
+
     public Candidatos cadastrar(Candidatos candidatos){
         return candidatosApplication.cadastrar(candidatos);
     }
