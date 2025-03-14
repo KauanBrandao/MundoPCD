@@ -3,9 +3,11 @@ package com.projeto.mundopcd.application;
 import com.projeto.mundopcd.models.EnderecoEmpresa;
 import com.projeto.mundopcd.repositories.EnderecoEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class EnderecoEmpresaApplication {
 
     @Autowired
