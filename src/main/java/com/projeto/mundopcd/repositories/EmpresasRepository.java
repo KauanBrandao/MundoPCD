@@ -1,6 +1,5 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Candidatos;
 import com.projeto.mundopcd.models.Empresas;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +10,7 @@ import java.util.List;
 public class EmpresasRepository {
 
     private final List<Empresas> empresas = new ArrayList<>();
+    private int proximoId = 1;
 
     public boolean existsById(int id) {
         return empresas.stream().anyMatch(emp -> emp.getIdEmpresa() == id);
@@ -22,12 +22,12 @@ public class EmpresasRepository {
                 orElse(null);
     }
 
-
     public List<Empresas> listar() {
         return empresas;
     }
 
     public Empresas cadastrar(Empresas empresa) {
+        empresa.setIdEmpresa(proximoId++);
         empresas.add(empresa);
         return empresa;
     }

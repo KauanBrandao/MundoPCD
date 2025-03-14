@@ -11,6 +11,7 @@ import java.util.List;
 public class EnderecoCandidatoRepository {
 
     private List<EnderecoCandidato> enderecos = new ArrayList<>();
+    private int proximoId = 1;
 
     public boolean existsById(int id) {
         return enderecos.stream().anyMatch(endereco -> endereco.getIdEnderecoCandidato() == id);
@@ -27,6 +28,7 @@ public class EnderecoCandidatoRepository {
     }
 
     public EnderecoCandidato cadastrar(EnderecoCandidato endereco) {
+        endereco.setIdEnderecoCandidato(proximoId++);
         enderecos.add(endereco);
         return endereco;
     }

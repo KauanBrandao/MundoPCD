@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/empresa")
+@RequestMapping("/empresas")
 public class EmpresaController {
 
     private EmpresasFacade empresaFacade;
@@ -23,7 +23,7 @@ public class EmpresaController {
         return empresaFacade.listar();
     }
 
-    @DeleteMapping("/excluir/{id}")
+    @DeleteMapping("/deletar/{id}")
     public void deletar (@PathVariable int id) {
        empresaFacade.deletar(id);
     }
