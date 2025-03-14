@@ -11,6 +11,7 @@ import java.util.List;
 public class VagasRepository {
 
     private List<Vagas> vagas = new ArrayList<>();
+    private int proximoId = 1;
 
     public boolean existsById(int id) {
         return vagas.stream().anyMatch(vaga -> vaga.getIdVaga() == id);
@@ -27,13 +28,14 @@ public class VagasRepository {
     }
 
     public Vagas cadastrar(Vagas vaga) {
+        vaga.setIdVaga(proximoId++);
         vagas.add(vaga);
         return vaga;
     }
 
     public void deletar(int id) {
         if (existsById(id)) {
-            vagas.removeIf(vaga -> vaga.getIdVaga() == id);
+            vagas.removeIf(v-> v.getIdVaga() == id);
         }
     }
 

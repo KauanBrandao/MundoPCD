@@ -14,7 +14,7 @@ public class EnderecoCandidatoController {
     private EnderecoCandidatoFacade enderecoCandidatoFacade;
 
     @Autowired
-    public EnderecoCandidatoController(EnderecoCandidatoFacade enderecoFacade) {
+    public EnderecoCandidatoController(EnderecoCandidatoFacade enderecoCandidatoFacade) {
         this.enderecoCandidatoFacade = enderecoCandidatoFacade;
     }
 
@@ -26,6 +26,16 @@ public class EnderecoCandidatoController {
     @PostMapping("/cadastrar")
     public EnderecoCandidato cadastrar(@RequestBody EnderecoCandidato enderecoCandidato) {
         return enderecoCandidatoFacade.cadastrar(enderecoCandidato);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public void deletar(@PathVariable int id) {
+         enderecoCandidatoFacade.deletar(id);
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public void atualizar(@RequestBody EnderecoCandidato enderecoCandidato, @PathVariable int id) {
+        enderecoCandidatoFacade.atualizar(enderecoCandidato, id);
     }
 
 
