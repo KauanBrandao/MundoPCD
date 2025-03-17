@@ -18,8 +18,7 @@ public class EmpresasRepository {
 
     public Empresas buscarPorId(int id) {
         return empresas.stream().filter(emp -> emp.getIdEmpresa() == id).
-                findFirst().
-                orElse(null);
+                findFirst().get();
     }
 
     public List<Empresas> listar() {
@@ -36,7 +35,7 @@ public class EmpresasRepository {
 
         Empresas empAtual = buscarPorId(id);
 
-        empAtual.setIdEmpresa(empresa.getIdEmpresa());
+
         empAtual.setNomeEmpresa(empresa.getNomeEmpresa());
         empAtual.setCnpj(empresa.getCnpj());
         empAtual.setIdEnderecoEmpresa(empresa.getIdEnderecoEmpresa());
