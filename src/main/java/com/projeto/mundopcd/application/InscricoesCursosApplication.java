@@ -25,11 +25,11 @@ public class InscricoesCursosApplication {
         return inscricoesCursosRepository.cadastrar(inscricao);
     }
 
-    public void atualizar(InscricoesCursos inscricao) {
-        inscricoesCursosRepository.atualizar(inscricao);
+    public void atualizar(InscricoesCursos inscricao, int id) {
+        inscricoesCursosRepository.atualizar(inscricao, id);
     }
 
-    public String deletar(int id) {
-        return inscricoesCursosRepository.deletar(id);
+    public void deletar(int id) {
+        inscricoesCursosRepository.deletar(id);
     }
 }

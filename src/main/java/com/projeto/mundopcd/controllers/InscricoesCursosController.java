@@ -32,11 +32,11 @@ public class InscricoesCursosController {
     @PutMapping("/atualizar/{id}")
     public void atualizar(@PathVariable int id, @RequestBody InscricoesCursos inscricao) {
         inscricao.setIdInscricaoCurso(id);
-        facade.atualizar(inscricao);
+        facade.atualizar(inscricao, id);
     }
 
     @DeleteMapping("/deletar/{id}")
-    public String deletar(@PathVariable int id) {
-        return facade.deletar(id);
+    public void deletar(@PathVariable int id) {
+        facade.deletar(id);
     }
 }
