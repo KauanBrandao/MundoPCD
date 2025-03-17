@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.controllers;
 
-import com.projeto.mundopcd.application.PlanoApplication;
+import com.projeto.mundopcd.facade.PlanoFacade;
 import com.projeto.mundopcd.models.Plano;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,31 +12,31 @@ import java.util.List;
 public class PlanoController {
 
     @Autowired
-    private PlanoApplication application;
+    private PlanoFacade facade;
 
     @GetMapping
     public List<Plano> listar() {
-        return application.listar();
+        return facade.listar();
     }
 
     @GetMapping("/{id}")
     public Plano buscarPorId(@PathVariable int id) {
-        return application.buscarPorId(id);
+        return facade.buscarPorId(id);
     }
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public Plano cadastrar(@RequestBody Plano plano) {
-        return application.cadastrar(plano);
+        return facade.cadastrar(plano);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public void atualizar(@PathVariable int id, @RequestBody Plano plano) {
         plano.setIdPlano(id);
-        application.atualizar(plano);
+        facade.atualizar(plano);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletar/{id}")
     public String deletar(@PathVariable int id) {
-        return application.deletar(id);
+        return facade.deletar(id);
     }
 }

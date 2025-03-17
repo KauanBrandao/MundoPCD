@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.controllers;
 
-import com.projeto.mundopcd.application.InscricoesCursosApplication;
+import com.projeto.mundopcd.facade.InscricoesCursosFacade;
 import com.projeto.mundopcd.models.InscricoesCursos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,31 +12,31 @@ import java.util.List;
 public class InscricoesCursosController {
 
     @Autowired
-    private InscricoesCursosApplication application;
+    private InscricoesCursosFacade facade;
 
     @GetMapping
     public List<InscricoesCursos> listar() {
-        return application.listar();
+        return facade.listar();
     }
 
     @GetMapping("/{id}")
     public InscricoesCursos buscarPorId(@PathVariable int id) {
-        return application.buscarPorId(id);
+        return facade.buscarPorId(id);
     }
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public InscricoesCursos cadastrar(@RequestBody InscricoesCursos inscricao) {
-        return application.cadastrar(inscricao);
+        return facade.cadastrar(inscricao);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public void atualizar(@PathVariable int id, @RequestBody InscricoesCursos inscricao) {
         inscricao.setIdInscricaoCurso(id);
-        application.atualizar(inscricao);
+        facade.atualizar(inscricao);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletar/{id}")
     public String deletar(@PathVariable int id) {
-        return application.deletar(id);
+        return facade.deletar(id);
     }
 }

@@ -1,12 +1,11 @@
 package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Plano;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 public class PlanoRepository {
 
     private List<Plano> planos = new ArrayList<>();
