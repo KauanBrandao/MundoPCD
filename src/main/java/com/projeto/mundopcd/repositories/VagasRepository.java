@@ -42,7 +42,6 @@ public class VagasRepository {
     public void atualizar(Vagas vaga, int id) {
         Vagas vagaAtual = buscarPorId(id);
 
-        vagaAtual.setIdVaga(vaga.getIdVaga());
         vagaAtual.setTitulo(vaga.getTitulo());
         vagaAtual.setDescricao(vaga.getDescricao());
         vagaAtual.setRequisitos(vaga.getRequisitos());
