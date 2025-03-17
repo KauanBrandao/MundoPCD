@@ -15,10 +15,6 @@ public class InscricoesCursosRepository {
         return inscricoes;
     }
 
-    public boolean existsById(int id) {
-        return inscricoes.stream().anyMatch(inscricao -> inscricao.getIdInscricaoCurso() == id);
-    }
-
     public InscricoesCursos buscarPorId(int id) {
         return inscricoes.stream()
                 .filter(inscricao -> inscricao.getIdInscricaoCurso() == id)

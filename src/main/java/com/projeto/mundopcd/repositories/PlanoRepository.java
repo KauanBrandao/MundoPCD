@@ -15,10 +15,6 @@ public class PlanoRepository {
         return planos;
     }
 
-    public boolean existsById(int id) {
-        return planos.stream().anyMatch(plano -> plano.getIdPlano() == id);
-    }
-
     public Plano buscarPorId(int id) {
         return planos.stream()
                 .filter(plano -> plano.getIdPlano() == id)
