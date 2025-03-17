@@ -25,11 +25,11 @@ public class InscricoesCursosFacade {
         return application.cadastrar(inscricao);
     }
 
-    public void atualizar(InscricoesCursos inscricao) {
-        application.atualizar(inscricao);
+    public void atualizar(InscricoesCursos inscricao, int id) {
+        application.atualizar(inscricao, id);
     }
 
-    public String deletar(int id) {
-        return application.deletar(id);
+    public void deletar(int id) {
+        application.deletar(id);
     }
 }

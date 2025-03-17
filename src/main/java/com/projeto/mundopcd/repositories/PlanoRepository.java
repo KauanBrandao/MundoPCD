@@ -9,6 +9,7 @@ import java.util.List;
 public class PlanoRepository {
 
     private List<Plano> planos = new ArrayList<>();
+    private int proximoId = 1;
 
     public List<Plano> listar() {
         return planos;
@@ -22,6 +23,7 @@ public class PlanoRepository {
     }
 
     public Plano cadastrar(Plano plano) {
+        plano.setIdPlano(proximoId++);
         planos.add(plano);
         return plano;
     }
