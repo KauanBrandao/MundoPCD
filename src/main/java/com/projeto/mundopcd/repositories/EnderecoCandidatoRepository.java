@@ -42,7 +42,6 @@ public class EnderecoCandidatoRepository {
     public void atualizar(EnderecoCandidato endereco, int id) {
         EnderecoCandidato enderecoAtual = buscarPorId(id);
 
-        enderecoAtual.setIdEnderecoCandidato(endereco.getIdEnderecoCandidato());
         enderecoAtual.setLogradouro(endereco.getLogradouro());
         enderecoAtual.setNumero(endereco.getNumero());
         enderecoAtual.setCidade(endereco.getCidade());
