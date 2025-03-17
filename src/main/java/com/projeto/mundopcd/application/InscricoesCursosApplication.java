@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.facade.InscricoesCursosFacade;
 import com.projeto.mundopcd.models.InscricoesCursos;
+import com.projeto.mundopcd.repositories.InscricoesCursosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,25 +11,25 @@ import java.util.List;
 public class InscricoesCursosApplication {
 
     @Autowired
-    private InscricoesCursosFacade facade;
+    private InscricoesCursosRepository inscricoesCursosRepository;
 
     public List<InscricoesCursos> listar() {
-        return facade.listar();
+        return inscricoesCursosRepository.listar();
     }
 
     public InscricoesCursos buscarPorId(int id) {
-        return facade.buscarPorId(id);
+        return inscricoesCursosRepository.buscarPorId(id);
     }
 
     public InscricoesCursos cadastrar(InscricoesCursos inscricao) {
-        return facade.cadastrar(inscricao);
+        return inscricoesCursosRepository.cadastrar(inscricao);
     }
 
     public void atualizar(InscricoesCursos inscricao) {
-        facade.atualizar(inscricao);
+        inscricoesCursosRepository.atualizar(inscricao);
     }
 
     public String deletar(int id) {
-        return facade.deletar(id);
+        return inscricoesCursosRepository.deletar(id);
     }
 }
