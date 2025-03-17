@@ -29,7 +29,7 @@ public class EmpresasApplication {
         empresasRepository.deletar(id);
     }
 
-    public void atualizar(Empresas empresa) {
-        empresasRepository.atualizar(empresa);
+    public void atualizar(Empresas empresa, int id) {
+        empresasRepository.atualizar(empresa, id);
     }
 }

@@ -29,8 +29,8 @@ public class VagasFacade {
         vagasApplication.deletar(id);
     }
 
-    public void atualizar(Vagas vaga) {
-        vagasApplication.atualizar(vaga);
+    public void atualizar(Vagas vaga, int id) {
+        vagasApplication.atualizar(vaga, id);
     }
 
 }

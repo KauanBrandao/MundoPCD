@@ -11,6 +11,7 @@ import java.util.List;
 public class EnderecoCandidatoRepository {
 
     private List<EnderecoCandidato> enderecos = new ArrayList<>();
+    private int proximoId = 1;
 
     public boolean existsById(int id) {
         return enderecos.stream().anyMatch(endereco -> endereco.getIdEnderecoCandidato() == id);
@@ -27,6 +28,7 @@ public class EnderecoCandidatoRepository {
     }
 
     public EnderecoCandidato cadastrar(EnderecoCandidato endereco) {
+        endereco.setIdEnderecoCandidato(proximoId++);
         enderecos.add(endereco);
         return endereco;
     }
@@ -37,17 +39,15 @@ public class EnderecoCandidatoRepository {
         }
     }
 
-    public void atualizar(EnderecoCandidato enderecoCandidato) {
-        for (EnderecoCandidato ec : enderecos) {
-            if (ec.getIdEnderecoCandidato() == enderecoCandidato.getIdEnderecoCandidato()) {
-                ec.setIdEnderecoCandidato(enderecoCandidato.getIdEnderecoCandidato());
-                ec.setLogradouro(enderecoCandidato.getLogradouro());
-                ec.setNumero(enderecoCandidato.getNumero());
-                ec.setCidade(enderecoCandidato.getCidade());
-                ec.setEstado(enderecoCandidato.getEstado());
-                ec.setCep(enderecoCandidato.getCep());
-            }
-        }
+    public void atualizar(EnderecoCandidato endereco, int id) {
+        EnderecoCandidato enderecoAtual = buscarPorId(id);
+
+        enderecoAtual.setIdEnderecoCandidato(endereco.getIdEnderecoCandidato());
+        enderecoAtual.setLogradouro(endereco.getLogradouro());
+        enderecoAtual.setNumero(endereco.getNumero());
+        enderecoAtual.setCidade(endereco.getCidade());
+        enderecoAtual.setEstado(endereco.getEstado());
+        enderecoAtual.setCep(endereco.getCep());
     }
 
 }

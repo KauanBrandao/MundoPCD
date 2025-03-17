@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
+import com.projeto.mundopcd.models.Empresas;
 import com.projeto.mundopcd.models.Vagas;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +11,7 @@ import java.util.List;
 public class VagasRepository {
 
     private List<Vagas> vagas = new ArrayList<>();
+    private int proximoId = 1;
 
     public boolean existsById(int id) {
         return vagas.stream().anyMatch(vaga -> vaga.getIdVaga() == id);
@@ -26,28 +28,28 @@ public class VagasRepository {
     }
 
     public Vagas cadastrar(Vagas vaga) {
+        vaga.setIdVaga(proximoId++);
         vagas.add(vaga);
         return vaga;
     }
 
     public void deletar(int id) {
         if (existsById(id)) {
-            vagas.removeIf(vaga -> vaga.getIdVaga() == id);
+            vagas.removeIf(v-> v.getIdVaga() == id);
         }
     }
 
-    public void atualizar(Vagas vaga) {
-        for (Vagas v : vagas) {
-            if (v.getIdVaga() == vaga.getIdVaga()) {
-                v.setTitulo(vaga.getTitulo());
-                v.setDescricao(vaga.getDescricao());
-                v.setRequisitos(vaga.getRequisitos());
-                v.setSalario(vaga.getSalario());
-                v.setTipoContratacao(vaga.getTipoContratacao());
-                v.setLocalizacao(vaga.getLocalizacao());
-                v.setIdEmpresa(vaga.getIdEmpresa());
-            }
-        }
+    public void atualizar(Vagas vaga, int id) {
+        Vagas vagaAtual = buscarPorId(id);
+
+        vagaAtual.setIdVaga(vaga.getIdVaga());
+        vagaAtual.setTitulo(vaga.getTitulo());
+        vagaAtual.setDescricao(vaga.getDescricao());
+        vagaAtual.setRequisitos(vaga.getRequisitos());
+        vagaAtual.setSalario(vaga.getSalario());
+        vagaAtual.setTipoContratacao(vaga.getTipoContratacao());
+        vagaAtual.setLocalizacao(vaga.getLocalizacao());
+        vagaAtual.setIdEmpresa(vaga.getIdEmpresa());
     }
 
 }

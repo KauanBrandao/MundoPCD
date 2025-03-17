@@ -17,7 +17,7 @@ public class CursosFacade {
         return cursosApplication.listar();
     }
 
-    public Object buscarPorId(int id) {
+    public Cursos buscarPorId(int id) {
         return cursosApplication.buscarPorId(id);
     }
 
@@ -25,11 +25,11 @@ public class CursosFacade {
         return cursosApplication.cadastrar(curso);
     }
 
-    public void atualizar(Cursos curso){
-        cursosApplication.atualizar(curso);
+    public void atualizar(Cursos curso, int id){
+        cursosApplication.atualizar(curso, id);
     }
 
-    public String deletar(int id){
-        return cursosApplication.deletar(id);
+    public void deletar(int id) {
+        cursosApplication.deletar(id);
     }
 }
