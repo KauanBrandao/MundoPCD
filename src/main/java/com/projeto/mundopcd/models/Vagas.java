@@ -1,13 +1,34 @@
 package com.projeto.mundopcd.models;
 
+
+import jakarta.persistence.*;
+
+@Entity
 public class Vagas {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_vaga")
     private int idVaga;
+
+    @Column(name = "titulo")
     private String titulo;
+
+    @Column(name = "descricao")
     private String descricao;
+
+    @Column(name = "requisitos")
     private String requisitos;
+
+    @Column(name = "salario")
     private double salario;
+
+    @Column(name = "tipo_contratacap")
     private String tipoContratacao;
+
+    @Column(name = "localizacao")
     private String localizacao;
+
+    @Column(name = "id_empresa")
     private int idEmpresa;
 
     public Vagas() {
