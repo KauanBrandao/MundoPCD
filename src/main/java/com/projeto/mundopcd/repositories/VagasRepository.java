@@ -1,6 +1,5 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Empresas;
 import com.projeto.mundopcd.models.Vagas;
 import org.springframework.stereotype.Repository;
 
