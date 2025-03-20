@@ -1,12 +1,30 @@
 package com.projeto.mundopcd.models;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "enderecos_empresas")
 public class EnderecoEmpresa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_endereco_empresa")
     private int idEnderecoEmpresa;
+
+    @Column(name = "lagradouro")
     private String lagradouro;
+
+    @Column(name = "numero")
     private String numero;
+
+    @Column(name = "cidade")
     private String cidade;
+
+    @Column(name = "estado")
     private String estado;
+
+    @Column(name = "cep")
     private String cep;
 
     public EnderecoEmpresa(int idEnderecoEmpresa, String lagradouro, String numero, String cidade, String estado, String cep) {
