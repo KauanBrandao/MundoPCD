@@ -1,12 +1,28 @@
 package com.projeto.mundopcd.models;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "candidaturas")
 public class Candidaturas {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_candidatura")
     private int idCandidatura;
+
+    @Column(name = "id_candidato")
     private int idCandidato;
+
+    @Column(name = "id_vaga")
     private int idVaga;
+
+    @Column(name = "data_aplicacao")
     private Date dataAplicacao;
+
+    @Column(name = "status")
     private String status;
 
     public Candidaturas() {}
