@@ -4,6 +4,7 @@ package com.projeto.mundopcd.models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "vagas")
 public class Vagas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

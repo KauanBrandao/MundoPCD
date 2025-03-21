@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.Plano;
+import com.projeto.mundopcd.models.Planos;
 import com.projeto.mundopcd.repositories.PlanoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,20 +12,20 @@ public class PlanoApplication {
     @Autowired
     private PlanoRepository planoRepository;
 
-    public List<Plano> listar() {
+    public List<Planos> listar() {
         return planoRepository.listar();
     }
 
-    public Plano buscarPorId(int id) {
+    public Planos buscarPorId(int id) {
         return planoRepository.buscarPorId(id);
     }
 
-    public Plano cadastrar(Plano plano) {
-        return planoRepository.cadastrar(plano);
+    public Planos cadastrar(Planos planos) {
+        return planoRepository.cadastrar(planos);
     }
 
-    public void atualizar(Plano plano) {
-        planoRepository.atualizar(plano);
+    public void atualizar(Planos planos) {
+        planoRepository.atualizar(planos);
     }
 
     public String deletar(int id) {
