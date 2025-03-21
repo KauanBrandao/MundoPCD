@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.facade;
 
-import com.projeto.mundopcd.models.Plano;
+import com.projeto.mundopcd.models.Planos;
 import com.projeto.mundopcd.application.PlanoApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,20 +13,20 @@ public class PlanoFacade {
     @Autowired
     private PlanoApplication application;
 
-    public List<Plano> listar() {
+    public List<Planos> listar() {
         return application.listar();
     }
 
-    public Plano buscarPorId(int id) {
+    public Planos buscarPorId(int id) {
         return application.buscarPorId(id);
     }
 
-    public Plano cadastrar(Plano plano) {
-        return application.cadastrar(plano);
+    public Planos cadastrar(Planos planos) {
+        return application.cadastrar(planos);
     }
 
-    public void atualizar(Plano plano) {
-        application.atualizar(plano);
+    public void atualizar(Planos planos) {
+        application.atualizar(planos);
     }
 
     public String deletar(int id) {

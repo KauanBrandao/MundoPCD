@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Plano;
+import com.projeto.mundopcd.models.Planos;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,41 +8,41 @@ import java.util.List;
 @Component
 public class PlanoRepository {
 
-    private List<Plano> planos = new ArrayList<>();
+    private List<Planos> planos = new ArrayList<>();
     private int proximoId = 1;
 
-    public List<Plano> listar() {
+    public List<Planos> listar() {
         return planos;
     }
 
-    public Plano buscarPorId(int id) {
+    public Planos buscarPorId(int id) {
         return planos.stream()
-                .filter(plano -> plano.getIdPlano() == id)
+                .filter(planos -> planos.getIdPlano() == id)
                 .findFirst()
                 .orElse(null);
     }
 
-    public Plano cadastrar(Plano plano) {
-        plano.setIdPlano(proximoId++);
-        planos.add(plano);
-        return plano;
+    public Planos cadastrar(Planos planos) {
+        planos.setIdPlano(proximoId++);
+        this.planos.add(planos);
+        return planos;
     }
 
-    public void atualizar(Plano planoAtualizado) {
-        for (Plano plano : planos) {
-            if (plano.getIdPlano() == planoAtualizado.getIdPlano()) {
-                plano.setNomePlano(planoAtualizado.getNomePlano());
-                plano.setNomeCandidatura(planoAtualizado.getNomeCandidatura());
-                plano.setNomeCandidato(planoAtualizado.getNomeCandidato());
-                plano.setIdCandidatura(planoAtualizado.getIdCandidatura());
-                plano.setIdCandidato(planoAtualizado.getIdCandidato());
+    public void atualizar(Planos planosAtualizado) {
+        for (Planos planos : this.planos) {
+            if (planos.getIdPlano() == planosAtualizado.getIdPlano()) {
+                planos.setNomePlano(planosAtualizado.getNomePlano());
+                planos.setNomeCandidatura(planosAtualizado.getNomeCandidatura());
+                planos.setNomeCandidato(planosAtualizado.getNomeCandidato());
+                planos.setIdCandidatura(planosAtualizado.getIdCandidatura());
+                planos.setIdCandidato(planosAtualizado.getIdCandidato());
                 break;
             }
         }
     }
 
     public String deletar(int id) {
-        planos.removeIf(plano -> plano.getIdPlano() == id);
-        return "Plano com id " + id + " deletado com sucesso!";
+        planos.removeIf(planos -> planos.getIdPlano() == id);
+        return "Planos com id " + id + " deletado com sucesso!";
     }
 }
