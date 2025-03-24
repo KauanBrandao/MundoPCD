@@ -36,6 +36,10 @@ public class EnderecoEmpresa {
         this.cep = cep;
     }
 
+    public EnderecoEmpresa() {
+
+    }
+
     public int getIdEnderecoEmpresa() {
         return idEnderecoEmpresa;
     }
