@@ -1,4 +1,4 @@
-package com.projeto.mundopcd.facade;
+/*package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.AdministradorEmpresaApplication;
 import com.projeto.mundopcd.models.AdministradorEmpresa;
@@ -34,3 +34,6 @@ public class AdministradorEmpresaFacade {
     }
 
 }
+
+
+ */

@@ -1,4 +1,4 @@
-package com.projeto.mundopcd.repositories;
+/*package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.repositories.JPA.AdministradorEmpresaJPA;
 import org.springframework.stereotype.Repository;
@@ -43,3 +43,5 @@ public class AdministradorEmpresaRepository {
     }
 
 }
+
+*/

@@ -1,16 +1,48 @@
 package com.projeto.mundopcd.models;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "candidatos")
 public class Candidatos {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_candidato")
     private int idCandidato;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "cpf")
+    private String cpf;
+
+    @Column(name = "telefone")
     private String telefone;
+
+    @Column(name = "tipo_deficiencia")
     private String tipoDeficiencia;
+
+    @Column(name = "formacao")
     private String formacao;
+
+    @Column(name = "experiencia")
     private String experiencia;
+
+    @Column(name = "habilidades")
     private String habilidades;
+
+    @Column(name = "curriculo")
     private String curriculo;
+
+    @Column(name = "id_plano")
     private int idPlano;
+
+    @Column(name = "id_endereco_candidato")
     private int idEnderecoCandidato;
 
     public Candidatos(){}
@@ -25,6 +57,10 @@ public class Candidatos {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public void setEmail(String email) {
@@ -45,6 +81,10 @@ public class Candidatos {
 
     public void setHabilidades(String habilidades) {
         this.habilidades = habilidades;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public int getIdCandidato() {

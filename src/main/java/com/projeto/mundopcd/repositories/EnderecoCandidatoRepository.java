@@ -2,6 +2,8 @@ package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Empresas;
 import com.projeto.mundopcd.models.EnderecoCandidato;
+import com.projeto.mundopcd.repositories.JPA.EnderecoCandidatoJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,43 +12,45 @@ import java.util.List;
 @Repository
 public class EnderecoCandidatoRepository {
 
-    private List<EnderecoCandidato> enderecos = new ArrayList<>();
-    private int proximoId = 1;
+    private final EnderecoCandidatoJPA enderecoCandidatoJpa;
+
+    @Autowired
+    public EnderecoCandidatoRepository(EnderecoCandidatoJPA enderecoCandidatoJpa) {
+        this.enderecoCandidatoJpa = enderecoCandidatoJpa;
+    }
 
     public boolean existsById(int id) {
-        return enderecos.stream().anyMatch(endereco -> endereco.getIdEnderecoCandidato() == id);
+        return this.enderecoCandidatoJpa.existsById(id);
     }
 
     public EnderecoCandidato buscarPorId(int id) {
-        return enderecos.stream().filter(end -> end.getIdEnderecoCandidato() == id).
-                findFirst().
-                orElse(null);
+        return this.enderecoCandidatoJpa.findById(id).get();
     }
 
     public List<EnderecoCandidato> listar() {
-        return enderecos;
+        return this.enderecoCandidatoJpa.findAll();
     }
 
     public EnderecoCandidato cadastrar(EnderecoCandidato endereco) {
-        endereco.setIdEnderecoCandidato(proximoId++);
-        enderecos.add(endereco);
-        return endereco;
+        return this.enderecoCandidatoJpa.save(endereco);
     }
 
     public void deletar(int id) {
         if (existsById(id)) {
-            enderecos.removeIf(endereco -> endereco.getIdEnderecoCandidato() == id);
+           this.enderecoCandidatoJpa.deleteById(id);
         }
     }
 
     public void atualizar(EnderecoCandidato endereco, int id) {
-        EnderecoCandidato enderecoAtual = buscarPorId(id);
+        EnderecoCandidato enderecoInDb = buscarPorId(id);
 
-        enderecoAtual.setLogradouro(endereco.getLogradouro());
-        enderecoAtual.setNumero(endereco.getNumero());
-        enderecoAtual.setCidade(endereco.getCidade());
-        enderecoAtual.setEstado(endereco.getEstado());
-        enderecoAtual.setCep(endereco.getCep());
+        enderecoInDb.setLogradouro(endereco.getLogradouro());
+        enderecoInDb.setNumero(endereco.getNumero());
+        enderecoInDb.setCidade(endereco.getCidade());
+        enderecoInDb.setEstado(endereco.getEstado());
+        enderecoInDb.setCep(endereco.getCep());
+        this.enderecoCandidatoJpa.save(enderecoInDb);
+
     }
 
 }

@@ -4,6 +4,7 @@ package com.projeto.mundopcd.models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "vagas")
 public class Vagas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Vagas {
     @Column(name = "salario")
     private double salario;
 
-    @Column(name = "tipo_contratacap")
+    @Column(name = "tipo_contratacao")
     private String tipoContratacao;
 
     @Column(name = "localizacao")

@@ -1,61 +1,57 @@
 package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Candidatos;
+import com.projeto.mundopcd.repositories.JPA.CandidatosJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class CandidatosRepository {
 
-    private List<Candidatos> candidatos = new ArrayList<Candidatos>();
-    private int proximoId = 1;
+    private final CandidatosJPA candidatosJpa;
+
+    @Autowired
+    public CandidatosRepository(CandidatosJPA candidatosJpa) {
+        this.candidatosJpa = candidatosJpa;
+    }
 
     public boolean existsById(int id) {
-        if(candidatos.get(id) != null) {
-            return true;
-        }else {
-            return false;
-        }
+        return this.candidatosJpa.existsById(id);
     }
 
     public Candidatos buscarPorId(int id) {
-        Candidatos candidato = candidatos
-                .stream()
-                .filter(p -> p.getIdCandidato() == id)
-                .findFirst()
-                .get();
-
-        return candidato;
+        return this.candidatosJpa.findById(id).get();
     }
 
-    public List listar(){
-        return candidatos;
+    public List<Candidatos> listar(){
+        return this.candidatosJpa.findAll();
     }
 
     public Candidatos cadastrar(Candidatos candidato){
-        candidato.setIdCandidato(proximoId++);
-        candidatos.add(candidato);
-        return candidato;
+        return this.candidatosJpa.save(candidato);
     }
 
     public void atualizar(Candidatos candidato, int id){
-        Candidatos candidatoAtual = buscarPorId(id);
+        Candidatos candInDB = this.candidatosJpa.findById(id).get();
 
-        candidatoAtual.setNome(candidato.getNome());
-        candidatoAtual.setEmail(candidato.getEmail());
-        candidatoAtual.setTelefone(candidato.getTelefone());
-        candidatoAtual.setTipoDeficiencia(candidato.getTipoDeficiencia());
-        candidatoAtual.setFormacao(candidato.getFormacao());
-        candidatoAtual.setExperiencia(candidato.getExperiencia());
-        candidatoAtual.setHabilidades(candidato.getHabilidades());
-        candidatoAtual.setCurriculo(candidato.getCurriculo());
-        candidatoAtual.setIdPlano(candidato.getIdPlano());
-        candidatoAtual.setIdEnderecoCandidato(candidato.getIdEnderecoCandidato());
+        candInDB.setNome(candidato.getNome());
+        candInDB.setCpf(candidato.getCpf());
+        candInDB.setTelefone(candidato.getTelefone());
+        candInDB.setIdPlano(candidato.getIdPlano());
+        candInDB.setEmail(candidato.getEmail());
+        candInDB.setTipoDeficiencia(candidato.getTipoDeficiencia());
+        candInDB.setExperiencia(candidato.getExperiencia());
+        candInDB.setFormacao(candidato.getFormacao());
+        candInDB.setHabilidades(candidato.getHabilidades());
+        candInDB.setCurriculo(candidato.getCurriculo());
+        candInDB.setIdPlano(candidato.getIdPlano());
+        candInDB.setIdEnderecoCandidato(candidato.getIdEnderecoCandidato());
+        this.candidatosJpa.save(candInDB);
     }
 
     public void deletar(int id){
-        candidatos.removeIf(p -> p.getIdCandidato() == id);
+        this.candidatosJpa.deleteById(id);
     }
 
 }

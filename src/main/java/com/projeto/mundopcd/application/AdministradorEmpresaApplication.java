@@ -1,4 +1,4 @@
-package com.projeto.mundopcd.application;
+/*package com.projeto.mundopcd.application;
 
 import com.projeto.mundopcd.models.AdministradorEmpresa;
 import com.projeto.mundopcd.repositories.AdministradorEmpresaRepository;
@@ -33,3 +33,5 @@ public class AdministradorEmpresaApplication {
         administradorEmpresaRepository.atualizar(administradorEmpresa, id);
     }
 }
+
+ */

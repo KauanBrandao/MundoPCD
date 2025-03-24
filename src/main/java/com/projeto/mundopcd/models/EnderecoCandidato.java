@@ -3,6 +3,7 @@ package com.projeto.mundopcd.models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "endereco_candidato")
 public class EnderecoCandidato {
 
     @Id
