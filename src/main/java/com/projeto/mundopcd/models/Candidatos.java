@@ -33,7 +33,7 @@ public class Candidatos {
     @Column(name = "habilidades")
     private String habilidades;
 
-    @Column(name = "curriculi")
+    @Column(name = "curriculo")
     private String curriculo;
 
     @Column(name = "id_plano")

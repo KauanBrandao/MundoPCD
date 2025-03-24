@@ -1,5 +1,6 @@
-package com.projeto.mundopcd.models;
+/*package com.projeto.mundopcd.models;
 
+import com.projeto.mundopcd.models.Empresas;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +13,7 @@ public class AdministradorEmpresa {
     private int idAdmin;
 
     @Column(name = "id_empresa")
-    private  Empresas idEmpresa;
+    private Empresas idEmpresa;
 
     @Column(name = "nome_empresa")
     private String nomeEmpresa;
@@ -29,6 +30,10 @@ public class AdministradorEmpresa {
         this.nomeEmpresa = nomeEmpresa;
         this.email = email;
         this.senha = senha;
+    }
+
+    public AdministradorEmpresa() {
+
     }
 
     public int getIdAdmin() {
@@ -71,3 +76,4 @@ public class AdministradorEmpresa {
         this.senha = senha;
     }
 }
+*/
