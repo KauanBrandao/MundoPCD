@@ -2,13 +2,19 @@ package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Candidatos;
 import com.projeto.mundopcd.repositories.JPA.CandidatosJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
 public class CandidatosRepository {
 
-    private CandidatosJPA candidatosJpa;
+    private final CandidatosJPA candidatosJpa;
+
+    @Autowired
+    public CandidatosRepository(CandidatosJPA candidatosJpa) {
+        this.candidatosJpa = candidatosJpa;
+    }
 
     public boolean existsById(int id) {
         return this.candidatosJpa.existsById(id);

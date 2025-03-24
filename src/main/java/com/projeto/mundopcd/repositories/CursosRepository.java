@@ -1,13 +1,19 @@
 package com.projeto.mundopcd.repositories;
 import com.projeto.mundopcd.models.Cursos;
 import com.projeto.mundopcd.repositories.JPA.CursosJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
 public class CursosRepository {
 
-    private CursosJPA cursosJpa;
+    private final CursosJPA cursosJpa;
+
+    @Autowired
+    public CursosRepository(CursosJPA cursosJpa) {
+        this.cursosJpa = cursosJpa;
+    }
 
     public List listar() {
         return this.cursosJpa.findAll();
