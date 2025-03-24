@@ -9,12 +9,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/empresas")
-public class EmpresaController {
+public class EmpresasController {
 
     private EmpresasFacade empresaFacade;
 
     @Autowired
-    public EmpresaController(EmpresasFacade empresaFacade) {
+    public EmpresasController(EmpresasFacade empresaFacade) {
         this.empresaFacade = empresaFacade;
     }
 
