@@ -23,7 +23,7 @@ public class Vagas {
     @Column(name = "salario")
     private double salario;
 
-    @Column(name = "tipo_contratacap")
+    @Column(name = "tipo_contratacao")
     private String tipoContratacao;
 
     @Column(name = "localizacao")

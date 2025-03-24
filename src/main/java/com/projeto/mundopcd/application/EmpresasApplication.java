@@ -13,7 +13,7 @@ public class EmpresasApplication {
     @Autowired
     private EmpresasRepository empresasRepository;
 
-    public Object buscarPorId(int id) {
+    public Empresas buscarPorId(int id) {
         return empresasRepository.buscarPorId(id);
     }
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/enderecos/candidatos")
+@RequestMapping("/enderecos-candidatos")
 public class EnderecoCandidatoController {
 
     private EnderecoCandidatoFacade enderecoCandidatoFacade;

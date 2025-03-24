@@ -9,12 +9,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/planos")
-public class PlanoController {
+public class PlanosController {
 
     @Autowired
     private PlanoFacade facade;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Planos> listar() {
         return facade.listar();
     }
@@ -30,13 +30,12 @@ public class PlanoController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public void atualizar(@PathVariable int id, @RequestBody Planos planos) {
-        planos.setIdPlano(id);
-        facade.atualizar(planos);
+    public void atualizar(@RequestBody Planos planos, @PathVariable int id) {
+        facade.atualizar(planos, id);
     }
 
     @DeleteMapping("/deletar/{id}")
-    public String deletar(@PathVariable int id) {
-        return facade.deletar(id);
+    public void deletar(@PathVariable int id) {
+        facade.deletar(id);
     }
 }

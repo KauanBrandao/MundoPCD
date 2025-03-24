@@ -1,48 +1,48 @@
 package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Planos;
-import org.springframework.stereotype.Component;
-import java.util.ArrayList;
+import com.projeto.mundopcd.repositories.JPA.PlanosJPA;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-@Component
+@Repository
 public class PlanoRepository {
 
-    private List<Planos> planos = new ArrayList<>();
-    private int proximoId = 1;
+    private final PlanosJPA planosJpa;
+
+    @Autowired
+    public PlanoRepository(PlanosJPA planosJpa) {
+        this.planosJpa = planosJpa;
+    }
 
     public List<Planos> listar() {
-        return planos;
+        return this.planosJpa.findAll();
     }
 
     public Planos buscarPorId(int id) {
-        return planos.stream()
-                .filter(planos -> planos.getIdPlano() == id)
-                .findFirst()
-                .orElse(null);
+        return this.planosJpa.findById(id).get();
     }
 
-    public Planos cadastrar(Planos planos) {
-        planos.setIdPlano(proximoId++);
-        this.planos.add(planos);
-        return planos;
+    public Planos cadastrar(Planos plano) {
+        return this.planosJpa.save(plano);
     }
 
-    public void atualizar(Planos planosAtualizado) {
-        for (Planos planos : this.planos) {
-            if (planos.getIdPlano() == planosAtualizado.getIdPlano()) {
-                planos.setNomePlano(planosAtualizado.getNomePlano());
-                planos.setNomeCandidatura(planosAtualizado.getNomeCandidatura());
-                planos.setNomeCandidato(planosAtualizado.getNomeCandidato());
-                planos.setIdCandidatura(planosAtualizado.getIdCandidatura());
-                planos.setIdCandidato(planosAtualizado.getIdCandidato());
-                break;
-            }
+    public void atualizar(Planos plano, int id) {
+        Planos planoInDb = this.planosJpa.findById(id).get();
+
+        if (planoInDb != null) {
+            planoInDb.setNomePlano(plano.getNomePlano());
+            planoInDb.setNomeCandidatura(plano.getNomeCandidatura());
+            planoInDb.setNomeCandidato(plano.getNomeCandidato());
+            planoInDb.setIdCandidatura(plano.getIdCandidatura());
+            planoInDb.setIdCandidato(plano.getIdCandidato());
+            this.planosJpa.save(planoInDb);
         }
     }
 
-    public String deletar(int id) {
-        planos.removeIf(planos -> planos.getIdPlano() == id);
-        return "Planos com id " + id + " deletado com sucesso!";
+    public void deletar(int id) {
+        this.planosJpa.deleteById(id);
     }
 }

@@ -13,7 +13,7 @@ public class EnderecoEmpresaApplication {
     @Autowired
     private EnderecoEmpresaRepository enderecoEmpresaRepository;
 
-    public Object buscarPorId(int id){
+    public EnderecoEmpresa buscarPorId(int id){
         return enderecoEmpresaRepository.buscarPorId(id);
     }
 

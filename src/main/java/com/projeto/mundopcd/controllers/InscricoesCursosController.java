@@ -14,7 +14,7 @@ public class InscricoesCursosController {
     @Autowired
     private InscricoesCursosFacade facade;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<InscricoesCursos> listar() {
         return facade.listar();
     }

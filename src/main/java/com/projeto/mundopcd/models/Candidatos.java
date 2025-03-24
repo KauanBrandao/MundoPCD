@@ -18,6 +18,9 @@ public class Candidatos {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "cpf")
+    private String cpf;
+
     @Column(name = "telefone")
     private String telefone;
 
@@ -33,7 +36,7 @@ public class Candidatos {
     @Column(name = "habilidades")
     private String habilidades;
 
-    @Column(name = "curriculi")
+    @Column(name = "curriculo")
     private String curriculo;
 
     @Column(name = "id_plano")
@@ -56,6 +59,10 @@ public class Candidatos {
         return email;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -74,6 +81,10 @@ public class Candidatos {
 
     public void setHabilidades(String habilidades) {
         this.habilidades = habilidades;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public int getIdCandidato() {
