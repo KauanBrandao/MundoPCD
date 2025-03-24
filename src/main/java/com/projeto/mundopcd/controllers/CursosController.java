@@ -18,7 +18,7 @@ public class CursosController {
         this.cursosFacade = cursosFacade;
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List listar(){
         return cursosFacade.listar();
     }
