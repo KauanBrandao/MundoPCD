@@ -1,6 +1,7 @@
 package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.repositories.JPA.AdministradorEmpresaJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.projeto.mundopcd.models.AdministradorEmpresa;
 import com.projeto.mundopcd.models.Empresas;
@@ -10,7 +11,12 @@ import java.util.List;
 
 @Repository
 public class AdministradorEmpresaRepository {
-    private AdministradorEmpresaJPA administradorEmpresaJpa;
+    private final AdministradorEmpresaJPA administradorEmpresaJpa;
+
+    @Autowired
+    public AdministradorEmpresaRepository(AdministradorEmpresaJPA administradorEmpresaJpa) {
+        this.administradorEmpresaJpa = administradorEmpresaJpa;
+    }
 
     public boolean existsById(int id) {
         return this.administradorEmpresaJpa.existsById(id);

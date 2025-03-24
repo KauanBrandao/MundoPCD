@@ -2,6 +2,7 @@ package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.EnderecoEmpresa;
 import com.projeto.mundopcd.repositories.JPA.EnderecoEmpresaJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +10,12 @@ import java.util.List;
 
 @Repository
 public class EnderecoEmpresaRepository {
-    private EnderecoEmpresaJPA enderecoEmpresaJpa;
+    private final EnderecoEmpresaJPA enderecoEmpresaJpa;
+
+    @Autowired
+    public EnderecoEmpresaRepository(EnderecoEmpresaJPA enderecoEmpresaJpa) {
+        this.enderecoEmpresaJpa = enderecoEmpresaJpa;
+    }
 
     public boolean existsById(int id) {
         return this.enderecoEmpresaJpa.existsById(id);

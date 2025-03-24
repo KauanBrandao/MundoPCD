@@ -50,8 +50,6 @@ public class EmpresasRepository {
     }
 
     public void deletar(int id) {
-        if (existsById(id)) {
-            this.empresasJpa.deleteById(id);
-        }
+        this.empresasJpa.deleteById(id);
     }
 }

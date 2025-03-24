@@ -25,11 +25,11 @@ public class PlanoFacade {
         return application.cadastrar(planos);
     }
 
-    public void atualizar(Planos planos) {
-        application.atualizar(planos);
+    public void atualizar(Planos planos, int id) {
+        application.atualizar(planos, id);
     }
 
-    public String deletar(int id) {
-        return application.deletar(id);
+    public void deletar(int id) {
+        application.deletar(id);
     }
 }
