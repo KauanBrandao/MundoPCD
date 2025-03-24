@@ -41,6 +41,7 @@ public class AdministradorEmpresaRepository {
             admInDB.setNomeEmpresa(administradorEmpresa.getNomeEmpresa());
             admInDB.setEmail(administradorEmpresa.getEmail());
             admInDB.setSenha(administradorEmpresa.getSenha());
+            this.administradorEmpresaJpa.save(admInDB);
         }
     }
 

@@ -17,7 +17,7 @@ public class CandidaturasController {
         this.candidaturasFacade = candidaturasFacade;
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List listar(){
         return candidaturasFacade.listar();
     }

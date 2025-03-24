@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/planos")
-public class PlanoController {
+public class PlanosController {
 
     @Autowired
     private PlanoFacade facade;

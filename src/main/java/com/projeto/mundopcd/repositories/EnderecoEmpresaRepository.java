@@ -5,7 +5,6 @@ import com.projeto.mundopcd.repositories.JPA.EnderecoEmpresaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -36,11 +35,12 @@ public class EnderecoEmpresaRepository {
     public void atualizar(EnderecoEmpresa enderecoEmpresa, int id) {
         EnderecoEmpresa enderecoInBD = this.enderecoEmpresaJpa.findById(id).get();
         if (enderecoInBD != null) {
-            enderecoInBD.setLagradouro(enderecoEmpresa.getLagradouro());
+            enderecoInBD.setLagradouro(enderecoEmpresa.getLogradouro());
             enderecoInBD.setNumero(enderecoEmpresa.getNumero());
             enderecoInBD.setCidade(enderecoEmpresa.getCidade());
             enderecoInBD.setEstado(enderecoEmpresa.getEstado());
             enderecoInBD.setCep(enderecoEmpresa.getCep());
+            this.enderecoEmpresaJpa.save(enderecoInBD);
         }
     }
 

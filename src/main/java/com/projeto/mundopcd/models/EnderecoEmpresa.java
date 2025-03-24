@@ -12,8 +12,8 @@ public class EnderecoEmpresa {
     @Column(name = "id_endereco_empresa")
     private int idEnderecoEmpresa;
 
-    @Column(name = "lagradouro")
-    private String lagradouro;
+    @Column(name = "logradouro")
+    private String logradouro;
 
     @Column(name = "numero")
     private String numero;
@@ -27,9 +27,9 @@ public class EnderecoEmpresa {
     @Column(name = "cep")
     private String cep;
 
-    public EnderecoEmpresa(int idEnderecoEmpresa, String lagradouro, String numero, String cidade, String estado, String cep) {
+    public EnderecoEmpresa(int idEnderecoEmpresa, String logradouro, String numero, String cidade, String estado, String cep) {
         this.idEnderecoEmpresa = idEnderecoEmpresa;
-        this.lagradouro = lagradouro;
+        this.logradouro = logradouro;
         this.numero = numero;
         this.cidade = cidade;
         this.estado = estado;
@@ -48,12 +48,12 @@ public class EnderecoEmpresa {
         this.idEnderecoEmpresa = idEnderecoEmpresa;
     }
 
-    public String getLagradouro() {
-        return lagradouro;
+    public String getLogradouro() {
+        return logradouro;
     }
 
     public void setLagradouro(String lagradouro) {
-        this.lagradouro = lagradouro;
+        this.logradouro = lagradouro;
     }
 
     public String getNumero() {

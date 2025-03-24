@@ -36,6 +36,7 @@ public class InscricoesCursosRepository {
 
         cursoInDb.setNomeInscricaoCurso(inscricaoAtualizada.getNomeInscricaoCurso());
         cursoInDb.setDescricaoInscricaoCurso(inscricaoAtualizada.getDescricaoInscricaoCurso());
+        inscricoesJPA.save(cursoInDb);
     }
 
     public void deletar(int id) {
