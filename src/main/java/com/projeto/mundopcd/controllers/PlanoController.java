@@ -14,7 +14,7 @@ public class PlanoController {
     @Autowired
     private PlanoFacade facade;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Planos> listar() {
         return facade.listar();
     }

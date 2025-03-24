@@ -38,6 +38,7 @@ public class CursosRepository {
         cursoInDB.setDescricao(curso.getDescricao());
         cursoInDB.setCargaHoraria(curso.getCargaHoraria());
         cursoInDB.setIdEmpresa(curso.getIdEmpresa());
+        cursosJpa.save(cursoInDB);
     }
 
     public void deletar(int id){
