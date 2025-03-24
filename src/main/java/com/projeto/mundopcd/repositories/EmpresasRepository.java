@@ -5,7 +5,6 @@ import com.projeto.mundopcd.repositories.JPA.EmpresasJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -51,8 +50,6 @@ public class EmpresasRepository {
     }
 
     public void deletar(int id) {
-        if (existsById(id)) {
-            this.empresasJpa.deleteById(id);
-        }
+        this.empresasJpa.deleteById(id);
     }
 }

@@ -31,6 +31,10 @@ public class AdministradorEmpresa {
         this.senha = senha;
     }
 
+    public AdministradorEmpresa() {
+
+    }
+
     public int getIdAdmin() {
         return idAdmin;
     }

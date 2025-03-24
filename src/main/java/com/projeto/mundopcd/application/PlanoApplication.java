@@ -3,10 +3,11 @@ package com.projeto.mundopcd.application;
 import com.projeto.mundopcd.models.Planos;
 import com.projeto.mundopcd.repositories.PlanoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
-@Repository
+@Component
 public class PlanoApplication {
 
     @Autowired
@@ -24,11 +25,11 @@ public class PlanoApplication {
         return planoRepository.cadastrar(planos);
     }
 
-    public void atualizar(Planos planos) {
-        planoRepository.atualizar(planos);
+    public void atualizar(Planos planos, int id) {
+        planoRepository.atualizar(planos, id);
     }
 
-    public String deletar(int id) {
-        return planoRepository.deletar(id);
+    public void deletar(int id) {
+        planoRepository.deletar(id);
     }
 }

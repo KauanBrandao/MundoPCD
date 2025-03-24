@@ -13,7 +13,7 @@ public class EnderecoCandidatoApplication {
     @Autowired
     private EnderecoCandidatoRepository enderecoCandidatoRepository;
 
-    public Object buscarPorId(int id) {
+    public EnderecoCandidato buscarPorId(int id) {
         return enderecoCandidatoRepository.buscarPorId(id);
     }
 
