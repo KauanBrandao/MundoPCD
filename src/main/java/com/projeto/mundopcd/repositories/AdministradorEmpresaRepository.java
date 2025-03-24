@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
+import com.projeto.mundopcd.repositories.JPA.AdministradorEmpresaJPA;
 import org.springframework.stereotype.Repository;
 import com.projeto.mundopcd.models.AdministradorEmpresa;
 import com.projeto.mundopcd.models.Empresas;
@@ -9,42 +10,36 @@ import java.util.List;
 
 @Repository
 public class AdministradorEmpresaRepository {
-    private List<AdministradorEmpresa> administradoresEmpresa = new ArrayList<>();
-    private int proximoId = 1;
+    private AdministradorEmpresaJPA administradorEmpresaJpa;
 
-    public boolean existsById(int idAdmin) {
-        return administradoresEmpresa.stream().anyMatch(a -> a.getIdAdmin() == idAdmin);
+    public boolean existsById(int id) {
+        return this.administradorEmpresaJpa.existsById(id);
     }
 
-    public AdministradorEmpresa buscarPorId(int idAdmin) {
-        return administradoresEmpresa.stream()
-                .filter(a -> a.getIdAdmin() == idAdmin)
-                .findFirst()
-                .orElse(null);
+    public AdministradorEmpresa buscarPorId(int id) {
+       return this.administradorEmpresaJpa.findById(id).get();
     }
 
     public List<AdministradorEmpresa> listar() {
-        return new ArrayList<>(administradoresEmpresa);
+        return this.administradorEmpresaJpa.findAll();
     }
 
     public AdministradorEmpresa cadastrar(AdministradorEmpresa administradorEmpresa) {
-        administradorEmpresa.setIdAdmin(proximoId++);
-        administradoresEmpresa.add(administradorEmpresa);
-        return administradorEmpresa;
+        return administradorEmpresaJpa.save(administradorEmpresa);
     }
 
-    public void atualizar(AdministradorEmpresa administradorEmpresa, int idAdmin) {
-        AdministradorEmpresa adminAtual = buscarPorId(idAdmin);
-        if (adminAtual != null) {
-            adminAtual.setIdEmpresa(administradorEmpresa.getIdEmpresa());
-            adminAtual.setNomeEmpresa(administradorEmpresa.getNomeEmpresa());
-            adminAtual.setEmail(administradorEmpresa.getEmail());
-            adminAtual.setSenha(administradorEmpresa.getSenha());
+    public void atualizar(AdministradorEmpresa administradorEmpresa, int id) {
+        AdministradorEmpresa admInDB = this.administradorEmpresaJpa.findById(id).get() ;
+        if (admInDB != null) {
+            admInDB.setIdEmpresa(administradorEmpresa.getIdEmpresa());
+            admInDB.setNomeEmpresa(administradorEmpresa.getNomeEmpresa());
+            admInDB.setEmail(administradorEmpresa.getEmail());
+            admInDB.setSenha(administradorEmpresa.getSenha());
         }
     }
 
-    public void deletar(int idAdmin) {
-        administradoresEmpresa.removeIf(a -> a.getIdAdmin() == idAdmin);
+    public void deletar(int id) {
+        administradorEmpresaJpa.deleteById(id);
     }
 
 }

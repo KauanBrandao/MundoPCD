@@ -12,7 +12,7 @@ public class AdministradorEmpresa {
     private int idAdmin;
 
     @Column(name = "id_empresa")
-    private  Empresas idEmpresa;
+    private int idEmpresa;
 
     @Column(name = "nome_empresa")
     private String nomeEmpresa;
@@ -23,7 +23,7 @@ public class AdministradorEmpresa {
     @Column(name = "senha")
     private String senha;
 
-    public AdministradorEmpresa(int idAdmin, Empresas idEmpresa, String nomeEmpresa, String email, String senha) {
+    public AdministradorEmpresa(int idAdmin, int idEmpresa, String nomeEmpresa, String email, String senha) {
         this.idAdmin = idAdmin;
         this.idEmpresa = idEmpresa;
         this.nomeEmpresa = nomeEmpresa;
@@ -39,11 +39,11 @@ public class AdministradorEmpresa {
         this.idAdmin = idAdmin;
     }
 
-    public Empresas getIdEmpresa() {
+    public int getIdEmpresa() {
         return idEmpresa;
     }
 
-    public void setIdEmpresa(Empresas idEmpresa) {
+    public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 
