@@ -1,6 +1,7 @@
 package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Empresas;
+import com.projeto.mundopcd.repositories.JPA.EmpresasJPA;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,47 +10,41 @@ import java.util.List;
 @Repository
 public class EmpresasRepository {
 
-    private final List<Empresas> empresas = new ArrayList<>();
-    private int proximoId = 1;
+    private final EmpresasJPA empresasJpa
 
     public boolean existsById(int id) {
-        return empresas.stream().anyMatch(emp -> emp.getIdEmpresa() == id);
+        return this.empresasJpa.existsById(id);
     }
 
     public Empresas buscarPorId(int id) {
-        return empresas.stream().filter(emp -> emp.getIdEmpresa() == id).
-                findFirst().get();
+        return this.empresasJpa.findById(id).get();
     }
 
     public List<Empresas> listar() {
-        return empresas;
+        return this.empresasJpa.findAll();
     }
 
     public Empresas cadastrar(Empresas empresa) {
-        empresa.setIdEmpresa(proximoId++);
-        empresas.add(empresa);
-        return empresa;
+       return this.empresasJpa.save(empresa);
     }
 
     public void atualizar(Empresas empresa, int id) {
 
-        Empresas empAtual = buscarPorId(id);
+        Empresas empInDB = this.empresasJpa.findById(id).get();
 
-
-        empAtual.setNomeEmpresa(empresa.getNomeEmpresa());
-        empAtual.setCnpj(empresa.getCnpj());
-        empAtual.setIdEnderecoEmpresa(empresa.getIdEnderecoEmpresa());
-        empAtual.setIdPlano(empresa.getIdPlano());
-        empAtual.setSetor(empresa.getSetor());
-        empAtual.setEmailContato(empresa.getEmailContato());
-        empAtual.setPoliticaInclusao(empresa.getPoliticaInclusao());
+        empInDB.setNomeEmpresa(empresa.getNomeEmpresa());
+        empInDB.setCnpj(empresa.getCnpj());
+        empInDB.setIdEnderecoEmpresa(empresa.getIdEnderecoEmpresa());
+        empInDB.setIdPlano(empresa.getIdPlano());
+        empInDB.setSetor(empresa.getSetor());
+        empInDB.setEmailContato(empresa.getEmailContato());
+        empInDB.setPoliticaInclusao(empresa.getPoliticaInclusao());
+        this.empresasJpa.save(empInDB);
 
 
     }
 
     public void deletar(int id) {
-        if (existsById(id)) {
-            empresas.removeIf(emp -> emp.getIdEmpresa() == id);
-        }
+        this.empresasJpa.deleteById(id);
     }
 }

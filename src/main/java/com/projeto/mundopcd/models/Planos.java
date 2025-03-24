@@ -19,7 +19,7 @@ public class Planos {
     @Column(name = "nome_plano")
     private String nomePlano;
 
-    @Column(name = "nome_candidato")
+    @Column(name = "nome_candidatura")
     private String nomeCandidatura;
 
     @Column(name = "nome_candidato")
