@@ -2,6 +2,7 @@ package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Empresas;
 import com.projeto.mundopcd.repositories.JPA.EmpresasJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,7 +11,12 @@ import java.util.List;
 @Repository
 public class EmpresasRepository {
 
-    private EmpresasJPA empresasJpa;
+    private final EmpresasJPA empresasJpa;
+
+    @Autowired
+    public EmpresasRepository(EmpresasJPA empresasJpa) {
+        this.empresasJpa = empresasJpa;
+    }
 
     public boolean existsById(int id) {
         return this.empresasJpa.existsById(id);
@@ -45,6 +51,8 @@ public class EmpresasRepository {
     }
 
     public void deletar(int id) {
-        this.empresasJpa.deleteById(id);
+        if (existsById(id)) {
+            this.empresasJpa.deleteById(id);
+        }
     }
 }
