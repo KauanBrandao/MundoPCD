@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class EmpresasRepository {
 
-    private final EmpresasJPA empresasJpa
+    private EmpresasJPA empresasJpa;
 
     public boolean existsById(int id) {
         return this.empresasJpa.existsById(id);
