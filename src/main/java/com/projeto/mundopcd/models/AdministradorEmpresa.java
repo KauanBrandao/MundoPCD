@@ -20,7 +20,7 @@ public class AdministradorEmpresa {
     @Column(name = "senha")
     private String senha;
 
-    // Relacionamento Muitos-para-Um (vários administradores pertencem a uma empresa)
+
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     private Empresas empresa;

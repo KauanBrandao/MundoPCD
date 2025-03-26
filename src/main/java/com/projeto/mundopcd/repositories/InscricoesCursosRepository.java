@@ -34,8 +34,6 @@ public class InscricoesCursosRepository {
     public void atualizar(InscricoesCursos inscricaoAtualizada, int id) {
         InscricoesCursos cursoInDb = this.inscricoesJPA.findById(id).get();
 
-        cursoInDb.setNomeInscricaoCurso(inscricaoAtualizada.getNomeInscricaoCurso());
-        cursoInDb.setDescricaoInscricaoCurso(inscricaoAtualizada.getDescricaoInscricaoCurso());
         inscricoesJPA.save(cursoInDb);
     }
 

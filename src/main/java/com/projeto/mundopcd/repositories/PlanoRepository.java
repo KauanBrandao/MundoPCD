@@ -34,10 +34,6 @@ public class PlanoRepository {
 
         if (planoInDb != null) {
             planoInDb.setNomePlano(plano.getNomePlano());
-            planoInDb.setNomeCandidatura(plano.getNomeCandidatura());
-            planoInDb.setNomeCandidato(plano.getNomeCandidato());
-            planoInDb.setIdCandidatura(plano.getIdCandidatura());
-            planoInDb.setIdCandidato(plano.getIdCandidato());
             this.planosJpa.save(planoInDb);
         }
     }

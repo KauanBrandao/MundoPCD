@@ -39,7 +39,7 @@ public class EmpresasRepository {
 
         empInDB.setNomeEmpresa(empresa.getNomeEmpresa());
         empInDB.setCnpj(empresa.getCnpj());
-        empInDB.setIdEnderecoEmpresa(empresa.getIdEnderecoEmpresa());
+        empInDB.setEnderecoEmpresa(empresa.getEnderecoEmpresa());
         empInDB.setPlano(empresa.getPlano());
         empInDB.setSetor(empresa.getSetor());
         empInDB.setEmailContato(empresa.getEmailContato());

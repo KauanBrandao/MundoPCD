@@ -92,4 +92,25 @@ public class EnderecoEmpresa {
         this.empresa = empresa;
     }
 
+    @ManyToOne(optional = false)
+    private Empresas empresas;
+
+    public Empresas getEmpresas() {
+        return empresas;
+    }
+
+    public void setEmpresas(Empresas empresas) {
+        this.empresas = empresas;
+    }
+
+    @OneToOne(mappedBy = "enderecoEmpresa", optional = false)
+    private Empresas empresas2;
+
+    public Empresas getEmpresas2() {
+        return empresas2;
+    }
+
+    public void setEmpresas2(Empresas empresas2) {
+        this.empresas2 = empresas2;
+    }
 }

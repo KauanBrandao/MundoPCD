@@ -2,6 +2,7 @@ package com.projeto.mundopcd.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,6 +32,11 @@ public class Cursos {
     )
     private Set<Empresas> empresas;
 
+
+    @OneToMany(mappedBy = "curso")  // mappedBy indica que a FK está em InscricaoCurso
+    private List<InscricoesCursos> inscricoesCursos;
+
+
     public Cursos() {}
 
     public int getCargaHoraria() {
@@ -44,6 +50,7 @@ public class Cursos {
     public String getDescricao() {
         return descricao;
     }
+
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;

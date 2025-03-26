@@ -3,6 +3,9 @@ package com.projeto.mundopcd.models;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+import java.util.List;
+
 @Entity
 @Table(name = "vagas")
 public class Vagas {
@@ -33,6 +36,11 @@ public class Vagas {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     private Empresas empresa;
 
+
+    @OneToMany(mappedBy = "vagas")
+    private List<Candidaturas> candidaturas;
+
+
     public Vagas() {
     }
 
@@ -43,6 +51,10 @@ public class Vagas {
 
     public void setIdVaga(int idVaga) {
         this.idVaga = idVaga;
+    }
+
+    public List<Candidaturas> getCandidaturas() {
+        return candidaturas;
     }
 
     public String getTitulo() {
@@ -99,5 +111,10 @@ public class Vagas {
 
     public void setEmpresa(Empresas empresa) {
         this.empresa = empresa;
+    }
+
+
+    public void setCandidaturas(List<Candidaturas> candidaturas) {
+        this.candidaturas = candidaturas;
     }
 }

@@ -30,7 +30,7 @@ public class Empresas {
     @Column(name = "politica_inclusao")
     private String politicaInclusao;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano")
     private Planos plano;
 
@@ -38,9 +38,14 @@ public class Empresas {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     private EnderecoEmpresa enderecoEmpresa;
 
+
     // Relacionamento One-to-Many: Uma empresa pode ter vários administradores
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<AdministradorEmpresa> administradores;
+
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    private List<Vagas> vagas;
 
     public Empresas() {}
 
@@ -57,6 +62,14 @@ public class Empresas {
     }
 
     // Getters e Setters
+
+    public List<Vagas> getVagas() {
+        return vagas;
+    }
+
+    public void setVagas(List<Vagas> vagas) {
+        this.vagas = vagas;
+    }
     public int getIdEmpresa() {
         return idEmpresa;
     }
