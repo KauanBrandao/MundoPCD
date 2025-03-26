@@ -27,13 +27,17 @@ public class EnderecoEmpresa {
     @Column(name = "cep")
     private String cep;
 
-    public EnderecoEmpresa(int idEnderecoEmpresa, String logradouro, String numero, String cidade, String estado, String cep) {
-        this.idEnderecoEmpresa = idEnderecoEmpresa;
+    @ManyToOne
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    private Empresas empresa;
+
+    public EnderecoEmpresa(String logradouro, String numero, String cidade, String estado, String cep, Empresas empresa) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+        this.empresa = empresa;
     }
 
     public EnderecoEmpresa() {
@@ -88,5 +92,12 @@ public class EnderecoEmpresa {
         this.cep = cep;
     }
 
+    public Empresas getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresas empresa) {
+        this.empresa = empresa;
+    }
 
 }

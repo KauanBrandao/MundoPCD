@@ -39,11 +39,13 @@ public class Candidatos {
     @Column(name = "curriculo")
     private String curriculo;
 
-    @Column(name = "id_plano")
-    private int idPlano;
+    @OneToOne
+    @JoinColumn(name = "id_plano", referencedColumnName = "id_plano")
+    private Planos plano;
 
-    @Column(name = "id_endereco_candidato")
-    private int idEnderecoCandidato;
+    @OneToOne
+    @JoinColumn(name = "id_endereco_candidato", referencedColumnName = "id_endereco_candidato")
+    private EnderecoCandidato endereco;
 
     public Candidatos(){}
 
@@ -103,20 +105,20 @@ public class Candidatos {
         this.formacao = formacao;
     }
 
-    public int getIdEnderecoCandidato() {
-        return idEnderecoCandidato;
+    public EnderecoCandidato getEndereco() {
+        return endereco;
     }
 
-    public void setIdEnderecoCandidato(int idEnderecoCandidato) {
-        this.idEnderecoCandidato = idEnderecoCandidato;
+    public void setEndereco(EnderecoCandidato endereco) {
+        this.endereco = endereco;
     }
 
-    public int getIdPlano() {
-        return idPlano;
+    public Planos getPlano() {
+        return plano;
     }
 
-    public void setIdPlano(int idPlano) {
-        this.idPlano = idPlano;
+    public void setPlano(Planos plano) {
+        this.plano = plano;
     }
 
     public String getNome() {

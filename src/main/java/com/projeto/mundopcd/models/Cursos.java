@@ -2,6 +2,8 @@ package com.projeto.mundopcd.models;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "cursos")
 public class Cursos {
@@ -20,8 +22,14 @@ public class Cursos {
     @Column(name = "carga_horaria")
     private int cargaHoraria;
 
-    @Column(name = "id_empresa")
-    private int idEmpresa;
+    // varios cursos podem ser disponibilizdos por varias empresas
+    @ManyToMany()
+    @JoinTable(
+            name = "empresa_curso",
+            joinColumns = @JoinColumn(name = "id_curso"),
+            inverseJoinColumns = @JoinColumn(name = "id_empresa")
+    )
+    private Set<Empresas> empresas;
 
     public Cursos() {}
 
@@ -49,13 +57,9 @@ public class Cursos {
         this.idCurso = idCurso;
     }
 
-    public int getIdEmpresa() {
-        return idEmpresa;
-    }
+    public Set<Empresas> getEmpresas() { return empresas; }
 
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
-    }
+    public void setEmpresas(Set<Empresas> empresas) { this.empresas = empresas; }
 
     public String getTitulo() {
         return titulo;

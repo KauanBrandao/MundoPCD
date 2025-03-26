@@ -17,8 +17,11 @@ public class InscricoesCursos {
     @Column(name = "descricao_inscricao_curso")
     private String descricaoInscricaoCurso;
 
-    public InscricoesCursos(int idInscricaoCurso, String nomeInscricaoCurso, String descricaoInscricaoCurso) {
-        this.idInscricaoCurso = idInscricaoCurso;
+    @ManyToOne
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
+    private Candidatos candidato;
+
+    public InscricoesCursos(String nomeInscricaoCurso, String descricaoInscricaoCurso) {
         this.nomeInscricaoCurso = nomeInscricaoCurso;
         this.descricaoInscricaoCurso = descricaoInscricaoCurso;
     }
@@ -49,5 +52,13 @@ public class InscricoesCursos {
 
     public void setDescricaoInscricaoCurso(String descricaoInscricaoCurso) {
         this.descricaoInscricaoCurso = descricaoInscricaoCurso;
+    }
+
+    public Candidatos getCandidato() {
+        return candidato;
+    }
+
+    public void setCandidato(Candidatos candidato) {
+        this.candidato = candidato;
     }
 }

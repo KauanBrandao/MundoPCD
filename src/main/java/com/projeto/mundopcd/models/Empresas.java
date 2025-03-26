@@ -38,9 +38,8 @@ public class Empresas {
     public Empresas() {
     }
 
-    public Empresas(int idEmpresa, String nomeEmpresa, String cnpj, String emailContato, String telefoneContato,
+    public Empresas(String nomeEmpresa, String cnpj, String emailContato, String telefoneContato,
                     String setor, String politicaInclusao, int idPlano, int idEnderecoEmpresa) {
-        this.idEmpresa = idEmpresa;
         this.nomeEmpresa = nomeEmpresa;
         this.cnpj = cnpj;
         this.emailContato = emailContato;
