@@ -11,48 +11,32 @@ public class InscricoesCursos {
     @Column(name = "id_inscricao_curso")
     private int idInscricaoCurso;
 
-    @Column(name = "nome_inscricao_curso")
-    private String nomeInscricaoCurso;
 
-    @Column(name = "descricao_inscricao_curso")
-    private String descricaoInscricaoCurso;
+
+    @ManyToOne
+    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso")  // Chave estrangeira fica aqui
+    private Cursos curso;
+
 
     @ManyToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
     private Candidatos candidato;
 
-    public InscricoesCursos(String nomeInscricaoCurso, String descricaoInscricaoCurso) {
-        this.nomeInscricaoCurso = nomeInscricaoCurso;
-        this.descricaoInscricaoCurso = descricaoInscricaoCurso;
-    }
-
     public InscricoesCursos() {
 
     }
 
-    public int getIdInscricaoCurso() {
-        return idInscricaoCurso;
+
+    public Cursos getCurso() {
+        return curso;
     }
 
-    public void setIdInscricaoCurso(int idInscricaoCurso) {
-        this.idInscricaoCurso = idInscricaoCurso;
+    public void setCurso(Cursos curso) {
+        this.curso = curso;
     }
 
-    public String getNomeInscricaoCurso() {
-        return nomeInscricaoCurso;
-    }
-
-    public void setNomeInscricaoCurso(String nomeInscricaoCurso) {
-        this.nomeInscricaoCurso = nomeInscricaoCurso;
-    }
-
-    public String getDescricaoInscricaoCurso() {
-        return descricaoInscricaoCurso;
-    }
-
-    public void setDescricaoInscricaoCurso(String descricaoInscricaoCurso) {
-        this.descricaoInscricaoCurso = descricaoInscricaoCurso;
-    }
+    @ManyToOne(optional = false)
+    private Cursos cursos;
 
     public Candidatos getCandidato() {
         return candidato;
@@ -61,4 +45,13 @@ public class InscricoesCursos {
     public void setCandidato(Candidatos candidato) {
         this.candidato = candidato;
     }
+
+    public Cursos getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(Cursos cursos) {
+        this.cursos = cursos;
+    }
 }
+

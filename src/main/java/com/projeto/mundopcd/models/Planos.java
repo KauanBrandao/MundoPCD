@@ -2,6 +2,8 @@ package com.projeto.mundopcd.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "planos")
 public class Planos {
@@ -10,28 +12,18 @@ public class Planos {
     @Column(name = "id_plano")
     private int idPlano;
 
-    @Column(name = "id_candidatura")
-    private int idCandidatura;
-
-    @Column(name = "id_candidato")
-    private int idCandidato;
-
     @Column(name = "nome_plano")
     private String nomePlano;
 
-    @Column(name = "nome_candidatura")
-    private String nomeCandidatura;
+    @OneToMany(mappedBy = "plano")
+    private List<Empresas> empresas;
 
-    @Column(name = "nome_candidato")
-    private String nomeCandidato;
+    @OneToMany(mappedBy = "plano")
+    private List<Candidatos> candidatos;
 
-    public Planos(int idPlano, int idCandidatura, int idCandidato, String nomePlano, String nomeCandidatura, String nomeCandidato) {
-        this.idPlano = idPlano;
-        this.idCandidatura = idCandidatura;
-        this.idCandidato = idCandidato;
+
+    public Planos(String nomePlano) {
         this.nomePlano = nomePlano;
-        this.nomeCandidatura = nomeCandidatura;
-        this.nomeCandidato = nomeCandidato;
     }
 
     public Planos() {}
@@ -44,20 +36,21 @@ public class Planos {
         this.idPlano = idPlano;
     }
 
-    public int getIdCandidatura() {
-        return idCandidatura;
+
+    public List<Candidatos> getCandidatos() {
+        return candidatos;
     }
 
-    public void setIdCandidatura(int idCandidatura) {
-        this.idCandidatura = idCandidatura;
+    public void setCandidatos(List<Candidatos> candidatos) {
+        this.candidatos = candidatos;
     }
 
-    public int getIdCandidato() {
-        return idCandidato;
+    public List<Empresas> getEmpresas() {
+        return empresas;
     }
 
-    public void setIdCandidato(int idCandidato) {
-        this.idCandidato = idCandidato;
+    public void setEmpresas(List<Empresas> empresas) {
+        this.empresas = empresas;
     }
 
     public String getNomePlano() {
@@ -68,19 +61,5 @@ public class Planos {
         this.nomePlano = nomePlano;
     }
 
-    public String getNomeCandidatura() {
-        return nomeCandidatura;
-    }
 
-    public void setNomeCandidatura(String nomeCandidatura) {
-        this.nomeCandidatura = nomeCandidatura;
-    }
-
-    public String getNomeCandidato() {
-        return nomeCandidato;
-    }
-
-    public void setNomeCandidato(String nomeCandidato) {
-        this.nomeCandidato = nomeCandidato;
-    }
 }

@@ -1,7 +1,6 @@
 package com.projeto.mundopcd.models;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -13,12 +12,12 @@ public class Candidaturas {
     @Column(name = "id_candidatura")
     private int idCandidatura;
 
-    // uma candidatura pode ter apenas um candidato
+    // Relacionamento com Candidato (Muitos para Um)
     @ManyToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
     private Candidatos candidato;
 
-    // uma candidatura pode ter apenas uma vaga
+    // Relacionamento com Vagas (Muitos para Um)
     @ManyToOne
     @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga")
     private Vagas vaga;
@@ -31,12 +30,12 @@ public class Candidaturas {
 
     public Candidaturas() {}
 
-    public Date getDataAplicacao() {
-        return dataAplicacao;
+    public int getIdCandidatura() {
+        return idCandidatura;
     }
 
-    public void setDataAplicacao(Date dataAplicacao) {
-        this.dataAplicacao = dataAplicacao;
+    public void setIdCandidatura(int idCandidatura) {
+        this.idCandidatura = idCandidatura;
     }
 
     public Candidatos getCandidato() {
@@ -47,20 +46,20 @@ public class Candidaturas {
         this.candidato = candidato;
     }
 
-    public int getIdCandidatura() {
-        return idCandidatura;
-    }
-
-    public void setIdCandidatura(int idCandidatura) {
-        this.idCandidatura = idCandidatura;
-    }
-
     public Vagas getVaga() {
         return vaga;
     }
 
     public void setVaga(Vagas vaga) {
         this.vaga = vaga;
+    }
+
+    public Date getDataAplicacao() {
+        return dataAplicacao;
+    }
+
+    public void setDataAplicacao(Date dataAplicacao) {
+        this.dataAplicacao = dataAplicacao;
     }
 
     public String getStatus() {
@@ -70,5 +69,4 @@ public class Candidaturas {
     public void setStatus(String status) {
         this.status = status;
     }
-
 }
