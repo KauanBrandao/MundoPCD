@@ -29,22 +29,22 @@ public class Vagas {
     @Column(name = "localizacao")
     private String localizacao;
 
-    @Column(name = "id_empresa")
-    private int idEmpresa;
+    @ManyToOne
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    private Empresas empresa;
 
     public Vagas() {
     }
 
-    public Vagas(int idVaga, String titulo, String descricao, String requisitos, double salario,
-                String tipoContratacao, String localizacao, int idEmpresa) {
-        this.idVaga = idVaga;
+    public Vagas(String titulo, String descricao, String requisitos, double salario,
+                String tipoContratacao, String localizacao, Empresas empresa) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.requisitos = requisitos;
         this.salario = salario;
         this.tipoContratacao = tipoContratacao;
         this.localizacao = localizacao;
-        this.idEmpresa = idEmpresa;
+        this.empresa = empresa;
     }
 
 
@@ -104,11 +104,11 @@ public class Vagas {
         this.localizacao = localizacao;
     }
 
-    public int getIdEmpresa() {
-        return idEmpresa;
+    public Empresas getEmpresa() {
+        return empresa;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setEmpresa(Empresas empresa) {
+        this.empresa = empresa;
     }
 }

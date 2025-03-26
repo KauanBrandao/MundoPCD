@@ -13,16 +13,20 @@ public class Candidaturas {
     @Column(name = "id_candidatura")
     private int idCandidatura;
 
-    @Column(name = "id_candidato")
-    private int idCandidato;
+    // uma candidatura pode ter apenas um candidato
+    @ManyToOne
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
+    private Candidatos candidato;
 
-    @Column(name = "id_vaga")
-    private int idVaga;
+    // uma candidatura pode ter apenas uma vaga
+    @ManyToOne
+    @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga")
+    private Vagas vaga;
 
     @Column(name = "data_aplicacao")
     private Date dataAplicacao;
 
-    @Column(name = "status")
+    @Column(name = "sts")
     private String status;
 
     public Candidaturas() {}
@@ -35,12 +39,12 @@ public class Candidaturas {
         this.dataAplicacao = dataAplicacao;
     }
 
-    public int getIdCandidato() {
-        return idCandidato;
+    public Candidatos getCandidato() {
+        return candidato;
     }
 
-    public void setIdCandidato(int idCandidato) {
-        this.idCandidato = idCandidato;
+    public void setCandidato(Candidatos candidato) {
+        this.candidato = candidato;
     }
 
     public int getIdCandidatura() {
@@ -51,12 +55,12 @@ public class Candidaturas {
         this.idCandidatura = idCandidatura;
     }
 
-    public int getIdVaga() {
-        return idVaga;
+    public Vagas getVaga() {
+        return vaga;
     }
 
-    public void setIdVaga(int idVaga) {
-        this.idVaga = idVaga;
+    public void setVaga(Vagas vaga) {
+        this.vaga = vaga;
     }
 
     public String getStatus() {
