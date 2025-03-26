@@ -34,9 +34,7 @@ public class Planos {
         this.nomeCandidato = nomeCandidato;
     }
 
-    public Planos() {
-
-    }
+    public Planos() {}
 
     public int getIdPlano() {
         return idPlano;

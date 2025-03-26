@@ -2,6 +2,8 @@ package com.projeto.mundopcd.models;
 
 import jakarta.persistence.*;
 
+import javax.annotation.processing.Generated;
+
 @Entity
 @Table(name = "enderecos_candidatos")
 public class EnderecoCandidato {
@@ -26,26 +28,31 @@ public class EnderecoCandidato {
     @Column(name = "cep")
     private String cep;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
+    private Candidatos candidatos;
+
     public EnderecoCandidato() {
     }
 
-    public EnderecoCandidato(int idEnderecoCandidato, String logradouro, int numero, String cidade, String estado, String cep) {
+    public EnderecoCandidato(int idEnderecoCandidato, String logradouro, int numero, String cidade, String estado, String cep, Candidatos candidatos) {
         this.idEnderecoCandidato = idEnderecoCandidato;
         this.logradouro = logradouro;
         this.numero = numero;
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+        this.candidatos = candidatos;
     }
 
-
-    public int getIdEnderecoCandidato() {
-        return idEnderecoCandidato;
+    public Candidatos getCandidatos() {
+        return candidatos;
     }
 
-    public void setIdEnderecoCandidato(int idEnderecoCandidato) {
-        this.idEnderecoCandidato = idEnderecoCandidato;
+    public void setCandidatos(Candidatos candidatos) {
+        this.candidatos = candidatos;
     }
+
 
     public String getLogradouro() {
         return logradouro;
@@ -85,5 +92,13 @@ public class EnderecoCandidato {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public int getIdEnderecoCandidato() {
+        return idEnderecoCandidato;
+    }
+
+    public void setIdEnderecoCandidato(int idEnderecoCandidato) {
+        this.idEnderecoCandidato = idEnderecoCandidato;
     }
 }

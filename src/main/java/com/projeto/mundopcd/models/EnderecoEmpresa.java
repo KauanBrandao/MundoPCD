@@ -31,14 +31,6 @@ public class EnderecoEmpresa {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     private Empresas empresa;
 
-    public EnderecoEmpresa(String logradouro, String numero, String cidade, String estado, String cep, Empresas empresa) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
-        this.empresa = empresa;
-    }
 
     public EnderecoEmpresa() {
 

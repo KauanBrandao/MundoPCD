@@ -38,15 +38,14 @@ public class CandidatosRepository {
         candInDB.setNome(candidato.getNome());
         candInDB.setCpf(candidato.getCpf());
         candInDB.setTelefone(candidato.getTelefone());
-        candInDB.setIdPlano(candidato.getIdPlano());
+        candInDB.setPlano(candidato.getPlano());
         candInDB.setEmail(candidato.getEmail());
         candInDB.setTipoDeficiencia(candidato.getTipoDeficiencia());
         candInDB.setExperiencia(candidato.getExperiencia());
         candInDB.setFormacao(candidato.getFormacao());
         candInDB.setHabilidades(candidato.getHabilidades());
         candInDB.setCurriculo(candidato.getCurriculo());
-        candInDB.setIdPlano(candidato.getIdPlano());
-        candInDB.setIdEnderecoCandidato(candidato.getIdEnderecoCandidato());
+        candInDB.setIdCandidato(candidato.getIdCandidato());
         this.candidatosJpa.save(candInDB);
     }
 
