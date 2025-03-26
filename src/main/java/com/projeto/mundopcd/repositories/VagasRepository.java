@@ -49,7 +49,7 @@ public class VagasRepository {
         vagaInDb.setSalario(vaga.getSalario());
         vagaInDb.setTipoContratacao(vaga.getTipoContratacao());
         vagaInDb.setLocalizacao(vaga.getLocalizacao());
-        vagaInDb.setIdEmpresa(vaga.getIdEmpresa());
+        vagaInDb.setEmpresa(vaga.getEmpresa());
         this.vagasJpa.save(vagaInDb);
     }
 

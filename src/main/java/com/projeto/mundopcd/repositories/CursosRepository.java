@@ -37,7 +37,7 @@ public class CursosRepository {
         cursoInDB.setTitulo(curso.getTitulo());
         cursoInDB.setDescricao(curso.getDescricao());
         cursoInDB.setCargaHoraria(curso.getCargaHoraria());
-        cursoInDB.setIdEmpresa(curso.getIdEmpresa());
+        cursoInDB.setEmpresas(curso.getEmpresas());
         cursosJpa.save(cursoInDB);
     }
 

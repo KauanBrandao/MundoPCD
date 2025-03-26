@@ -1,4 +1,4 @@
-package com.projeto.mundopcd.controllers;
+/*package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.AdministradorEmpresaFacade;
 import com.projeto.mundopcd.models.AdministradorEmpresa;
@@ -40,4 +40,4 @@ public class AdministradorEmpresaController {
 
 }
 
-
+*/

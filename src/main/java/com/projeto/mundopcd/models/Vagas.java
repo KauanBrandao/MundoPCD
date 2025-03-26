@@ -36,17 +36,6 @@ public class Vagas {
     public Vagas() {
     }
 
-    public Vagas(String titulo, String descricao, String requisitos, double salario,
-                String tipoContratacao, String localizacao, Empresas empresa) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.requisitos = requisitos;
-        this.salario = salario;
-        this.tipoContratacao = tipoContratacao;
-        this.localizacao = localizacao;
-        this.empresa = empresa;
-    }
-
 
     public int getIdVaga() {
         return idVaga;

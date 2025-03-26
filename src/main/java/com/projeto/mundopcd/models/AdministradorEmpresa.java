@@ -11,11 +11,8 @@ public class AdministradorEmpresa {
     @Column(name = "id_administrador")
     private int idAdmin;
 
-    @Column(name = "id_empresa")
-    private int idEmpresa;
-
-    @Column(name = "nome_empresa")
-    private String nomeEmpresa;
+    @Column(name = "nome_admin")
+    private String nomeAdmin;
 
     @Column(name = "email")
     private String email;
@@ -23,18 +20,21 @@ public class AdministradorEmpresa {
     @Column(name = "senha")
     private String senha;
 
-    public AdministradorEmpresa(int idAdmin, int idEmpresa, String nomeEmpresa, String email, String senha) {
-        this.idAdmin = idAdmin;
-        this.idEmpresa = idEmpresa;
-        this.nomeEmpresa = nomeEmpresa;
+    // Relacionamento Muitos-para-Um (vários administradores pertencem a uma empresa)
+    @ManyToOne
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    private Empresas empresa;
+
+    public AdministradorEmpresa() {}
+
+    public AdministradorEmpresa(String nomeAdmin, String email, String senha, Empresas empresa) {
+        this.nomeAdmin = nomeAdmin;
         this.email = email;
         this.senha = senha;
+        this.empresa = empresa;
     }
 
-    public AdministradorEmpresa() {
-
-    }
-
+    // Getters e Setters
     public int getIdAdmin() {
         return idAdmin;
     }
@@ -43,20 +43,12 @@ public class AdministradorEmpresa {
         this.idAdmin = idAdmin;
     }
 
-    public int getIdEmpresa() {
-        return idEmpresa;
+    public String getNomeAdmin() {
+        return nomeAdmin;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
-    }
-
-    public String getNomeEmpresa() {
-        return nomeEmpresa;
-    }
-
-    public void setNomeEmpresa(String nomeEmpresa) {
-        this.nomeEmpresa = nomeEmpresa;
+    public void setNomeAdmin(String nomeAdmin) {
+        this.nomeAdmin = nomeAdmin;
     }
 
     public String getEmail() {
@@ -73,5 +65,13 @@ public class AdministradorEmpresa {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Empresas getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresas empresa) {
+        this.empresa = empresa;
     }
 }

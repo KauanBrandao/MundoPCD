@@ -1,6 +1,7 @@
 package com.projeto.mundopcd.models;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "empresas")
@@ -29,25 +30,39 @@ public class Empresas {
     @Column(name = "politica_inclusao")
     private String politicaInclusao;
 
-    @Column(name = "id_plano")
-    private int idPlano;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_plano", referencedColumnName = "id_plano")
+    private Planos plano;
 
-    @Column(name = "id_endereco_empresa")
-    private int idEnderecoEmpresa;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    private EnderecoEmpresa enderecoEmpresa;
 
-    public Empresas() {
-    }
+    // Relacionamento One-to-Many: Uma empresa pode ter vários administradores
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AdministradorEmpresa> administradores;
+
+    public Empresas() {}
 
     public Empresas(String nomeEmpresa, String cnpj, String emailContato, String telefoneContato,
-                    String setor, String politicaInclusao, int idPlano, int idEnderecoEmpresa) {
+                    String setor, String politicaInclusao, Planos plano, EnderecoEmpresa enderecoEmpresa) {
         this.nomeEmpresa = nomeEmpresa;
         this.cnpj = cnpj;
         this.emailContato = emailContato;
         this.telefoneContato = telefoneContato;
         this.setor = setor;
         this.politicaInclusao = politicaInclusao;
-        this.idPlano = idPlano;
-        this.idEnderecoEmpresa = idEnderecoEmpresa;
+        this.plano = plano;
+        this.enderecoEmpresa = enderecoEmpresa;
+    }
+
+    // Getters e Setters
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getNomeEmpresa() {
@@ -56,14 +71,6 @@ public class Empresas {
 
     public void setNomeEmpresa(String nomeEmpresa) {
         this.nomeEmpresa = nomeEmpresa;
-    }
-
-    public int getIdEmpresa() {
-        return idEmpresa;
-    }
-
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
     }
 
     public String getCnpj() {
@@ -82,20 +89,20 @@ public class Empresas {
         this.emailContato = emailContato;
     }
 
-    public String getSetor() {
-        return setor;
-    }
-
-    public void setSetor(String setor) {
-        this.setor = setor;
-    }
-
     public String getTelefoneContato() {
         return telefoneContato;
     }
 
     public void setTelefoneContato(String telefoneContato) {
         this.telefoneContato = telefoneContato;
+    }
+
+    public String getSetor() {
+        return setor;
+    }
+
+    public void setSetor(String setor) {
+        this.setor = setor;
     }
 
     public String getPoliticaInclusao() {
@@ -106,20 +113,27 @@ public class Empresas {
         this.politicaInclusao = politicaInclusao;
     }
 
-    public int getIdPlano() {
-        return idPlano;
+    public Planos getPlano() {
+        return plano;
     }
 
-    public void setIdPlano(int idPlano) {
-        this.idPlano = idPlano;
+    public void setPlano(Planos plano) {
+        this.plano = plano;
     }
 
-    public int getIdEnderecoEmpresa() {
-        return idEnderecoEmpresa;
+    public EnderecoEmpresa getEnderecoEmpresa() {
+        return enderecoEmpresa;
     }
 
-    public void setIdEnderecoEmpresa(int idEnderecoEmpresa) {
-        this.idEnderecoEmpresa = idEnderecoEmpresa;
+    public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
+        this.enderecoEmpresa = enderecoEmpresa;
+    }
+
+    public List<AdministradorEmpresa> getAdministradores() {
+        return administradores;
+    }
+
+    public void setAdministradores(List<AdministradorEmpresa> administradores) {
+        this.administradores = administradores;
     }
 }
-
