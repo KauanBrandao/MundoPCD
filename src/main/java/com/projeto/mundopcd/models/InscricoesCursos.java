@@ -35,9 +35,6 @@ public class InscricoesCursos {
         this.curso = curso;
     }
 
-    @ManyToOne(optional = false)
-    private Cursos cursos;
-
     public Candidatos getCandidato() {
         return candidato;
     }
@@ -46,12 +43,10 @@ public class InscricoesCursos {
         this.candidato = candidato;
     }
 
-    public Cursos getCursos() {
-        return cursos;
+
+
+    public void setInscricaoCurso(int id) {
     }
 
-    public void setCursos(Cursos cursos) {
-        this.cursos = cursos;
-    }
 }
 

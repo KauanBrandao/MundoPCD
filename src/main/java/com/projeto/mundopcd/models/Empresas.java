@@ -67,12 +67,17 @@ public class Empresas {
         return vagas;
     }
 
+
+
     public void setVagas(List<Vagas> vagas) {
         this.vagas = vagas;
     }
+
+
     public int getIdEmpresa() {
         return idEmpresa;
     }
+
 
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;

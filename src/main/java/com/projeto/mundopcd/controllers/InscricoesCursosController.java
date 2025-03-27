@@ -31,7 +31,7 @@ public class InscricoesCursosController {
 
     @PutMapping("/atualizar/{id}")
     public void atualizar(@PathVariable int id, @RequestBody InscricoesCursos inscricao) {
-        inscricao.setIdInscricaoCurso(id);
+        inscricao.setInscricaoCurso(id);
         facade.atualizar(inscricao, id);
     }
 
