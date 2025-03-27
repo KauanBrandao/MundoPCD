@@ -36,8 +36,7 @@ public class Vagas {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     private Empresas empresa;
 
-
-    @OneToMany(mappedBy = "vagas")
+    @OneToMany(mappedBy = "vaga")
     private List<Candidaturas> candidaturas;
 
 

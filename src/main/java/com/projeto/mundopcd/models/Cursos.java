@@ -75,4 +75,6 @@ public class Cursos {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+
 }
