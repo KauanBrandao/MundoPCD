@@ -29,27 +29,26 @@ public class EnderecoCandidato {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
-    private Candidatos candidatos;
+    private Candidato candidato;
 
     public EnderecoCandidato() {
     }
 
-    public EnderecoCandidato(int idEnderecoCandidato, String logradouro, int numero, String cidade, String estado, String cep, Candidatos candidatos) {
-        this.idEnderecoCandidato = idEnderecoCandidato;
+    public EnderecoCandidato(String logradouro, int numero, String cidade, String estado, String cep, Candidato candidato) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
-        this.candidatos = candidatos;
+        this.candidato = candidato;
     }
 
-    public Candidatos getCandidatos() {
-        return candidatos;
+    public Candidato getCandidatos() {
+        return candidato;
     }
 
-    public void setCandidatos(Candidatos candidatos) {
-        this.candidatos = candidatos;
+    public void setCandidatos(Candidato candidato) {
+        this.candidato = candidato;
     }
 
 

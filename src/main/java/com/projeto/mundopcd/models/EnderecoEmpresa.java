@@ -1,6 +1,4 @@
 package com.projeto.mundopcd.models;
-
-
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +16,15 @@ public class EnderecoEmpresa {
     @Column(name = "numero")
     private String numero;
 
+    public EnderecoEmpresa(String cep, String cidade, Empresa empresa, String estado, String logradouro, String numero) {
+        this.cep = cep;
+        this.cidade = cidade;
+        this.empresa = empresa;
+        this.estado = estado;
+        this.logradouro = logradouro;
+        this.numero = numero;
+    }
+
     @Column(name = "cidade")
     private String cidade;
 
@@ -29,8 +36,7 @@ public class EnderecoEmpresa {
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
-    private Empresas empresa;
-
+    private Empresa empresa;
 
     public EnderecoEmpresa() {
 
@@ -84,33 +90,20 @@ public class EnderecoEmpresa {
         this.cep = cep;
     }
 
-    public Empresas getEmpresa() {
+    public Empresa getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(Empresas empresa) {
+    public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
 
-    @ManyToOne(optional = false)
-    private Empresas empresas;
-
-    public Empresas getEmpresas() {
-        return empresas;
+    public Empresa getEmpresas() {
+        return empresa;
     }
 
-    public void setEmpresas(Empresas empresas) {
-        this.empresas = empresas;
+    public void setEmpresas(Empresa empresa) {
+        this.empresa = empresa;
     }
 
-    @OneToOne(mappedBy = "enderecoEmpresa", optional = false)
-    private Empresas empresas2;
-
-    public Empresas getEmpresas2() {
-        return empresas2;
-    }
-
-    public void setEmpresas2(Empresas empresas2) {
-        this.empresas2 = empresas2;
-    }
 }

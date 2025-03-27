@@ -1,12 +1,9 @@
-/*package com.projeto.mundopcd.repositories;
+package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.repositories.JPA.AdministradorEmpresaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.projeto.mundopcd.models.AdministradorEmpresa;
-import com.projeto.mundopcd.models.Empresas;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -35,14 +32,12 @@ public class AdministradorEmpresaRepository {
     }
 
     public void atualizar(AdministradorEmpresa administradorEmpresa, int id) {
-        AdministradorEmpresa admInDB = this.administradorEmpresaJpa.findById(id).get() ;
-        if (admInDB != null) {
-            admInDB.setIdEmpresa(administradorEmpresa.getIdEmpresa());
-            admInDB.setNomeEmpresa(administradorEmpresa.getNomeEmpresa());
-            admInDB.setEmail(administradorEmpresa.getEmail());
-            admInDB.setSenha(administradorEmpresa.getSenha());
-            this.administradorEmpresaJpa.save(admInDB);
-        }
+        AdministradorEmpresa admInDB = this.administradorEmpresaJpa.findById(id).get();
+
+        admInDB.setEmpresa(administradorEmpresa.getEmpresa());
+        admInDB.setEmail(administradorEmpresa.getEmail());
+        admInDB.setSenha(administradorEmpresa.getSenha());
+        administradorEmpresaJpa.save(admInDB);
     }
 
     public void deletar(int id) {
@@ -50,6 +45,3 @@ public class AdministradorEmpresaRepository {
     }
 
 }
-
-
-*/
