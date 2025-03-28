@@ -20,21 +20,19 @@ public class AdministradorEmpresa {
     @Column(name = "senha")
     private String senha;
 
-
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
-    private Empresas empresa;
+    private Empresa empresa;
 
     public AdministradorEmpresa() {}
 
-    public AdministradorEmpresa(String nomeAdmin, String email, String senha, Empresas empresa) {
+    public AdministradorEmpresa(String nomeAdmin, String email, String senha, Empresa empresa) {
         this.nomeAdmin = nomeAdmin;
         this.email = email;
         this.senha = senha;
         this.empresa = empresa;
     }
 
-    // Getters e Setters
     public int getIdAdmin() {
         return idAdmin;
     }
@@ -67,11 +65,11 @@ public class AdministradorEmpresa {
         this.senha = senha;
     }
 
-    public Empresas getEmpresa() {
+    public Empresa getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(Empresas empresa) {
+    public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
 }

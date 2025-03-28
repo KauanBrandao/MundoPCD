@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Planos;
-import com.projeto.mundopcd.repositories.JPA.PlanosJPA;
+import com.projeto.mundopcd.models.Plano;
+import com.projeto.mundopcd.repositories.JPA.PlanoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,35 +10,35 @@ import java.util.List;
 @Repository
 public class PlanoRepository {
 
-    private final PlanosJPA planosJpa;
+    private final PlanoJPA planoJpa;
 
     @Autowired
-    public PlanoRepository(PlanosJPA planosJpa) {
-        this.planosJpa = planosJpa;
+    public PlanoRepository(PlanoJPA planoJpa) {
+        this.planoJpa = planoJpa;
     }
 
-    public List<Planos> listar() {
-        return this.planosJpa.findAll();
+    public List<Plano> listar() {
+        return this.planoJpa.findAll();
     }
 
-    public Planos buscarPorId(int id) {
-        return this.planosJpa.findById(id).get();
+    public Plano buscarPorId(int id) {
+        return this.planoJpa.findById(id).get();
     }
 
-    public Planos cadastrar(Planos plano) {
-        return this.planosJpa.save(plano);
+    public Plano cadastrar(Plano plano) {
+        return this.planoJpa.save(plano);
     }
 
-    public void atualizar(Planos plano, int id) {
-        Planos planoInDb = this.planosJpa.findById(id).get();
+    public void atualizar(Plano plano, int id) {
+        Plano planoInDb = this.planoJpa.findById(id).get();
 
-        if (planoInDb != null) {
-            planoInDb.setNomePlano(plano.getNomePlano());
-            this.planosJpa.save(planoInDb);
-        }
+        planoInDb.setNome(plano.getNome());
+        planoInDb.setTipo(plano.getTipo());
+        planoInDb.setValor(plano.getValor());
+        this.planoJpa.save(planoInDb);
     }
 
     public void deletar(int id) {
-        this.planosJpa.deleteById(id);
+        this.planoJpa.deleteById(id);
     }
 }
