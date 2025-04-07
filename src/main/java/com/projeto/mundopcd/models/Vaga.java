@@ -1,8 +1,7 @@
 package com.projeto.mundopcd.models;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -35,6 +34,10 @@ public class Vaga {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     private Empresa empresa;
 
+    @OneToMany(mappedBy = "vaga")
+    @JsonIgnore
+    private List<Candidatura> candidaturas;
+
     public Vaga(List<Candidatura> candidaturas, String descricao, Empresa empresa, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
         this.candidaturas = candidaturas;
         this.descricao = descricao;
@@ -45,9 +48,6 @@ public class Vaga {
         this.tipoContratacao = tipoContratacao;
         this.titulo = titulo;
     }
-
-    @OneToMany(mappedBy = "vaga")
-    private List<Candidatura> candidaturas;
 
     public Vaga() {
     }
@@ -119,7 +119,6 @@ public class Vaga {
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-
 
     public void setCandidaturas(List<Candidatura> candidaturas) {
         this.candidaturas = candidaturas;

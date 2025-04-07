@@ -3,6 +3,7 @@ package com.projeto.mundopcd.controllers;
 import com.projeto.mundopcd.facade.CandidatoFacade;
 import com.projeto.mundopcd.models.Candidato;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +25,12 @@ public class CandidatoController {
     }
 
     @GetMapping("/buscar/{id}")
-    public Object buscarPorId(@PathVariable int id){
+    public Candidato buscarPorId(@PathVariable int id){
         return candidatoFacade.buscarPorId(id);
     }
 
     @PostMapping("/cadastrar")
-    public Object cadastrar(@RequestBody Candidato candidato){
+    public Candidato cadastrar(@RequestBody Candidato candidato){
         return candidatoFacade.cadastrar(candidato);
     }
 

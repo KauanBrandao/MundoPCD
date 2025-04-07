@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-
 
 @Entity
 @Table(name = "enderecos_candidatos")
@@ -16,7 +16,7 @@ public class EnderecoCandidato {
     private String logradouro;
 
     @Column(name = "numero")
-    private int numero;
+    private String numero;
 
     @Column(name = "cidade")
     private String cidade;
@@ -27,14 +27,15 @@ public class EnderecoCandidato {
     @Column(name = "cep")
     private String cep;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
+    @JsonBackReference
     private Candidato candidato;
 
     public EnderecoCandidato() {
     }
 
-    public EnderecoCandidato(String logradouro, int numero, String cidade, String estado, String cep, Candidato candidato) {
+    public EnderecoCandidato(String logradouro, String numero, String cidade, String estado, String cep, Candidato candidato) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.cidade = cidade;
@@ -43,14 +44,13 @@ public class EnderecoCandidato {
         this.candidato = candidato;
     }
 
-    public Candidato getCandidatos() {
+    public Candidato getCandidato() {
         return candidato;
     }
 
-    public void setCandidatos(Candidato candidato) {
+    public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
     }
-
 
     public String getLogradouro() {
         return logradouro;
@@ -60,11 +60,11 @@ public class EnderecoCandidato {
         this.logradouro = logradouro;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

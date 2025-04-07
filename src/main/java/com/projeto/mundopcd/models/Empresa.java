@@ -38,11 +38,9 @@ public class Empresa {
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     private EnderecoEmpresa enderecoEmpresa;
 
-
     // Relacionamento One-to-Many: Uma empresa pode ter vários administradores
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<AdministradorEmpresa> administradores;
-
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<Vaga> vagas;

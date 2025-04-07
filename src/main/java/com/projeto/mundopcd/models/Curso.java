@@ -1,7 +1,5 @@
 package com.projeto.mundopcd.models;
-
 import jakarta.persistence.*;
-
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +29,6 @@ public class Curso {
             inverseJoinColumns = @JoinColumn(name = "id_empresa")
     )
     private Set<Empresa> empresas;
-
 
     @OneToMany(mappedBy = "curso")  // mappedBy indica que a FK está em InscricaoCurso
     private List<InscricaoCurso> inscricoesCursos;
@@ -82,6 +79,5 @@ public class Curso {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-
-
 }
+

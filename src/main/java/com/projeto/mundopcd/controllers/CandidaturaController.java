@@ -1,9 +1,8 @@
 package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.CandidaturaFacade;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.projeto.mundopcd.models.Candidatura;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,25 @@ public class CandidaturaController {
     @GetMapping("/listar")
     public List listar(){
         return candidaturaFacade.listar();
+    }
+
+    @GetMapping("/buscar/{id}")
+    public Candidatura buscarPorId(@PathVariable int id) {
+        return candidaturaFacade.buscarPorId(id);
+    }
+
+    @PostMapping("/cadastrar")
+    public Candidatura cadastrar(@RequestBody Candidatura candidatura){
+        return candidaturaFacade.cadastrar(candidatura);
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public void atualizar(@RequestBody Candidatura candidatura, @PathVariable int id){
+        candidaturaFacade.atualizar(candidatura, id);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public void deletar(@PathVariable int id){
+        candidaturaFacade.deletar(id);
     }
 }
