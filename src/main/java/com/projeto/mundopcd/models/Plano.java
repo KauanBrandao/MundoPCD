@@ -1,8 +1,7 @@
 package com.projeto.mundopcd.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -23,37 +22,28 @@ public class Plano {
     private String tipo;
 
     @OneToMany(mappedBy = "plano")
+    @JsonManagedReference("plano-empresa")
     private List<Empresa> empresas;
 
     @OneToMany(mappedBy = "plano")
+    @JsonManagedReference("plano-candidato")
     private List<Candidato> candidatos;
 
-    public Plano(List<Candidato> candidatos, List<Empresa> empresas, String nome, Double valor, String tipo) {
-        this.candidatos = candidatos;
-        this.empresas = empresas;
+    @ManyToOne
+    @JoinColumn(name = "id_inscricao_curso")
+    private InscricaoCurso inscricaoCurso;
+
+    public Plano() {}
+
+    public Plano(String nome, Double valor, String tipo,
+                 List<Empresa> empresas, List<Candidato> candidatos,
+                 InscricaoCurso inscricaoCurso) {
         this.nome = nome;
         this.valor = valor;
         this.tipo = tipo;
-    }
-
-    public Plano() {
-
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
+        this.empresas = empresas;
+        this.candidatos = candidatos;
+        this.inscricaoCurso = inscricaoCurso;
     }
 
     public int getIdPlano() {
@@ -64,22 +54,6 @@ public class Plano {
         this.idPlano = idPlano;
     }
 
-//    public List<Candidato> getCandidatos() {
-//        return candidatoes;
-//    }
-//
-//    public void setCandidatos(List<Candidato> candidatoes) {
-//        this.candidatoes = candidatoes;
-//    }
-
-//    public List<Empresa> getEmpresas() {
-//        return empresas;
-//    }
-//
-//    public void setEmpresas(List<Empresa> empresas) {
-//        this.empresas = empresas;
-//    }
-
     public String getNome() {
         return nome;
     }
@@ -88,5 +62,43 @@ public class Plano {
         this.nome = nome;
     }
 
+    public Double getValor() {
+        return valor;
+    }
 
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public List<Empresa> getEmpresas() {
+        return empresas;
+    }
+
+    public void setEmpresas(List<Empresa> empresas) {
+        this.empresas = empresas;
+    }
+
+    public List<Candidato> getCandidatos() {
+        return candidatos;
+    }
+
+    public void setCandidatos(List<Candidato> candidatos) {
+        this.candidatos = candidatos;
+    }
+
+    public InscricaoCurso getInscricaoCurso() {
+        return inscricaoCurso;
+    }
+
+    public void setInscricaoCurso(InscricaoCurso inscricaoCurso) {
+        this.inscricaoCurso = inscricaoCurso;
+    }
 }
