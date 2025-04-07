@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -15,6 +16,7 @@ public class Candidatura {
     // Relacionamento com Candidato (Muitos para Um)
     @ManyToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
+    @JsonBackReference
     private Candidato candidato;
 
     // Relacionamento com Vagas (Muitos para Um)
@@ -25,15 +27,15 @@ public class Candidatura {
     @Column(name = "data_aplicacao")
     private Date dataAplicacao;
 
+    @Column(name = "sts")
+    private String status;
+
     public Candidatura(Candidato candidato, Date dataAplicacao, String status, Vaga vaga) {
         this.candidato = candidato;
         this.dataAplicacao = dataAplicacao;
         this.status = status;
         this.vaga = vaga;
     }
-
-    @Column(name = "sts")
-    private String status;
 
     public Candidatura() {}
 

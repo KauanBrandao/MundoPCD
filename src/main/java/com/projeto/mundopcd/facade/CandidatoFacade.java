@@ -2,17 +2,15 @@ package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.CandidatoApplication;
 import com.projeto.mundopcd.models.Candidato;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
 public class CandidatoFacade {
 
+    @Autowired
     CandidatoApplication candidatoApplication;
-
-    public CandidatoFacade(CandidatoApplication candidatoApplication) {
-        this.candidatoApplication = candidatoApplication;
-    }
 
     public Candidato buscarPorId(int id){
         return candidatoApplication.buscarPorId(id);

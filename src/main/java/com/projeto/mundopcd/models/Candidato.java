@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -17,21 +18,6 @@ public class Candidato {
 
     @Column(name = "email")
     private String email;
-
-    public Candidato(List<Candidatura> candidaturas, String cpf, String curriculo, EnderecoCandidato endereco, String email, String experiencia, String formacao, String habilidades, String nome, Plano plano, String telefone, String tipoDeficiencia) {
-        this.candidaturas = candidaturas;
-        this.cpf = cpf;
-        this.curriculo = curriculo;
-        this.endereco = endereco;
-        this.email = email;
-        this.experiencia = experiencia;
-        this.formacao = formacao;
-        this.habilidades = habilidades;
-        this.nome = nome;
-        this.plano = plano;
-        this.telefone = telefone;
-        this.tipoDeficiencia = tipoDeficiencia;
-    }
 
     @Column(name = "cpf")
     private String cpf;
@@ -60,13 +46,29 @@ public class Candidato {
     private Plano plano;
 
     // Relacionamento com EnderecoCandidato (Um para Um)
-    @OneToOne
-    @JoinColumn(name = "id_endereco_candidato", referencedColumnName = "id_endereco_candidato")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_endereco_candidato")
     private EnderecoCandidato endereco;
 
     // Relacionamento com Candidaturas (Um para Muitos)
     @OneToMany(mappedBy = "candidato")
+    @JsonManagedReference
     private List<Candidatura> candidaturas;
+
+    public Candidato(List<Candidatura> candidaturas, String cpf, String curriculo, EnderecoCandidato endereco, String email, String experiencia, String formacao, String habilidades, String nome, Plano plano, String telefone, String tipoDeficiencia) {
+        this.candidaturas = candidaturas;
+        this.cpf = cpf;
+        this.curriculo = curriculo;
+        this.endereco = endereco;
+        this.email = email;
+        this.experiencia = experiencia;
+        this.formacao = formacao;
+        this.habilidades = habilidades;
+        this.nome = nome;
+        this.plano = plano;
+        this.telefone = telefone;
+        this.tipoDeficiencia = tipoDeficiencia;
+    }
 
     public Candidato() {}
 
