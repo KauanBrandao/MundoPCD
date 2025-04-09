@@ -33,8 +33,8 @@ public class EmpresaController {
         return empresaFacade.cadastrar(empresa);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar (@RequestBody Empresa empresa, @PathVariable int id) {
-        empresaFacade.atualizar(empresa, id);
+    @PutMapping("/atualizar")
+    public void atualizar (@RequestBody Empresa empresa) {
+        empresaFacade.atualizar(empresa);
     }
 }

@@ -27,8 +27,8 @@ public class CandidaturaFacade {
         return candidaturaApplication.cadastrar(curso);
     }
 
-    public void atualizar(Candidatura curso, int id){
-        candidaturaApplication.atualizar(curso, id);
+    public void atualizar(Candidatura curso){
+        candidaturaApplication.atualizar(curso);
     }
 
     public void deletar(int id){

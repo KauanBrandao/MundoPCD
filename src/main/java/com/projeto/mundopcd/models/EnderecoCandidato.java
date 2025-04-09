@@ -28,20 +28,13 @@ public class EnderecoCandidato {
     private String cep;
 
     @OneToOne
-    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
-    @JsonBackReference
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato", insertable = false, updatable = false)
     private Candidato candidato;
 
-    public EnderecoCandidato() {
-    }
+    @Column(name = "id_candidato")
+    private Integer idCandidato;
 
-    public EnderecoCandidato(String logradouro, String numero, String cidade, String estado, String cep, Candidato candidato) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.cep = cep;
-        this.candidato = candidato;
+    public EnderecoCandidato() {
     }
 
     public Candidato getCandidato() {

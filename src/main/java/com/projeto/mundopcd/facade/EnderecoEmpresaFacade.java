@@ -29,7 +29,7 @@ public class EnderecoEmpresaFacade {
         enderecoEmpresaApplication.deletar(id);
     }
 
-    public void atualizar(EnderecoEmpresa enderecoEmpresa, int id){
-        enderecoEmpresaApplication.atualizar(enderecoEmpresa, id);
+    public void atualizar(EnderecoEmpresa enderecoEmpresa){
+        enderecoEmpresaApplication.atualizar(enderecoEmpresa);
     }
 }

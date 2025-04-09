@@ -32,16 +32,8 @@ public class EnderecoEmpresaRepository {
         return this.enderecoEmpresaJpa.save(enderecoEmpresa);
     }
 
-    public void atualizar(EnderecoEmpresa enderecoEmpresa, int id) {
-        EnderecoEmpresa enderecoInBD = this.enderecoEmpresaJpa.findById(id).get();
-        if (enderecoInBD != null) {
-            enderecoInBD.setLagradouro(enderecoEmpresa.getLogradouro());
-            enderecoInBD.setNumero(enderecoEmpresa.getNumero());
-            enderecoInBD.setCidade(enderecoEmpresa.getCidade());
-            enderecoInBD.setEstado(enderecoEmpresa.getEstado());
-            enderecoInBD.setCep(enderecoEmpresa.getCep());
-            this.enderecoEmpresaJpa.save(enderecoInBD);
-        }
+    public void atualizar(EnderecoEmpresa enderecoEmpresa) {
+        this.enderecoEmpresaJpa.save(enderecoEmpresa);
     }
 
     public void deletar(int id) {

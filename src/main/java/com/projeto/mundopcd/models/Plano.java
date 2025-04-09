@@ -1,6 +1,5 @@
 package com.projeto.mundopcd.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -22,10 +21,10 @@ public class Plano {
     @Column(name = "tipo")
     private String tipo;
 
-    @OneToMany(mappedBy = "plano")
+    @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
     private List<Empresa> empresas;
 
-    @OneToMany(mappedBy = "plano")
+    @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
     private List<Candidato> candidatos;
 
     public Plano(List<Candidato> candidatos, List<Empresa> empresas, String nome, Double valor, String tipo) {

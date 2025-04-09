@@ -1,6 +1,5 @@
 package com.projeto.mundopcd.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -40,37 +39,41 @@ public class Candidato {
     @Column(name = "curriculo")
     private String curriculo;
 
-    // Relacionamento com Planos (Muitos para Um)
     @ManyToOne
-    @JoinColumn(name = "id_plano", referencedColumnName = "id_plano")
+    @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
     private Plano plano;
 
-    // Relacionamento com EnderecoCandidato (Um para Um)
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_endereco_candidato")
+    @Column(name = "id_plano")
+    private Integer idPlano;
+
+    @OneToOne
+    @JoinColumn(name = "id_endereco_candidato", insertable = false, updatable = false)
     private EnderecoCandidato endereco;
 
-    // Relacionamento com Candidaturas (Um para Muitos)
+    @Column(name = "id_endereco_candidato")
+    private Integer idEnderecoCandidato;
+
     @OneToMany(mappedBy = "candidato")
-    @JsonManagedReference
     private List<Candidatura> candidaturas;
 
-    public Candidato(List<Candidatura> candidaturas, String cpf, String curriculo, EnderecoCandidato endereco, String email, String experiencia, String formacao, String habilidades, String nome, Plano plano, String telefone, String tipoDeficiencia) {
+    public Candidato() {}
+
+    public Candidato(List<Candidatura> candidaturas, String cpf, String curriculo, String email, EnderecoCandidato endereco, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, Plano plano, String telefone, String tipoDeficiencia) {
         this.candidaturas = candidaturas;
         this.cpf = cpf;
         this.curriculo = curriculo;
-        this.endereco = endereco;
         this.email = email;
+        this.endereco = endereco;
         this.experiencia = experiencia;
         this.formacao = formacao;
         this.habilidades = habilidades;
+        this.idEnderecoCandidato = idEnderecoCandidato;
+        this.idPlano = idPlano;
         this.nome = nome;
         this.plano = plano;
         this.telefone = telefone;
         this.tipoDeficiencia = tipoDeficiencia;
     }
-
-    public Candidato() {}
 
     public int getIdCandidato() {
         return idCandidato;
@@ -78,6 +81,14 @@ public class Candidato {
 
     public void setIdCandidato(int idCandidato) {
         this.idCandidato = idCandidato;
+    }
+
+    public void setIdPlano(Integer idPlano) {
+        this.idPlano = idPlano;
+    }
+
+    public void setIdEnderecoCandidato(Integer idEndereoCandidato) {
+        this.idEnderecoCandidato = idEndereoCandidato;
     }
 
     public String getNome() {

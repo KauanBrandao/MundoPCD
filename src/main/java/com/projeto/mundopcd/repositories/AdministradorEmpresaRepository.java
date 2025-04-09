@@ -31,13 +31,8 @@ public class AdministradorEmpresaRepository {
         return administradorEmpresaJpa.save(administradorEmpresa);
     }
 
-    public void atualizar(AdministradorEmpresa administradorEmpresa, int id) {
-        AdministradorEmpresa admInDB = this.administradorEmpresaJpa.findById(id).get();
-
-        admInDB.setEmpresa(administradorEmpresa.getEmpresa());
-        admInDB.setEmail(administradorEmpresa.getEmail());
-        admInDB.setSenha(administradorEmpresa.getSenha());
-        administradorEmpresaJpa.save(admInDB);
+    public void atualizar(AdministradorEmpresa administradorEmpresa) {
+        administradorEmpresaJpa.save(administradorEmpresa);
     }
 
     public void deletar(int id) {

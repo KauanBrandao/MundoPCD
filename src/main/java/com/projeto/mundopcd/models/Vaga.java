@@ -1,6 +1,5 @@
 package com.projeto.mundopcd.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -31,11 +30,13 @@ public class Vaga {
     private String localizacao;
 
     @ManyToOne
-    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
     private Empresa empresa;
 
+    @Column(name = "id_empresa")
+    private Integer idEmpresa;
+
     @OneToMany(mappedBy = "vaga")
-    @JsonIgnore
     private List<Candidatura> candidaturas;
 
     public Vaga(List<Candidatura> candidaturas, String descricao, Empresa empresa, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
@@ -60,16 +61,16 @@ public class Vaga {
         this.idVaga = idVaga;
     }
 
-    public List<Candidatura> getCandidaturas() {
-        return candidaturas;
-    }
-
     public String getTitulo() {
         return titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getDescricao() {
@@ -112,15 +113,19 @@ public class Vaga {
         this.localizacao = localizacao;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
+//    public Empresa getEmpresa() {
+//        return empresa;
+//    }
+//
+//    public void setEmpresa(Empresa empresa) {
+//        this.empresa = empresa;
+//    }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
+//    public List<Candidatura> getCandidaturas() {
+//        return candidaturas;
+//    }
 
-    public void setCandidaturas(List<Candidatura> candidaturas) {
-        this.candidaturas = candidaturas;
-    }
+//    public void setCandidaturas(List<Candidatura> candidaturas) {
+//        this.candidaturas = candidaturas;
+//    }
 }

@@ -33,20 +33,8 @@ public class EmpresaRepository {
        return this.empresaJpa.save(empresa);
     }
 
-    public void atualizar(Empresa empresa, int id) {
-
-        Empresa empInDB = this.empresaJpa.findById(id).get();
-
-        empInDB.setNomeEmpresa(empresa.getNomeEmpresa());
-        empInDB.setCnpj(empresa.getCnpj());
-        empInDB.setEnderecoEmpresa(empresa.getEnderecoEmpresa());
-        empInDB.setPlano(empresa.getPlano());
-        empInDB.setSetor(empresa.getSetor());
-        empInDB.setEmailContato(empresa.getEmailContato());
-        empInDB.setPoliticaInclusao(empresa.getPoliticaInclusao());
-        this.empresaJpa.save(empInDB);
-
-
+    public void atualizar(Empresa empresa) {
+        this.empresaJpa.save(empresa);
     }
 
     public void deletar(int id) {

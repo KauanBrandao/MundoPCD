@@ -29,7 +29,7 @@ public class VagaApplication {
         vagaRepository.deletar(id);
     }
 
-    public void atualizar(Vaga vaga, int id) {
-        vagaRepository.atualizar(vaga, id);
+    public void atualizar(Vaga vaga) {
+        vagaRepository.atualizar(vaga);
     }
 }

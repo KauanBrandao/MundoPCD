@@ -33,10 +33,9 @@ public class EnderecoCandidatoController {
          enderecoCandidatoFacade.deletar(id);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody EnderecoCandidato enderecoCandidato, @PathVariable int id) {
-        enderecoCandidatoFacade.atualizar(enderecoCandidato, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody EnderecoCandidato enderecoCandidato) {
+        enderecoCandidatoFacade.atualizar(enderecoCandidato);
     }
-
 
 }

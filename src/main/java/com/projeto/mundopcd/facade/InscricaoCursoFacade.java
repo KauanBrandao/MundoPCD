@@ -25,8 +25,8 @@ public class InscricaoCursoFacade {
         return application.cadastrar(inscricao);
     }
 
-    public void atualizar(InscricaoCurso inscricao, int id) {
-        application.atualizar(inscricao, id);
+    public void atualizar(InscricaoCurso inscricao) {
+        application.atualizar(inscricao);
     }
 
     public void deletar(int id) {

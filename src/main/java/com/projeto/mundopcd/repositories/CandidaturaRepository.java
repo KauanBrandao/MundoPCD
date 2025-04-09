@@ -32,12 +32,8 @@ public class CandidaturaRepository {
         return candidaturaJpa.save(candidatura);
     }
 
-    public void atualizar(Candidatura candidatura, int id) {
-        Candidatura candidaturaInDb = this.candidaturaJpa.findById(id).get();
-
-        candidaturaInDb.setCandidato(candidatura.getCandidato());
-        candidaturaInDb.setVaga(candidatura.getVaga());
-        candidaturaJpa.save(candidaturaInDb);
+    public void atualizar(Candidatura candidatura) {
+        this.candidaturaJpa.save(candidatura);
     }
 
     public void deletar(int id){

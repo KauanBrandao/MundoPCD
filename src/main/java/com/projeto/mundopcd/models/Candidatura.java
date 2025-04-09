@@ -13,29 +13,25 @@ public class Candidatura {
     @Column(name = "id_candidatura")
     private int idCandidatura;
 
-    // Relacionamento com Candidato (Muitos para Um)
     @ManyToOne
-    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
-    @JsonBackReference
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato", insertable = false, updatable = false)
     private Candidato candidato;
 
-    // Relacionamento com Vagas (Muitos para Um)
-    @ManyToOne
-    @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga")
+    @Column(name = "id_candidato")
+    private Integer idCandidato;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga", insertable = false, updatable = false)
     private Vaga vaga;
+
+    @Column(name = "id_vaga")
+    private Integer idVaga;
 
     @Column(name = "data_aplicacao")
     private Date dataAplicacao;
 
     @Column(name = "sts")
     private String status;
-
-    public Candidatura(Candidato candidato, Date dataAplicacao, String status, Vaga vaga) {
-        this.candidato = candidato;
-        this.dataAplicacao = dataAplicacao;
-        this.status = status;
-        this.vaga = vaga;
-    }
 
     public Candidatura() {}
 
@@ -47,13 +43,21 @@ public class Candidatura {
         this.idCandidatura = idCandidatura;
     }
 
-    public Candidato getCandidato() {
-        return candidato;
+    public void setIdVaga(Integer idVaga) {
+        this.idVaga = idVaga;
     }
 
-    public void setCandidato(Candidato candidato) {
-        this.candidato = candidato;
+    public void setIdCandidato(Integer idCandidato) {
+        this.idCandidato = idCandidato;
     }
+
+//    public Candidato getCandidato() {
+//        return candidato;
+//    }
+//
+//    public void setCandidato(Candidato candidato) {
+//        this.candidato = candidato;
+//    }
 
     public Vaga getVaga() {
         return vaga;

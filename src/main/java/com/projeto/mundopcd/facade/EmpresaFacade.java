@@ -29,7 +29,7 @@ public class EmpresaFacade {
         empresaApplication.deletar(id);
     }
 
-    public void atualizar(Empresa empresa, int id) {
-        empresaApplication.atualizar(empresa, id);
+    public void atualizar(Empresa empresa) {
+        empresaApplication.atualizar(empresa);
     }
 }

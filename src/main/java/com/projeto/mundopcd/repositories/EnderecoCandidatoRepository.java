@@ -39,16 +39,8 @@ public class EnderecoCandidatoRepository {
         }
     }
 
-    public void atualizar(EnderecoCandidato endereco, int id) {
-        EnderecoCandidato enderecoInDb = buscarPorId(id);
-
-        enderecoInDb.setLogradouro(endereco.getLogradouro());
-        enderecoInDb.setNumero(endereco.getNumero());
-        enderecoInDb.setCidade(endereco.getCidade());
-        enderecoInDb.setEstado(endereco.getEstado());
-        enderecoInDb.setCep(endereco.getCep());
-        this.enderecoCandidatoJpa.save(enderecoInDb);
-
+    public void atualizar(EnderecoCandidato endereco) {
+        this.enderecoCandidatoJpa.save(endereco);
     }
 
 }

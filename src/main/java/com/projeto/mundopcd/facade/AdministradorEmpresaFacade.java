@@ -29,8 +29,8 @@ public class AdministradorEmpresaFacade {
         administradorEmpresaApplication.deletar(id);
     }
 
-    public void atualizar(AdministradorEmpresa administradorEmpresa, int id) {
-        administradorEmpresaApplication.atualizar(administradorEmpresa, id);
+    public void atualizar(AdministradorEmpresa administradorEmpresa) {
+        administradorEmpresaApplication.atualizar(administradorEmpresa);
     }
 
 }

@@ -29,10 +29,8 @@ public class InscricaoCursoRepository {
         return inscricoesJPA.save(inscricao);
     }
 
-    public void atualizar(InscricaoCurso inscricaoAtualizada, int id) {
-        InscricaoCurso cursoInDb = this.inscricoesJPA.findById(id).get();
-
-        inscricoesJPA.save(cursoInDb);
+    public void atualizar(InscricaoCurso inscricao) {
+        inscricoesJPA.save(inscricao);
     }
 
     public void deletar(int id) {

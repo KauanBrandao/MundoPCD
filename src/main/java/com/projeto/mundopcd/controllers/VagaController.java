@@ -34,8 +34,8 @@ public class VagaController {
         return vagaFacade.cadastrar(vaga);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody Vaga vaga, @PathVariable int id) {
-        vagaFacade.atualizar(vaga, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody Vaga vaga) {
+        vagaFacade.atualizar(vaga);
     }
 }

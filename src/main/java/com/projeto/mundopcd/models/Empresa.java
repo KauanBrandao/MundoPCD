@@ -12,17 +12,17 @@ public class Empresa {
     @Column(name = "id_empresa")
     private int idEmpresa;
 
-    @Column(name = "nome_empresa")
-    private String nomeEmpresa;
+    @Column(name = "nome")
+    private String nome;
 
     @Column(name = "cnpj")
     private String cnpj;
 
-    @Column(name = "email_contato")
-    private String emailContato;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "telefone_contato")
-    private String telefoneContato;
+    @Column(name = "telefone")
+    private String telefone;
 
     @Column(name = "setor")
     private String setor;
@@ -30,34 +30,27 @@ public class Empresa {
     @Column(name = "politica_inclusao")
     private String politicaInclusao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_plano", referencedColumnName = "id_plano")
+    @ManyToOne
+    @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
     private Plano plano;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    @Column(name = "id_plano")
+    private Integer idPlano;
+
+    @OneToOne
+    @JoinColumn(name = "id_endereco_empresa", referencedColumnName = "id_endereco_empresa", insertable = false, updatable = false)
     private EnderecoEmpresa enderecoEmpresa;
 
-    // Relacionamento One-to-Many: Uma empresa pode ter vários administradores
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    @Column(name = "id_endereco_empresa")
+    private Integer idEnderecoEmpresa;
+
+    @OneToMany(mappedBy = "empresa")
     private List<AdministradorEmpresa> administradores;
 
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "empresa")
     private List<Vaga> vagas;
 
     public Empresa() {}
-
-    public Empresa(String nomeEmpresa, String cnpj, String emailContato, String telefoneContato,
-                   String setor, String politicaInclusao, Plano plano, EnderecoEmpresa enderecoEmpresa) {
-        this.nomeEmpresa = nomeEmpresa;
-        this.cnpj = cnpj;
-        this.emailContato = emailContato;
-        this.telefoneContato = telefoneContato;
-        this.setor = setor;
-        this.politicaInclusao = politicaInclusao;
-        this.plano = plano;
-        this.enderecoEmpresa = enderecoEmpresa;
-    }
 
     public List<Vaga> getVagas() {
         return vagas;
@@ -66,6 +59,15 @@ public class Empresa {
     public void setVagas(List<Vaga> vagas) {
         this.vagas = vagas;
     }
+
+    public void setIdPlano(Integer idPlano) {
+        this.idPlano = idPlano;
+    }
+
+    public void setIdEnderecoEmpresa(Integer idEnderecoEmpresa) {
+        this.idEnderecoEmpresa = idEnderecoEmpresa;
+    }
+
     public int getIdEmpresa() {
         return idEmpresa;
     }
@@ -74,12 +76,12 @@ public class Empresa {
         this.idEmpresa = idEmpresa;
     }
 
-    public String getNomeEmpresa() {
-        return nomeEmpresa;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeEmpresa(String nomeEmpresa) {
-        this.nomeEmpresa = nomeEmpresa;
+    public void setNomeEmpresa(String nome) {
+        this.nome = nome;
     }
 
     public String getCnpj() {
@@ -90,20 +92,20 @@ public class Empresa {
         this.cnpj = cnpj;
     }
 
-    public String getEmailContato() {
-        return emailContato;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailContato(String emailContato) {
-        this.emailContato = emailContato;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getTelefoneContato() {
-        return telefoneContato;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setTelefoneContato(String telefoneContato) {
-        this.telefoneContato = telefoneContato;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getSetor() {

@@ -33,9 +33,9 @@ public class CursoController {
         return cursoFacade.cadastrar(curso);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody Curso curso, @PathVariable int id){
-        cursoFacade.atualizar(curso, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody Curso curso){
+        cursoFacade.atualizar(curso);
     }
 
     @DeleteMapping("/deletar/{id}")
