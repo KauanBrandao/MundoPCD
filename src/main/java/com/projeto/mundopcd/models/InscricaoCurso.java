@@ -12,22 +12,23 @@ public class InscricaoCurso {
     private int idInscricaoCurso;
     
     @ManyToOne
-    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso")  // Chave estrangeira fica aqui
+    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso", insertable = false, updatable = false)
     private Curso curso;
 
-    public InscricaoCurso(Candidato candidato, Curso curso) {
-        this.candidato = candidato;
-        this.curso = curso;
-    }
+    @Column(name = "id_curso")
+    private Integer idCurso;
 
     @ManyToOne
-    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato", insertable = false, updatable = false)
     private Candidato candidato;
+
+    @Column(name = "id_candidato")
+    private Integer idCandidato;
 
     public InscricaoCurso() {
 
     }
-    
+
     public Curso getCurso() {
         return curso;
     }
@@ -40,6 +41,14 @@ public class InscricaoCurso {
         return candidato;
     }
 
+    public void setIdCandidato(Integer idCandidato) {
+        this.idCandidato = idCandidato;
+    }
+
+    public void setIdCurso(Integer idCurso) {
+        this.idCurso = idCurso;
+    }
+
     public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
     }
@@ -48,8 +57,7 @@ public class InscricaoCurso {
         return idInscricaoCurso;
     }
 
-    public void setIdInscricaoCurso(int id) {
-        this.idInscricaoCurso = id;
+    public void setIdInscricaoCurso(int idInscricaoCurso) {
+        this.idInscricaoCurso = idInscricaoCurso;
     }
 }
-

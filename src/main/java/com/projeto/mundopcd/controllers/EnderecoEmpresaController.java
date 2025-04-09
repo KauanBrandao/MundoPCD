@@ -33,9 +33,9 @@ public class EnderecoEmpresaController {
         return enderecoEmpresaFacade.cadastrar(enderecoEmpresa);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody EnderecoEmpresa enderecoEmpresa, @PathVariable int id){
-        enderecoEmpresaFacade.atualizar(enderecoEmpresa, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody EnderecoEmpresa enderecoEmpresa){
+        enderecoEmpresaFacade.atualizar(enderecoEmpresa);
     }
 
 }

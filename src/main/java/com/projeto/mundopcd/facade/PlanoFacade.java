@@ -25,8 +25,8 @@ public class PlanoFacade {
         return application.cadastrar(plano);
     }
 
-    public void atualizar(Plano plano, int id) {
-        application.atualizar(plano, id);
+    public void atualizar(Plano plano) {
+        application.atualizar(plano);
     }
 
     public void deletar(int id) {

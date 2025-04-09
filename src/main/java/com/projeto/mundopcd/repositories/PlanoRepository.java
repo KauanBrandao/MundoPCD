@@ -29,13 +29,8 @@ public class PlanoRepository {
         return this.planoJpa.save(plano);
     }
 
-    public void atualizar(Plano plano, int id) {
-        Plano planoInDb = this.planoJpa.findById(id).get();
-
-        planoInDb.setNome(plano.getNome());
-        planoInDb.setTipo(plano.getTipo());
-        planoInDb.setValor(plano.getValor());
-        this.planoJpa.save(planoInDb);
+    public void atualizar(Plano plano) {
+        this.planoJpa.save(plano);
     }
 
     public void deletar(int id) {

@@ -29,10 +29,9 @@ public class InscricaoCursoController {
         return facade.cadastrar(inscricao);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@PathVariable int id, @RequestBody InscricaoCurso inscricao) {
-        inscricao.setIdInscricaoCurso(id);
-        facade.atualizar(inscricao, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody InscricaoCurso inscricao) {
+        facade.atualizar(inscricao);
     }
 
     @DeleteMapping("/deletar/{id}")

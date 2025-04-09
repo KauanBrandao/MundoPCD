@@ -29,7 +29,7 @@ public class AdministradorEmpresaApplication {
         administradorEmpresaRepository.deletar(id);
     }
 
-    public void atualizar(AdministradorEmpresa administradorEmpresa, int id) {
-        administradorEmpresaRepository.atualizar(administradorEmpresa, id);
+    public void atualizar(AdministradorEmpresa administradorEmpresa) {
+        administradorEmpresaRepository.atualizar(administradorEmpresa);
     }
 }

@@ -31,9 +31,9 @@ public class CandidaturaController {
         return candidaturaFacade.cadastrar(candidatura);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody Candidatura candidatura, @PathVariable int id){
-        candidaturaFacade.atualizar(candidatura, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody Candidatura candidatura){
+        candidaturaFacade.atualizar(candidatura);
     }
 
     @DeleteMapping("/deletar/{id}")

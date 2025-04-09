@@ -21,8 +21,7 @@ public class Curso {
     @Column(name = "carga_horaria")
     private int cargaHoraria;
 
-    // varios cursos podem ser disponibilizdos por varias empresas
-    @ManyToMany()
+    @ManyToMany
     @JoinTable(
             name = "empresa_curso",
             joinColumns = @JoinColumn(name = "id_curso"),
@@ -30,7 +29,7 @@ public class Curso {
     )
     private Set<Empresa> empresas;
 
-    @OneToMany(mappedBy = "curso")  // mappedBy indica que a FK está em InscricaoCurso
+    @OneToMany(mappedBy = "curso")
     private List<InscricaoCurso> inscricoesCursos;
 
     public Curso(int cargaHoraria, String descricao, Set<Empresa> empresas, List<InscricaoCurso> inscricoesCursos, String titulo) {
@@ -54,7 +53,6 @@ public class Curso {
     public String getDescricao() {
         return descricao;
     }
-
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;

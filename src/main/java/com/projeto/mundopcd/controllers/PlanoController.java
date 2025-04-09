@@ -29,9 +29,9 @@ public class PlanoController {
         return facade.cadastrar(plano);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody Plano plano, @PathVariable int id) {
-        facade.atualizar(plano, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody Plano plano) {
+        facade.atualizar(plano);
     }
 
     @DeleteMapping("/deletar/{id}")

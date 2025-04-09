@@ -24,8 +24,8 @@ public class CandidatoApplication {
         return candidatoRepository.listar();
     }
 
-    public void atualizar(Candidato candidato, int id){
-        candidatoRepository.atualizar(candidato, id);
+    public void atualizar(Candidato candidato){
+        candidatoRepository.atualizar(candidato);
     }
 
     public Candidato cadastrar(Candidato candidato) {

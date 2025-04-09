@@ -25,8 +25,8 @@ public class PlanoApplication {
         return planoRepository.cadastrar(plano);
     }
 
-    public void atualizar(Plano plano, int id) {
-        planoRepository.atualizar(plano, id);
+    public void atualizar(Plano plano) {
+        planoRepository.atualizar(plano);
     }
 
     public void deletar(int id) {

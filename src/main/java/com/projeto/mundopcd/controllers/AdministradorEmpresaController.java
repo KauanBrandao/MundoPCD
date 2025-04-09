@@ -33,9 +33,9 @@ public class AdministradorEmpresaController {
         return administradorEmpresaFacade.cadastrar(administradorEmpresa);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody AdministradorEmpresa administradorEmpresa, @PathVariable int id){
-        administradorEmpresaFacade.atualizar(administradorEmpresa, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody AdministradorEmpresa administradorEmpresa){
+        administradorEmpresaFacade.atualizar(administradorEmpresa);
     }
 
 }

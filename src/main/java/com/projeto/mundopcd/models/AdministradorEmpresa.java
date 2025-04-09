@@ -11,8 +11,8 @@ public class AdministradorEmpresa {
     @Column(name = "id_administrador")
     private int idAdmin;
 
-    @Column(name = "nome_admin")
-    private String nomeAdmin;
+    @Column(name = "nome")
+    private String nome;
 
     @Column(name = "email")
     private String email;
@@ -21,13 +21,16 @@ public class AdministradorEmpresa {
     private String senha;
 
     @ManyToOne
-    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
     private Empresa empresa;
+
+    @Column(name = "id_empresa")
+    private Integer idEmpresa;
 
     public AdministradorEmpresa() {}
 
-    public AdministradorEmpresa(String nomeAdmin, String email, String senha, Empresa empresa) {
-        this.nomeAdmin = nomeAdmin;
+    public AdministradorEmpresa(String nome, String email, String senha, Empresa empresa) {
+        this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.empresa = empresa;
@@ -41,12 +44,16 @@ public class AdministradorEmpresa {
         this.idAdmin = idAdmin;
     }
 
-    public String getNomeAdmin() {
-        return nomeAdmin;
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public void setNomeAdmin(String nomeAdmin) {
-        this.nomeAdmin = nomeAdmin;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {
@@ -65,11 +72,11 @@ public class AdministradorEmpresa {
         this.senha = senha;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
+//    public Empresa getEmpresa() {
+//        return empresa;
+//    }
+//
+//    public void setEmpresa(Empresa empresa) {
+//        this.empresa = empresa;
+//    }
 }

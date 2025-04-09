@@ -39,17 +39,8 @@ public class VagaRepository {
         }
     }
 
-    public void atualizar(Vaga vaga, int id) {
-        Vaga vagaInDb = this.vagaJpa.findById(id).get();
-
-        vagaInDb.setTitulo(vaga.getTitulo());
-        vagaInDb.setDescricao(vaga.getDescricao());
-        vagaInDb.setRequisitos(vaga.getRequisitos());
-        vagaInDb.setSalario(vaga.getSalario());
-        vagaInDb.setTipoContratacao(vaga.getTipoContratacao());
-        vagaInDb.setLocalizacao(vaga.getLocalizacao());
-        vagaInDb.setEmpresa(vaga.getEmpresa());
-        this.vagaJpa.save(vagaInDb);
+    public void atualizar(Vaga vaga) {
+        this.vagaJpa.save(vaga);
     }
 
 }

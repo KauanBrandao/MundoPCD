@@ -20,8 +20,8 @@ public class CandidatoFacade {
         return candidatoApplication.listar();
     }
 
-    public void atualizar(Candidato candidato, int id){
-        candidatoApplication.atualizar(candidato, id);
+    public void atualizar(Candidato candidato){
+        candidatoApplication.atualizar(candidato);
     }
 
     public Candidato cadastrar(Candidato candidato){

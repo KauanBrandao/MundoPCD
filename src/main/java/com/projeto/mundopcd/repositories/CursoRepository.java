@@ -31,14 +31,8 @@ public class CursoRepository {
         return cursoJpa.save(curso);
     }
 
-    public void atualizar(Curso curso, int id) {
-        Curso cursoInDB = this.cursoJpa.findById(id).get();
-
-        cursoInDB.setTitulo(curso.getTitulo());
-        cursoInDB.setDescricao(curso.getDescricao());
-        cursoInDB.setCargaHoraria(curso.getCargaHoraria());
-        cursoInDB.setEmpresas(curso.getEmpresas());
-        cursoJpa.save(cursoInDB);
+    public void atualizar(Curso curso) {
+        cursoJpa.save(curso);
     }
 
     public void deletar(int id){

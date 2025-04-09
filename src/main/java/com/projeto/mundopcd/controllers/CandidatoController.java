@@ -31,18 +31,16 @@ public class CandidatoController {
 
     @PostMapping("/cadastrar")
     public Candidato cadastrar(@RequestBody Candidato candidato){
-        return candidatoFacade.cadastrar(candidato);
+        return this.candidatoFacade.cadastrar(candidato);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody Candidato candidato, @PathVariable int id){
-        candidatoFacade.atualizar(candidato, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody Candidato candidato){
+        candidatoFacade.atualizar(candidato);
     }
 
     @DeleteMapping("/deletar/{id}")
     public void deletar(@PathVariable int id){
         candidatoFacade.deletar(id);
     }
-
-
 }

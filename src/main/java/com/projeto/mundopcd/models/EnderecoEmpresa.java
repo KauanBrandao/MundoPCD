@@ -16,15 +16,6 @@ public class EnderecoEmpresa {
     @Column(name = "numero")
     private String numero;
 
-    public EnderecoEmpresa(String cep, String cidade, Empresa empresa, String estado, String logradouro, String numero) {
-        this.cep = cep;
-        this.cidade = cidade;
-        this.empresa = empresa;
-        this.estado = estado;
-        this.logradouro = logradouro;
-        this.numero = numero;
-    }
-
     @Column(name = "cidade")
     private String cidade;
 
@@ -35,8 +26,21 @@ public class EnderecoEmpresa {
     private String cep;
 
     @ManyToOne
-    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
     private Empresa empresa;
+
+    @Column(name = "id_empresa")
+    private Integer idEmpresa;
+
+    public EnderecoEmpresa(String cep, String cidade, Empresa empresa, String estado, String logradouro, String numero) {
+        this.cep = cep;
+        this.cidade = cidade;
+        this.empresa = empresa;
+        this.estado = estado;
+        this.logradouro = logradouro;
+        this.numero = numero;
+    }
+
 
     public EnderecoEmpresa() {
 
