@@ -50,6 +50,9 @@ public class Empresa {
     @OneToMany(mappedBy = "empresa")
     private List<Vaga> vagas;
 
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    private List<EmpresaCurso> empresaCursos;
+
     public Empresa() {}
 
     public List<Vaga> getVagas() {

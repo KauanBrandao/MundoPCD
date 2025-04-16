@@ -21,21 +21,15 @@ public class Curso {
     @Column(name = "carga_horaria")
     private int cargaHoraria;
 
-    @ManyToMany
-    @JoinTable(
-            name = "empresa_curso",
-            joinColumns = @JoinColumn(name = "id_curso"),
-            inverseJoinColumns = @JoinColumn(name = "id_empresa")
-    )
-    private Set<Empresa> empresas;
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
+    private List<EmpresaCurso> empresaCursos;
 
     @OneToMany(mappedBy = "curso")
     private List<InscricaoCurso> inscricoesCursos;
 
-    public Curso(int cargaHoraria, String descricao, Set<Empresa> empresas, List<InscricaoCurso> inscricoesCursos, String titulo) {
+    public Curso(int cargaHoraria, String descricao, List<InscricaoCurso> inscricoesCursos, String titulo) {
         this.cargaHoraria = cargaHoraria;
         this.descricao = descricao;
-        this.empresas = empresas;
         this.inscricoesCursos = inscricoesCursos;
         this.titulo = titulo;
     }
@@ -65,10 +59,6 @@ public class Curso {
     public void setIdCurso(int idCurso) {
         this.idCurso = idCurso;
     }
-
-    public Set<Empresa> getEmpresas() { return empresas; }
-
-    public void setEmpresas(Set<Empresa> empresas) { this.empresas = empresas; }
 
     public String getTitulo() {
         return titulo;
