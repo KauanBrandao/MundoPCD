@@ -2,6 +2,9 @@ package com.projeto.mundopcd.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
 import java.util.Date;
 
 @Entity
@@ -24,7 +27,8 @@ public class Candidatura {
     @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga", insertable = false, updatable = false)
     private Vaga vaga;
 
-    @Column(name = "id_vaga")
+
+    @Column(name = "id_vaga", nullable = false )
     private Integer idVaga;
 
     @Column(name = "data_aplicacao")
