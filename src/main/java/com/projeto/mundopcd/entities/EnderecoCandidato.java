@@ -27,54 +27,54 @@ public class EnderecoCandidato {
     public EnderecoCandidato() {
     }
 
-    public void validar() {
-        validarIdEnderecoCandidato();
-        validarLogradouro();
-        validarNumero();
-        validarCidade();
-        validarEstado();
-        validarCep();
-        validarCandidato();
+    public void executarValidacoes() {
+        idEnderecoCandidatoIsInvalid();
+        logradouroIsInvalid();
+        numeroIsInvalid();
+        cidadeIsInvalid();
+        estadoIsInvalid();
+        cepIsInvalid();
+        candidatoIsNull();
     }
 
-    private void validarIdEnderecoCandidato() {
+    public void idEnderecoCandidatoIsInvalid() {
         if (idEnderecoCandidato <= 0) {
             throw new IllegalArgumentException("O ID do endereço do candidato deve ser maior que zero.");
         }
     }
 
-    private void validarLogradouro() {
+    public void logradouroIsInvalid() {
         if (logradouro == null || logradouro.trim().isEmpty() || logradouro.length() < 3 || logradouro.length() > 255) {
             throw new IllegalArgumentException("O logradouro deve ter entre 3 e 255 caracteres.");
         }
     }
 
-    private void validarNumero() {
+    public void numeroIsInvalid() {
         if (numero == null || numero.trim().isEmpty()) {
             throw new IllegalArgumentException("O número do endereço é obrigatório.");
         }
     }
 
-    private void validarCidade() {
+    public void cidadeIsInvalid() {
         if (cidade == null || cidade.trim().isEmpty() || cidade.length() < 2 || cidade.length() > 100) {
             throw new IllegalArgumentException("A cidade deve ter entre 2 e 100 caracteres.");
         }
     }
 
-    private void validarEstado() {
+    public void estadoIsInvalid() {
         if (estado == null || estado.trim().isEmpty() || estado.length() != 2) {
             throw new IllegalArgumentException("O estado deve ser uma sigla válida de 2 caracteres.");
         }
     }
 
-    private void validarCep() {
+    public void cepIsInvalid() {
         String cepRegex = "^\\d{5}-\\d{3}$";
         if (cep == null || !cep.matches(cepRegex)) {
             throw new IllegalArgumentException("O CEP deve estar no formato 12345-678.");
         }
     }
 
-    private void validarCandidato() {
+    public void candidatoIsNull() {
         if (candidatoModels == null) {
             throw new IllegalArgumentException("O candidato associado ao endereço deve ser válido.");
         }
@@ -143,6 +143,4 @@ public class EnderecoCandidato {
     public void setIdCandidato(Integer idCandidato) {
         this.idCandidato = idCandidato;
     }
-
-
 }

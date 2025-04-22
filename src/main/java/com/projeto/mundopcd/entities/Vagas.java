@@ -30,71 +30,152 @@ public class Vagas {
         this.candidaturaModels = candidaturaModels;
 
     }
+
     public Vagas() {
     }
 
-    public void validar() {
-        validarIdVaga();
-        validarTitulo();
-        validarDescricao();
-        validarRequisitos();
-        validarSalario();
-        validarTipoContratacao();
-        validarLocalizacao();
-        validarEmpresa();
+    public void executarValidacoes() {
+        idVagaIsInvalid();
+        tituloIsInvalid();
+        descricaoIsInvalid();
+        requisitosIsInvalid();
+        salarioIsNotPositive();
+        tipoContratacaoIsInvalid();
+        localizacaoIsInvalid();
+        empresaIsNull();
     }
 
-    private void validarIdVaga() {
+    public void idVagaIsInvalid() {
         if (idVaga <= 0) {
             throw new IllegalArgumentException("O ID da vaga deve ser maior que zero.");
         }
     }
 
-    private void validarTitulo() {
+    public void tituloIsInvalid() {
         if (titulo == null || titulo.trim().isEmpty() || titulo.length() < 3 || titulo.length() > 100) {
             throw new IllegalArgumentException("O título deve ter entre 3 e 100 caracteres.");
         }
     }
 
-    private void validarDescricao() {
+    public void descricaoIsInvalid() {
         if (descricao == null || descricao.trim().isEmpty() || descricao.length() < 10 || descricao.length() > 1000) {
             throw new IllegalArgumentException("A descrição deve ter entre 10 e 1000 caracteres.");
         }
     }
 
-    private void validarRequisitos() {
+    public void requisitosIsInvalid() {
         if (requisitos == null || requisitos.trim().isEmpty() || requisitos.length() < 5 || requisitos.length() > 500) {
             throw new IllegalArgumentException("Os requisitos devem ter entre 5 e 500 caracteres.");
         }
     }
 
-    private void validarSalario() {
+    public void salarioIsNotPositive() {
         if (salario <= 0) {
             throw new IllegalArgumentException("O salário deve ser maior que zero.");
         }
     }
 
-    private void validarTipoContratacao() {
-        if (tipoContratacao == null || tipoContratacao.trim().isEmpty() || !isTipoContratacaoValido(tipoContratacao)) {
+    public void tipoContratacaoIsInvalid() {
+        if (tipoContratacao == null || tipoContratacao.trim().isEmpty() || !tipoContratacaoIsValido(tipoContratacao)) {
             throw new IllegalArgumentException("O tipo de contratação é inválido.");
         }
     }
 
-    private boolean isTipoContratacaoValido(String tipoContratacao) {
+    public boolean tipoContratacaoIsValido(String tipoContratacao) {
         return tipoContratacao.equalsIgnoreCase("CLT") ||
                 tipoContratacao.equalsIgnoreCase("PJ") ||
                 tipoContratacao.equalsIgnoreCase("Freelancer");
     }
 
-    private void validarLocalizacao() {
+    public void empresaIsNull() {
+        if (empresaModels == null) {
+            throw new IllegalArgumentException("A empresa associada deve ser válida.");
+        }
+    }
+
+    public void localizacaoIsInvalid() {
         if (localizacao == null || localizacao.trim().isEmpty()) {
             throw new IllegalArgumentException("A localização é obrigatória.");
         }
     }
 
-    private void validarEmpresa() {
-        if (empresaModels == null) {
-            throw new IllegalArgumentException("A empresa associada deve ser válida.");
-        }
+    public int getIdVaga() {
+        return idVaga;
+    }
+
+    public void setIdVaga(int idVaga) {
+        this.idVaga = idVaga;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getRequisitos() {
+        return requisitos;
+    }
+
+    public void setRequisitos(String requisitos) {
+        this.requisitos = requisitos;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public String getTipoContratacao() {
+        return tipoContratacao;
+    }
+
+    public void setTipoContratacao(String tipoContratacao) {
+        this.tipoContratacao = tipoContratacao;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public EmpresaModels getEmpresaModels() {
+        return empresaModels;
+    }
+
+    public void setEmpresaModels(EmpresaModels empresaModels) {
+        this.empresaModels = empresaModels;
+    }
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Integer idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    public List<CandidaturaModels> getCandidaturaModels() {
+        return candidaturaModels;
+    }
+
+    public void setCandidaturaModels(List<CandidaturaModels> candidaturaModels) {
+        this.candidaturaModels = candidaturaModels;
     }
 }

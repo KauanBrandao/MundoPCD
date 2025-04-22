@@ -24,7 +24,7 @@ public class EnderecoCandidatoApplication {
 
     public EnderecoCandidatoModels cadastrar(EnderecoCandidatoModels endereco) {
         EnderecoCandidato enderecoCandidato = new EnderecoCandidato();
-        enderecoCandidato.validar();
+        enderecoCandidato.executarValidacoes();
         return enderecoCandidatoRepository.cadastrar(endereco);
     }
 

@@ -41,36 +41,36 @@ public class Empresa {
     public Empresa() {
     }
 
-    public void validar() {
-        validarIdEmpresa();
-        validarNome();
-        validarCNPJ();
-        validarEmail();
-        validarTelefone();
-        validarSetor();
-        validarPoliticaInclusao();
+    public void executarValidacoes() {
+        idEmpresaIsInvalid();
+        nomeIsInvalid();
+        cnpjIsInvalid();
+        emailIsInvalid();
+        telefoneIsInvalid();
+        setorIsInvalid();
+        politicaInclusaoIsInvalid();
     }
 
-    private void validarIdEmpresa() {
+    public void idEmpresaIsInvalid() {
         if (idEmpresa <= 0) {
             throw new IllegalArgumentException("O ID da empresa deve ser maior que zero.");
         }
     }
 
-    private void validarNome() {
+    public void nomeIsInvalid() {
         if (nome == null || nome.trim().isEmpty() || nome.length() < 3 || nome.length() > 100) {
             throw new IllegalArgumentException("O nome da empresa deve ter entre 3 e 100 caracteres.");
         }
     }
 
-    private void validarCNPJ() {
+    public void cnpjIsInvalid() {
         String cnpjNumerico = cnpj.replaceAll("\\D", "");
         if (cnpjNumerico.length() != 14 || !isCNPJValido(cnpjNumerico)) {
             throw new IllegalArgumentException("CNPJ inválido.");
         }
     }
 
-    private boolean isCNPJValido(String cnpj) {
+    public boolean isCNPJValido(String cnpj) {
         int[] peso1 = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
         int[] peso2 = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
 
@@ -96,27 +96,27 @@ public class Empresa {
         }
     }
 
-    private void validarEmail() {
+    public void emailIsInvalid() {
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         if (email == null || !Pattern.matches(emailRegex, email)) {
             throw new IllegalArgumentException("E-mail inválido.");
         }
     }
 
-    private void validarTelefone() {
+    public void telefoneIsInvalid() {
         String telefoneRegex = "^\\(\\d{2}\\) \\d{4,5}-\\d{4}$";
         if (telefone == null || !Pattern.matches(telefoneRegex, telefone)) {
             throw new IllegalArgumentException("Telefone inválido.");
         }
     }
 
-    private void validarSetor() {
+    public void setorIsInvalid() {
         if (setor == null || setor.trim().isEmpty()) {
             throw new IllegalArgumentException("O setor é obrigatório.");
         }
     }
 
-    private void validarPoliticaInclusao() {
+    public void politicaInclusaoIsInvalid() {
         if (politicaInclusao == null || politicaInclusao.length() < 10) {
             throw new IllegalArgumentException("A política de inclusão deve ter no mínimo 10 caracteres.");
         }
@@ -178,11 +178,11 @@ public class Empresa {
         this.politicaInclusao = politicaInclusao;
     }
 
-    public PlanoModels getPlano() {
+    public PlanoModels getPlanoModels() {
         return planoModels;
     }
 
-    public void setPlano(PlanoModels planoModels) {
+    public void setPlanoModels(PlanoModels planoModels) {
         this.planoModels = planoModels;
     }
 
@@ -194,11 +194,11 @@ public class Empresa {
         this.idPlano = idPlano;
     }
 
-    public EnderecoEmpresaModels getEnderecoEmpresa() {
+    public EnderecoEmpresaModels getEnderecoEmpresaModels() {
         return enderecoEmpresaModels;
     }
 
-    public void setEnderecoEmpresa(EnderecoEmpresaModels enderecoEmpresaModels) {
+    public void setEnderecoEmpresaModels(EnderecoEmpresaModels enderecoEmpresaModels) {
         this.enderecoEmpresaModels = enderecoEmpresaModels;
     }
 

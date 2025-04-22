@@ -26,7 +26,7 @@ public class EmpresaApplication {
         Empresa empresa = new Empresa();
 
 
-        empresa.validar();
+        empresa.executarValidacoes();
         return empresaRepository.cadastrar(empresaModels);
     }
 
