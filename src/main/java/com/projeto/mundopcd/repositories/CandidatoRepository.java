@@ -1,14 +1,11 @@
 package com.projeto.mundopcd.repositories;
 
 import com.projeto.mundopcd.models.Candidato;
-import com.projeto.mundopcd.models.EnderecoCandidato;
 import com.projeto.mundopcd.repositories.JPA.CandidatoJPA;
 import com.projeto.mundopcd.repositories.JPA.EnderecoCandidatoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class CandidatoRepository {

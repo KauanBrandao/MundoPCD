@@ -2,7 +2,7 @@ package com.projeto.mundopcd.controllers;
 
 
 import com.projeto.mundopcd.facade.VagaFacade;
-import com.projeto.mundopcd.models.Vaga;
+import com.projeto.mundopcd.models.VagaModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,12 +30,12 @@ public class VagaController {
     }
 
     @PostMapping("/cadastrar")
-    public Vaga cadastrar(@RequestBody Vaga vaga) {
-        return vagaFacade.cadastrar(vaga);
+    public VagaModels cadastrar(@RequestBody VagaModels vagaModels) {
+        return vagaFacade.cadastrar(vagaModels);
     }
 
     @PutMapping("/atualizar")
-    public void atualizar(@RequestBody Vaga vaga) {
-        vagaFacade.atualizar(vaga);
+    public void atualizar(@RequestBody VagaModels vagaModels) {
+        vagaFacade.atualizar(vagaModels);
     }
 }

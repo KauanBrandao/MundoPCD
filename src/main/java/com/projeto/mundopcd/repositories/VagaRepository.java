@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Vaga;
+import com.projeto.mundopcd.models.VagaModels;
 import com.projeto.mundopcd.repositories.JPA.VagaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,16 +21,16 @@ public class VagaRepository {
        return this.vagaJpa.existsById(id);
     }
 
-    public Vaga buscarPorId(int id) {
+    public VagaModels buscarPorId(int id) {
         return this.vagaJpa.findById(id).get();
     }
 
-    public List<Vaga> listar() {
+    public List<VagaModels> listar() {
         return this.vagaJpa.findAll();
     }
 
-    public Vaga cadastrar(Vaga vaga) {
-        return this.vagaJpa.save(vaga);
+    public VagaModels cadastrar(VagaModels vagaModels) {
+        return this.vagaJpa.save(vagaModels);
     }
 
     public void deletar(int id) {
@@ -39,8 +39,8 @@ public class VagaRepository {
         }
     }
 
-    public void atualizar(Vaga vaga) {
-        this.vagaJpa.save(vaga);
+    public void atualizar(VagaModels vagaModels) {
+        this.vagaJpa.save(vagaModels);
     }
 
 }

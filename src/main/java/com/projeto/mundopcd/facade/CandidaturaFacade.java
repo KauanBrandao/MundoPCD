@@ -23,12 +23,12 @@ public class CandidaturaFacade {
         return candidaturaApplication.buscarPorId(id);
     }
 
-    public Candidatura cadastrar(Candidatura curso){
-        return candidaturaApplication.cadastrar(curso);
+    public Candidatura cadastrar(Candidatura candidatura){
+        return candidaturaApplication.cadastrar(candidatura);
     }
 
-    public void atualizar(Candidatura curso){
-        candidaturaApplication.atualizar(curso);
+    public void atualizar(Candidatura candidatura){
+        candidaturaApplication.atualizar(candidatura);
     }
 
     public void deletar(int id){

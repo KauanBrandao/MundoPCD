@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "vagas")
-public class Vaga {
+public class VagaModels {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_vaga")
@@ -31,7 +31,7 @@ public class Vaga {
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
-    private Empresa empresa;
+    private EmpresaModels empresaModels;
 
     @Column(name = "id_empresa")
     private Integer idEmpresa;
@@ -39,10 +39,10 @@ public class Vaga {
     @OneToMany(mappedBy = "vaga")
     private List<Candidatura> candidaturas;
 
-    public Vaga(List<Candidatura> candidaturas, String descricao, Empresa empresa, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
+    public VagaModels(List<Candidatura> candidaturas, String descricao, EmpresaModels empresaModels, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
         this.candidaturas = candidaturas;
         this.descricao = descricao;
-        this.empresa = empresa;
+        this.empresaModels = empresaModels;
         this.localizacao = localizacao;
         this.requisitos = requisitos;
         this.salario = salario;
@@ -50,7 +50,7 @@ public class Vaga {
         this.titulo = titulo;
     }
 
-    public Vaga() {
+    public VagaModels() {
     }
 
     public int getIdVaga() {

@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.EmpresaFacade;
-import com.projeto.mundopcd.models.Empresa;
+import com.projeto.mundopcd.models.EmpresaModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +29,12 @@ public class EmpresaController {
     }
 
     @PostMapping("/cadastrar")
-    public Empresa cadastrar(@RequestBody Empresa empresa) {
-        return empresaFacade.cadastrar(empresa);
+    public EmpresaModels cadastrar(@RequestBody EmpresaModels empresaModels) {
+        return empresaFacade.cadastrar(empresaModels);
     }
 
     @PutMapping("/atualizar")
-    public void atualizar (@RequestBody Empresa empresa) {
-        empresaFacade.atualizar(empresa);
+    public void atualizar (@RequestBody EmpresaModels empresaModels) {
+        empresaFacade.atualizar(empresaModels);
     }
 }

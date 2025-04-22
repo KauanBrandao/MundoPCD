@@ -1,6 +1,7 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.Empresa;
+import com.projeto.mundopcd.entities.Empresa;
+import com.projeto.mundopcd.models.EmpresaModels;
 import com.projeto.mundopcd.repositories.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,23 +14,30 @@ public class EmpresaApplication {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public Empresa buscarPorId(int id) {
+    public EmpresaModels buscarPorId(int id) {
         return empresaRepository.buscarPorId(id);
     }
 
-    public List<Empresa> listar() {
+    public List<EmpresaModels> listar() {
         return empresaRepository.listar();
     }
 
-    public Empresa cadastrar(Empresa empresa) {
-        return empresaRepository.cadastrar(empresa);
+    public EmpresaModels cadastrar(EmpresaModels empresaModels) {
+        Empresa empresa = new Empresa();
+
+
+        empresa.validarCNPJ(empresaModels.getCnpj());
+        empresa.validarTelefone(empresaModels.getTelefone());
+        empresa.validarEmail(empresaModels.getEmail());
+
+        return empresaRepository.cadastrar(empresaModels);
     }
 
     public void deletar(int id) {
         empresaRepository.deletar(id);
     }
 
-    public void atualizar(Empresa empresa) {
-        empresaRepository.atualizar(empresa);
+    public void atualizar(EmpresaModels empresaModels) {
+        empresaRepository.atualizar(empresaModels);
     }
 }

@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.EmpresaApplication;
-import com.projeto.mundopcd.models.Empresa;
+import com.projeto.mundopcd.models.EmpresaModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,19 +17,19 @@ public class EmpresaFacade {
         return empresaApplication.buscarPorId(id);
     }
 
-    public List<Empresa> listar() {
+    public List<EmpresaModels> listar() {
         return empresaApplication.listar();
     }
 
-    public Empresa cadastrar(Empresa empresa) {
-        return empresaApplication.cadastrar(empresa);
+    public EmpresaModels cadastrar(EmpresaModels empresaModels) {
+        return empresaApplication.cadastrar(empresaModels);
     }
 
     public void deletar(int id) {
         empresaApplication.deletar(id);
     }
 
-    public void atualizar(Empresa empresa) {
-        empresaApplication.atualizar(empresa);
+    public void atualizar(EmpresaModels empresaModels) {
+        empresaApplication.atualizar(empresaModels);
     }
 }

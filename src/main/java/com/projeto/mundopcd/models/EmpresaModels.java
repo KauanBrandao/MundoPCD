@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "empresas")
-public class Empresa {
+public class EmpresaModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,19 +48,19 @@ public class Empresa {
     private List<AdministradorEmpresa> administradores;
 
     @OneToMany(mappedBy = "empresa")
-    private List<Vaga> vagas;
+    private List<VagaModels> vagases;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-    private List<EmpresaCurso> empresaCursos;
+    private List<EmpresaCursoModels> empresaCursoModels;
 
-    public Empresa() {}
+    public EmpresaModels() {}
 
-    public List<Vaga> getVagas() {
-        return vagas;
+    public List<VagaModels> getVagas() {
+        return vagases;
     }
 
-    public void setVagas(List<Vaga> vagas) {
-        this.vagas = vagas;
+    public void setVagas(List<VagaModels> vagases) {
+        this.vagases = vagases;
     }
 
     public void setIdPlano(Integer idPlano) {

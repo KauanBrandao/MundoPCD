@@ -1,9 +1,5 @@
 package com.projeto.mundopcd.models;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 import java.util.Date;
 
@@ -25,7 +21,7 @@ public class Candidatura {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga", insertable = false, updatable = false)
-    private Vaga vaga;
+    private VagaModels vagaModels;
 
 
     @Column(name = "id_vaga", nullable = false )
@@ -63,12 +59,12 @@ public class Candidatura {
 //        this.candidato = candidato;
 //    }
 
-    public Vaga getVaga() {
-        return vaga;
+    public VagaModels getVaga() {
+        return vagaModels;
     }
 
-    public void setVaga(Vaga vaga) {
-        this.vaga = vaga;
+    public void setVaga(VagaModels vagaModels) {
+        this.vagaModels = vagaModels;
     }
 
     public Date getDataAplicacao() {

@@ -1,7 +1,6 @@
 package com.projeto.mundopcd.models;
 import jakarta.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "cursos")
@@ -22,7 +21,7 @@ public class Curso {
     private int cargaHoraria;
 
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
-    private List<EmpresaCurso> empresaCursos;
+    private List<EmpresaCursoModels> empresaCursoModels;
 
     @OneToMany(mappedBy = "curso")
     private List<InscricaoCurso> inscricoesCursos;
