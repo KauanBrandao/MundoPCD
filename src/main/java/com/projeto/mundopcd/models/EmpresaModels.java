@@ -32,23 +32,23 @@ public class EmpresaModels {
 
     @ManyToOne
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
-    private Plano plano;
+    private PlanoModels planoModels;
 
     @Column(name = "id_plano")
     private Integer idPlano;
 
     @OneToOne
     @JoinColumn(name = "id_endereco_empresa", referencedColumnName = "id_endereco_empresa", insertable = false, updatable = false)
-    private EnderecoEmpresa enderecoEmpresa;
+    private EnderecoEmpresaModels enderecoEmpresaModels;
 
     @Column(name = "id_endereco_empresa")
     private Integer idEnderecoEmpresa;
 
     @OneToMany(mappedBy = "empresa")
-    private List<AdministradorEmpresa> administradores;
+    private List<AdministradorEmpresaModels> administradores;
 
     @OneToMany(mappedBy = "empresa")
-    private List<VagaModels> vagases;
+    private List<VagaModels> vagas;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<EmpresaCursoModels> empresaCursoModels;
@@ -56,11 +56,11 @@ public class EmpresaModels {
     public EmpresaModels() {}
 
     public List<VagaModels> getVagas() {
-        return vagases;
+        return vagas;
     }
 
     public void setVagas(List<VagaModels> vagases) {
-        this.vagases = vagases;
+        this.vagas = vagases;
     }
 
     public void setIdPlano(Integer idPlano) {
@@ -127,27 +127,27 @@ public class EmpresaModels {
         this.politicaInclusao = politicaInclusao;
     }
 
-    public Plano getPlano() {
-        return plano;
+    public PlanoModels getPlano() {
+        return planoModels;
     }
 
-    public void setPlano(Plano plano) {
-        this.plano = plano;
+    public void setPlano(PlanoModels planoModels) {
+        this.planoModels = planoModels;
     }
 
-    public EnderecoEmpresa getEnderecoEmpresa() {
-        return enderecoEmpresa;
+    public EnderecoEmpresaModels getEnderecoEmpresa() {
+        return enderecoEmpresaModels;
     }
 
-    public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
-        this.enderecoEmpresa = enderecoEmpresa;
+    public void setEnderecoEmpresa(EnderecoEmpresaModels enderecoEmpresaModels) {
+        this.enderecoEmpresaModels = enderecoEmpresaModels;
     }
 
-    public List<AdministradorEmpresa> getAdministradores() {
+    public List<AdministradorEmpresaModels> getAdministradores() {
         return administradores;
     }
 
-    public void setAdministradores(List<AdministradorEmpresa> administradores) {
+    public void setAdministradores(List<AdministradorEmpresaModels> administradores) {
         this.administradores = administradores;
     }
 }

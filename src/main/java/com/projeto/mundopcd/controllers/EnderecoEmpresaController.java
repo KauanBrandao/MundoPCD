@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.EnderecoEmpresaFacade;
-import com.projeto.mundopcd.models.EnderecoEmpresa;
+import com.projeto.mundopcd.models.EnderecoEmpresaModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,13 +29,13 @@ public class EnderecoEmpresaController {
     }
 
     @PostMapping("/cadastrar")
-    public EnderecoEmpresa cadastrar(@RequestBody EnderecoEmpresa enderecoEmpresa){
-        return enderecoEmpresaFacade.cadastrar(enderecoEmpresa);
+    public EnderecoEmpresaModels cadastrar(@RequestBody EnderecoEmpresaModels enderecoEmpresaModels){
+        return enderecoEmpresaFacade.cadastrar(enderecoEmpresaModels);
     }
 
     @PutMapping("/atualizar")
-    public void atualizar(@RequestBody EnderecoEmpresa enderecoEmpresa){
-        enderecoEmpresaFacade.atualizar(enderecoEmpresa);
+    public void atualizar(@RequestBody EnderecoEmpresaModels enderecoEmpresaModels){
+        enderecoEmpresaFacade.atualizar(enderecoEmpresaModels);
     }
 
 }

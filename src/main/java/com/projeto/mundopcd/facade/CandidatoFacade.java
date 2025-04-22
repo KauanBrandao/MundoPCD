@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.CandidatoApplication;
-import com.projeto.mundopcd.models.Candidato;
+import com.projeto.mundopcd.models.CandidatoModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;
@@ -12,7 +12,7 @@ public class CandidatoFacade {
     @Autowired
     CandidatoApplication candidatoApplication;
 
-    public Candidato buscarPorId(int id){
+    public CandidatoModels buscarPorId(int id){
         return candidatoApplication.buscarPorId(id);
     }
 
@@ -20,12 +20,12 @@ public class CandidatoFacade {
         return candidatoApplication.listar();
     }
 
-    public void atualizar(Candidato candidato){
-        candidatoApplication.atualizar(candidato);
+    public void atualizar(CandidatoModels candidatoModels){
+        candidatoApplication.atualizar(candidatoModels);
     }
 
-    public Candidato cadastrar(Candidato candidato){
-        return candidatoApplication.cadastrar(candidato);
+    public CandidatoModels cadastrar(CandidatoModels candidatoModels){
+        return candidatoApplication.cadastrar(candidatoModels);
     }
 
     public void deletar(int id){

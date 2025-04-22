@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.Candidato;
+import com.projeto.mundopcd.models.CandidatoModels;
 import com.projeto.mundopcd.repositories.CandidatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class CandidatoApplication {
         this.candidatoRepository = candidatoRepository;
     }
 
-    public Candidato buscarPorId(int id){
+    public CandidatoModels buscarPorId(int id){
         return candidatoRepository.buscarPorId(id);
     }
 
@@ -24,12 +24,12 @@ public class CandidatoApplication {
         return candidatoRepository.listar();
     }
 
-    public void atualizar(Candidato candidato){
-        candidatoRepository.atualizar(candidato);
+    public void atualizar(CandidatoModels candidatoModels){
+        candidatoRepository.atualizar(candidatoModels);
     }
 
-    public Candidato cadastrar(Candidato candidato) {
-        return candidatoRepository.cadastrar(candidato);
+    public CandidatoModels cadastrar(CandidatoModels candidatoModels) {
+        return candidatoRepository.cadastrar(candidatoModels);
     }
 
     public void deletar(int id){

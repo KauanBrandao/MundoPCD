@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.InscricaoCursoFacade;
-import com.projeto.mundopcd.models.InscricaoCurso;
+import com.projeto.mundopcd.models.InscricaoCursoModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,22 +15,22 @@ public class InscricaoCursoController {
     private InscricaoCursoFacade facade;
 
     @GetMapping("/listar")
-    public List<InscricaoCurso> listar() {
+    public List<InscricaoCursoModels> listar() {
         return facade.listar();
     }
 
     @GetMapping("/{id}")
-    public InscricaoCurso buscarPorId(@PathVariable int id) {
+    public InscricaoCursoModels buscarPorId(@PathVariable int id) {
         return facade.buscarPorId(id);
     }
 
     @PostMapping("/cadastrar")
-    public InscricaoCurso cadastrar(@RequestBody InscricaoCurso inscricao) {
+    public InscricaoCursoModels cadastrar(@RequestBody InscricaoCursoModels inscricao) {
         return facade.cadastrar(inscricao);
     }
 
     @PutMapping("/atualizar")
-    public void atualizar(@RequestBody InscricaoCurso inscricao) {
+    public void atualizar(@RequestBody InscricaoCursoModels inscricao) {
         facade.atualizar(inscricao);
     }
 

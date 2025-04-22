@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.CursoApplication;
-import com.projeto.mundopcd.models.Curso;
+import com.projeto.mundopcd.models.CursoModels;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
@@ -17,16 +17,16 @@ public class CursoFacade {
         return cursoApplication.listar();
     }
 
-    public Curso buscarPorId(int id) {
+    public CursoModels buscarPorId(int id) {
         return cursoApplication.buscarPorId(id);
     }
 
-    public Curso cadastrar(Curso curso){
-        return cursoApplication.cadastrar(curso);
+    public CursoModels cadastrar(CursoModels cursoModels){
+        return cursoApplication.cadastrar(cursoModels);
     }
 
-    public void atualizar(Curso curso){
-        cursoApplication.atualizar(curso);
+    public void atualizar(CursoModels cursoModels){
+        cursoApplication.atualizar(cursoModels);
     }
 
     public void deletar(int id) {

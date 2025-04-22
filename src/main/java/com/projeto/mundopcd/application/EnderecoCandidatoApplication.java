@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.application;
 
+import com.projeto.mundopcd.entities.EnderecoCandidato;
 import com.projeto.mundopcd.models.EnderecoCandidatoModels;
 import com.projeto.mundopcd.repositories.EnderecoCandidatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class EnderecoCandidatoApplication {
     }
 
     public EnderecoCandidatoModels cadastrar(EnderecoCandidatoModels endereco) {
+        EnderecoCandidato enderecoCandidato = new EnderecoCandidato();
+        enderecoCandidato.validar();
         return enderecoCandidatoRepository.cadastrar(endereco);
     }
 

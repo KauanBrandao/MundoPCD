@@ -1,5 +1,5 @@
 package com.projeto.mundopcd.repositories;
-import com.projeto.mundopcd.models.Curso;
+import com.projeto.mundopcd.models.CursoModels;
 import com.projeto.mundopcd.repositories.JPA.CursoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,16 +23,16 @@ public class CursoRepository {
         return this.cursoJpa.existsById(id);
     }
 
-    public Curso buscarPorId(int id) {
+    public CursoModels buscarPorId(int id) {
         return this.cursoJpa.findById(id).get();
     }
 
-    public Curso cadastrar(Curso curso){
-        return cursoJpa.save(curso);
+    public CursoModels cadastrar(CursoModels cursoModels){
+        return cursoJpa.save(cursoModels);
     }
 
-    public void atualizar(Curso curso) {
-        cursoJpa.save(curso);
+    public void atualizar(CursoModels cursoModels) {
+        cursoJpa.save(cursoModels);
     }
 
     public void deletar(int id){

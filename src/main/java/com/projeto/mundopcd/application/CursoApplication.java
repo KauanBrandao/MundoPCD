@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.Curso;
+import com.projeto.mundopcd.models.CursoModels;
 import com.projeto.mundopcd.repositories.CursoRepository;
 import org.springframework.stereotype.Component;
 import java.util.List;
@@ -18,16 +18,16 @@ public class CursoApplication {
         return cursoRepository.listar();
     }
 
-    public Curso buscarPorId(int id) {
+    public CursoModels buscarPorId(int id) {
         return cursoRepository.buscarPorId(id);
     }
 
-    public Curso cadastrar(Curso curso){
-        return cursoRepository.cadastrar(curso);
+    public CursoModels cadastrar(CursoModels cursoModels){
+        return cursoRepository.cadastrar(cursoModels);
     }
 
-    public void atualizar(Curso curso){
-        cursoRepository.atualizar(curso);
+    public void atualizar(CursoModels cursoModels){
+        cursoRepository.atualizar(cursoModels);
     }
 
     public void deletar(int id){

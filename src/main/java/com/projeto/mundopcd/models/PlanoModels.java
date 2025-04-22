@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "planos")
-public class Plano {
+public class PlanoModels {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_plano")
@@ -25,17 +25,17 @@ public class Plano {
     private List<EmpresaModels> empresaModels;
 
     @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
-    private List<Candidato> candidatos;
+    private List<CandidatoModels> candidatoModels;
 
-    public Plano(List<Candidato> candidatos, List<EmpresaModels> empresaModels, String nome, Double valor, String tipo) {
-        this.candidatos = candidatos;
+    public PlanoModels(List<CandidatoModels> candidatoModels, List<EmpresaModels> empresaModels, String nome, Double valor, String tipo) {
+        this.candidatoModels = candidatoModels;
         this.empresaModels = empresaModels;
         this.nome = nome;
         this.valor = valor;
         this.tipo = tipo;
     }
 
-    public Plano() {
+    public PlanoModels() {
 
     }
 

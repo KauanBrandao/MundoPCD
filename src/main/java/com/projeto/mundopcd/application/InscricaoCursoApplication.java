@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.InscricaoCurso;
+import com.projeto.mundopcd.models.InscricaoCursoModels;
 import com.projeto.mundopcd.repositories.InscricaoCursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,19 +13,19 @@ public class InscricaoCursoApplication {
     @Autowired
     private InscricaoCursoRepository inscricaoCursoRepository;
 
-    public List<InscricaoCurso> listar() {
+    public List<InscricaoCursoModels> listar() {
         return inscricaoCursoRepository.listar();
     }
 
-    public InscricaoCurso buscarPorId(int id) {
+    public InscricaoCursoModels buscarPorId(int id) {
         return inscricaoCursoRepository.buscarPorId(id);
     }
 
-    public InscricaoCurso cadastrar(InscricaoCurso inscricao) {
+    public InscricaoCursoModels cadastrar(InscricaoCursoModels inscricao) {
         return inscricaoCursoRepository.cadastrar(inscricao);
     }
 
-    public void atualizar(InscricaoCurso inscricao) {
+    public void atualizar(InscricaoCursoModels inscricao) {
         inscricaoCursoRepository.atualizar(inscricao);
     }
 

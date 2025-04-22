@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.AdministradorEmpresa;
+import com.projeto.mundopcd.models.AdministradorEmpresaModels;
 import com.projeto.mundopcd.repositories.AdministradorEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,23 +13,23 @@ public class AdministradorEmpresaApplication {
     @Autowired
     private AdministradorEmpresaRepository administradorEmpresaRepository;
 
-    public AdministradorEmpresa buscarPorId(int id) {
+    public AdministradorEmpresaModels buscarPorId(int id) {
         return administradorEmpresaRepository.buscarPorId(id);
     }
 
-    public List<AdministradorEmpresa> listar() {
+    public List<AdministradorEmpresaModels> listar() {
         return administradorEmpresaRepository.listar();
     }
 
-    public AdministradorEmpresa cadastrar(AdministradorEmpresa administradorEmpresa) {
-        return administradorEmpresaRepository.cadastrar(administradorEmpresa);
+    public AdministradorEmpresaModels cadastrar(AdministradorEmpresaModels administradorEmpresaModels) {
+        return administradorEmpresaRepository.cadastrar(administradorEmpresaModels);
     }
 
     public void deletar(int id) {
         administradorEmpresaRepository.deletar(id);
     }
 
-    public void atualizar(AdministradorEmpresa administradorEmpresa) {
-        administradorEmpresaRepository.atualizar(administradorEmpresa);
+    public void atualizar(AdministradorEmpresaModels administradorEmpresaModels) {
+        administradorEmpresaRepository.atualizar(administradorEmpresaModels);
     }
 }
