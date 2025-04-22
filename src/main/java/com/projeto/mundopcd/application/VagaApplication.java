@@ -25,7 +25,7 @@ public class VagaApplication {
     public VagaModels cadastrar(VagaModels vagaModels) {
         Vagas vaga = new Vagas();
 
-        vaga.validar();
+        vaga.executarValidacoes();
         return vagaRepository.cadastrar(vagaModels);
     }
 
