@@ -22,14 +22,14 @@ public class Plano {
     private String tipo;
 
     @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
-    private List<Empresa> empresas;
+    private List<EmpresaModels> empresaModels;
 
     @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
     private List<Candidato> candidatos;
 
-    public Plano(List<Candidato> candidatos, List<Empresa> empresas, String nome, Double valor, String tipo) {
+    public Plano(List<Candidato> candidatos, List<EmpresaModels> empresaModels, String nome, Double valor, String tipo) {
         this.candidatos = candidatos;
-        this.empresas = empresas;
+        this.empresaModels = empresaModels;
         this.nome = nome;
         this.valor = valor;
         this.tipo = tipo;

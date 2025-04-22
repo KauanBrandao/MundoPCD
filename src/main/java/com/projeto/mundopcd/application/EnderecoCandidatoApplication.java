@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.EnderecoCandidato;
+import com.projeto.mundopcd.models.EnderecoCandidatoModels;
 import com.projeto.mundopcd.repositories.EnderecoCandidatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,15 +13,15 @@ public class EnderecoCandidatoApplication {
     @Autowired
     private EnderecoCandidatoRepository enderecoCandidatoRepository;
 
-    public EnderecoCandidato buscarPorId(int id) {
+    public EnderecoCandidatoModels buscarPorId(int id) {
         return enderecoCandidatoRepository.buscarPorId(id);
     }
 
-    public List<EnderecoCandidato> listar() {
+    public List<EnderecoCandidatoModels> listar() {
         return enderecoCandidatoRepository.listar();
     }
 
-    public EnderecoCandidato cadastrar(EnderecoCandidato endereco) {
+    public EnderecoCandidatoModels cadastrar(EnderecoCandidatoModels endereco) {
         return enderecoCandidatoRepository.cadastrar(endereco);
     }
 
@@ -29,7 +29,7 @@ public class EnderecoCandidatoApplication {
         enderecoCandidatoRepository.deletar(id);
     }
 
-    public void atualizar(EnderecoCandidato endereco) {
+    public void atualizar(EnderecoCandidatoModels endereco) {
         enderecoCandidatoRepository.atualizar(endereco);
     }
 }

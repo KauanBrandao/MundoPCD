@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.EnderecoCandidatoFacade;
-import com.projeto.mundopcd.models.EnderecoCandidato;
+import com.projeto.mundopcd.models.EnderecoCandidatoModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +24,8 @@ public class EnderecoCandidatoController {
     }
 
     @PostMapping("/cadastrar")
-    public EnderecoCandidato cadastrar(@RequestBody EnderecoCandidato enderecoCandidato) {
-        return enderecoCandidatoFacade.cadastrar(enderecoCandidato);
+    public EnderecoCandidatoModels cadastrar(@RequestBody EnderecoCandidatoModels enderecoCandidatoModels) {
+        return enderecoCandidatoFacade.cadastrar(enderecoCandidatoModels);
     }
 
     @DeleteMapping("/deletar/{id}")
@@ -34,8 +34,8 @@ public class EnderecoCandidatoController {
     }
 
     @PutMapping("/atualizar")
-    public void atualizar(@RequestBody EnderecoCandidato enderecoCandidato) {
-        enderecoCandidatoFacade.atualizar(enderecoCandidato);
+    public void atualizar(@RequestBody EnderecoCandidatoModels enderecoCandidatoModels) {
+        enderecoCandidatoFacade.atualizar(enderecoCandidatoModels);
     }
 
 }

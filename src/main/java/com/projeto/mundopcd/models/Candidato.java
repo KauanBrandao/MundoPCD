@@ -48,7 +48,7 @@ public class Candidato {
 
     @OneToOne
     @JoinColumn(name = "id_endereco_candidato", insertable = false, updatable = false)
-    private EnderecoCandidato endereco;
+    private EnderecoCandidatoModels endereco;
 
     @Column(name = "id_endereco_candidato")
     private Integer idEnderecoCandidato;
@@ -58,7 +58,7 @@ public class Candidato {
 
     public Candidato() {}
 
-    public Candidato(List<Candidatura> candidaturas, String cpf, String curriculo, String email, EnderecoCandidato endereco, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, Plano plano, String telefone, String tipoDeficiencia) {
+    public Candidato(List<Candidatura> candidaturas, String cpf, String curriculo, String email, EnderecoCandidatoModels endereco, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, Plano plano, String telefone, String tipoDeficiencia) {
         this.candidaturas = candidaturas;
         this.cpf = cpf;
         this.curriculo = curriculo;
@@ -171,11 +171,11 @@ public class Candidato {
         this.plano = plano;
     }
 
-    public EnderecoCandidato getEndereco() {
+    public EnderecoCandidatoModels getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(EnderecoCandidato endereco) {
+    public void setEndereco(EnderecoCandidatoModels endereco) {
         this.endereco = endereco;
     }
 

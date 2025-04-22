@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.repositories.JPA;
 
-import com.projeto.mundopcd.models.Empresa;
+import com.projeto.mundopcd.models.EmpresaModels;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EmpresaJPA extends JpaRepository<Empresa, Integer> {
+public interface EmpresaJPA extends JpaRepository<EmpresaModels, Integer> {
 }

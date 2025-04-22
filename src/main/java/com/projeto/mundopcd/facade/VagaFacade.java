@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.VagaApplication;
-import com.projeto.mundopcd.models.Vaga;
+import com.projeto.mundopcd.models.VagaModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,20 +17,20 @@ public class VagaFacade {
         return vagaApplication.buscarPorId(id);
     }
 
-    public List<Vaga> listar() {
+    public List<VagaModels> listar() {
         return vagaApplication.listar();
     }
 
-    public Vaga cadastrar(Vaga vaga) {
-        return vagaApplication.cadastrar(vaga);
+    public VagaModels cadastrar(VagaModels vagaModels) {
+        return vagaApplication.cadastrar(vagaModels);
     }
 
     public void deletar(int id) {
         vagaApplication.deletar(id);
     }
 
-    public void atualizar(Vaga vaga) {
-        vagaApplication.atualizar(vaga);
+    public void atualizar(VagaModels vagaModels) {
+        vagaApplication.atualizar(vagaModels);
     }
 
 }

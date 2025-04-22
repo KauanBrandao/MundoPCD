@@ -8,6 +8,7 @@ public class AdministradorEmpresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id_administrador")
     private int idAdmin;
 
@@ -22,18 +23,18 @@ public class AdministradorEmpresa {
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
-    private Empresa empresa;
+    private EmpresaModels empresaModels;
 
     @Column(name = "id_empresa")
     private Integer idEmpresa;
 
     public AdministradorEmpresa() {}
 
-    public AdministradorEmpresa(String nome, String email, String senha, Empresa empresa) {
+    public AdministradorEmpresa(String nome, String email, String senha, EmpresaModels empresaModels) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.empresa = empresa;
+        this.empresaModels = empresaModels;
     }
 
     public int getIdAdmin() {

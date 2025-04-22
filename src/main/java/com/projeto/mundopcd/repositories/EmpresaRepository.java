@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Empresa;
+import com.projeto.mundopcd.models.EmpresaModels;
 import com.projeto.mundopcd.repositories.JPA.EmpresaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,23 +21,25 @@ public class EmpresaRepository {
         return this.empresaJpa.existsById(id);
     }
 
-    public Empresa buscarPorId(int id) {
+    public EmpresaModels buscarPorId(int id) {
         return this.empresaJpa.findById(id).get();
     }
 
-    public List<Empresa> listar() {
+    public List<EmpresaModels> listar() {
         return this.empresaJpa.findAll();
     }
 
-    public Empresa cadastrar(Empresa empresa) {
-       return this.empresaJpa.save(empresa);
+    public EmpresaModels cadastrar(EmpresaModels empresaModels) {
+       return this.empresaJpa.save(empresaModels);
     }
 
-    public void atualizar(Empresa empresa) {
-        this.empresaJpa.save(empresa);
+    public void atualizar(EmpresaModels empresaModels) {
+        this.empresaJpa.save(empresaModels);
     }
 
     public void deletar(int id) {
         this.empresaJpa.deleteById(id);
     }
+
+
 }

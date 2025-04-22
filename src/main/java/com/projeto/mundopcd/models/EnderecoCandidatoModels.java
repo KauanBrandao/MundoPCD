@@ -1,11 +1,10 @@
 package com.projeto.mundopcd.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "enderecos_candidatos")
-public class EnderecoCandidato {
+public class EnderecoCandidatoModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +33,7 @@ public class EnderecoCandidato {
     @Column(name = "id_candidato")
     private Integer idCandidato;
 
-    public EnderecoCandidato() {
+    public EnderecoCandidatoModels() {
     }
 
     public Candidato getCandidato() {
