@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "administradores_empresas")
-public class AdministradorEmpresa {
+public class AdministradorEmpresaModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +28,9 @@ public class AdministradorEmpresa {
     @Column(name = "id_empresa")
     private Integer idEmpresa;
 
-    public AdministradorEmpresa() {}
+    public AdministradorEmpresaModels() {}
 
-    public AdministradorEmpresa(String nome, String email, String senha, EmpresaModels empresaModels) {
+    public AdministradorEmpresaModels(String nome, String email, String senha, EmpresaModels empresaModels) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;

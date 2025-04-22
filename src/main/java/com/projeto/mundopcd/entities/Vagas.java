@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.entities;
 
-import com.projeto.mundopcd.models.Candidatura;
+import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.models.EmpresaModels;
 
 import java.util.List;
@@ -15,9 +15,9 @@ public class Vagas {
     private String localizacao;
     private EmpresaModels empresaModels;
     private Integer idEmpresa;
-    private List<Candidatura> candidaturas;
+    private List<CandidaturaModels> candidaturaModels;
 
-    public Vagas(int idVaga, String titulo, String descricao, String requisitos, double salario, String tipoContratacao, String localizacao, EmpresaModels empresaModels, Integer idEmpresa, List<Candidatura> candidaturas) {
+    public Vagas(int idVaga, String titulo, String descricao, String requisitos, double salario, String tipoContratacao, String localizacao, EmpresaModels empresaModels, Integer idEmpresa, List<CandidaturaModels> candidaturaModels) {
         this.idVaga = idVaga;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -27,8 +27,10 @@ public class Vagas {
         this.localizacao = localizacao;
         this.empresaModels = empresaModels;
         this.idEmpresa = idEmpresa;
-        this.candidaturas = candidaturas;
+        this.candidaturaModels = candidaturaModels;
 
+    }
+    public Vagas() {
     }
 
     public void validar() {

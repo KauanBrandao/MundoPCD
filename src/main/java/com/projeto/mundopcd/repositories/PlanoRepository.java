@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Plano;
+import com.projeto.mundopcd.models.PlanoModels;
 import com.projeto.mundopcd.repositories.JPA.PlanoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,20 +17,20 @@ public class PlanoRepository {
         this.planoJpa = planoJpa;
     }
 
-    public List<Plano> listar() {
+    public List<PlanoModels> listar() {
         return this.planoJpa.findAll();
     }
 
-    public Plano buscarPorId(int id) {
+    public PlanoModels buscarPorId(int id) {
         return this.planoJpa.findById(id).get();
     }
 
-    public Plano cadastrar(Plano plano) {
-        return this.planoJpa.save(plano);
+    public PlanoModels cadastrar(PlanoModels planoModels) {
+        return this.planoJpa.save(planoModels);
     }
 
-    public void atualizar(Plano plano) {
-        this.planoJpa.save(plano);
+    public void atualizar(PlanoModels planoModels) {
+        this.planoJpa.save(planoModels);
     }
 
     public void deletar(int id) {

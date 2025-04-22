@@ -12,15 +12,15 @@ public class Empresa {
     private String telefone;
     private String setor;
     private String politicaInclusao;
-    private Plano plano;
+    private PlanoModels planoModels;
     private Integer idPlano;
-    private EnderecoEmpresa enderecoEmpresa;
+    private EnderecoEmpresaModels enderecoEmpresaModels;
     private Integer idEnderecoEmpresa;
-    private List<AdministradorEmpresa> administradores;
-    private List<VagaModels> vagases;
+    private List<AdministradorEmpresaModels> administradores;
+    private List<VagaModels> vagas;
     private List<EmpresaCursoModels> empresaCursoModels;
 
-    public Empresa(int idEmpresa, String nome, String cnpj, String email, String telefone, String setor, String politicaInclusao, Plano plano, Integer idPlano, EnderecoEmpresa enderecoEmpresa, Integer idEnderecoEmpresa, List<AdministradorEmpresa> administradores, List<VagaModels> vagases, List<EmpresaCursoModels> empresaCursoModels) {
+    public Empresa(int idEmpresa, String nome, String cnpj, String email, String telefone, String setor, String politicaInclusao, PlanoModels planoModels, Integer idPlano, EnderecoEmpresaModels enderecoEmpresaModels, Integer idEnderecoEmpresa, List<AdministradorEmpresaModels> administradores, List<VagaModels> vagas, List<EmpresaCursoModels> empresaCursoModels) {
         this.idEmpresa = idEmpresa;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -28,12 +28,12 @@ public class Empresa {
         this.telefone = telefone;
         this.setor = setor;
         this.politicaInclusao = politicaInclusao;
-        this.plano = plano;
+        this.planoModels = planoModels;
         this.idPlano = idPlano;
-        this.enderecoEmpresa = enderecoEmpresa;
+        this.enderecoEmpresaModels = enderecoEmpresaModels;
         this.idEnderecoEmpresa = idEnderecoEmpresa;
         this.administradores = administradores;
-        this.vagases = vagases;
+        this.vagas = vagas;
         this.empresaCursoModels = empresaCursoModels;
 
     }
@@ -178,12 +178,12 @@ public class Empresa {
         this.politicaInclusao = politicaInclusao;
     }
 
-    public Plano getPlano() {
-        return plano;
+    public PlanoModels getPlano() {
+        return planoModels;
     }
 
-    public void setPlano(Plano plano) {
-        this.plano = plano;
+    public void setPlano(PlanoModels planoModels) {
+        this.planoModels = planoModels;
     }
 
     public Integer getIdPlano() {
@@ -194,12 +194,12 @@ public class Empresa {
         this.idPlano = idPlano;
     }
 
-    public EnderecoEmpresa getEnderecoEmpresa() {
-        return enderecoEmpresa;
+    public EnderecoEmpresaModels getEnderecoEmpresa() {
+        return enderecoEmpresaModels;
     }
 
-    public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
-        this.enderecoEmpresa = enderecoEmpresa;
+    public void setEnderecoEmpresa(EnderecoEmpresaModels enderecoEmpresaModels) {
+        this.enderecoEmpresaModels = enderecoEmpresaModels;
     }
 
     public Integer getIdEnderecoEmpresa() {
@@ -210,20 +210,20 @@ public class Empresa {
         this.idEnderecoEmpresa = idEnderecoEmpresa;
     }
 
-    public List<AdministradorEmpresa> getAdministradores() {
+    public List<AdministradorEmpresaModels> getAdministradores() {
         return administradores;
     }
 
-    public void setAdministradores(List<AdministradorEmpresa> administradores) {
+    public void setAdministradores(List<AdministradorEmpresaModels> administradores) {
         this.administradores = administradores;
     }
 
-    public List<VagaModels> getVagases() {
-        return vagases;
+    public List<VagaModels> getVagas() {
+        return vagas;
     }
 
-    public void setVagases(List<VagaModels> vagases) {
-        this.vagases = vagases;
+    public void setVagas(List<VagaModels> vagas) {
+        this.vagas = vagas;
     }
 
     public List<EmpresaCursoModels> getEmpresaCursoModels() {

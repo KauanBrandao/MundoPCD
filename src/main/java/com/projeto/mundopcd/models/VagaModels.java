@@ -37,10 +37,10 @@ public class VagaModels {
     private Integer idEmpresa;
 
     @OneToMany(mappedBy = "vaga")
-    private List<Candidatura> candidaturas;
+    private List<CandidaturaModels> candidaturaModels;
 
-    public VagaModels(List<Candidatura> candidaturas, String descricao, EmpresaModels empresaModels, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
-        this.candidaturas = candidaturas;
+    public VagaModels(List<CandidaturaModels> candidaturaModels, String descricao, EmpresaModels empresaModels, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
+        this.candidaturaModels = candidaturaModels;
         this.descricao = descricao;
         this.empresaModels = empresaModels;
         this.localizacao = localizacao;

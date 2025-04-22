@@ -28,7 +28,7 @@ public class EnderecoCandidatoModels {
 
     @OneToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato", insertable = false, updatable = false)
-    private Candidato candidato;
+    private CandidatoModels candidatoModels;
 
     @Column(name = "id_candidato")
     private Integer idCandidato;
@@ -36,12 +36,12 @@ public class EnderecoCandidatoModels {
     public EnderecoCandidatoModels() {
     }
 
-    public Candidato getCandidato() {
-        return candidato;
+    public CandidatoModels getCandidato() {
+        return candidatoModels;
     }
 
-    public void setCandidato(Candidato candidato) {
-        this.candidato = candidato;
+    public void setCandidato(CandidatoModels candidatoModels) {
+        this.candidatoModels = candidatoModels;
     }
 
     public String getLogradouro() {

@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.CandidaturaApplication;
-import com.projeto.mundopcd.models.Candidatura;
+import com.projeto.mundopcd.models.CandidaturaModels;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,16 +19,16 @@ public class CandidaturaFacade {
         return this.candidaturaApplication.listar();
     }
 
-    public Candidatura buscarPorId(int id) {
+    public CandidaturaModels buscarPorId(int id) {
         return candidaturaApplication.buscarPorId(id);
     }
 
-    public Candidatura cadastrar(Candidatura candidatura){
-        return candidaturaApplication.cadastrar(candidatura);
+    public CandidaturaModels cadastrar(CandidaturaModels candidaturaModels){
+        return candidaturaApplication.cadastrar(candidaturaModels);
     }
 
-    public void atualizar(Candidatura candidatura){
-        candidaturaApplication.atualizar(candidatura);
+    public void atualizar(CandidaturaModels candidaturaModels){
+        candidaturaApplication.atualizar(candidaturaModels);
     }
 
     public void deletar(int id){

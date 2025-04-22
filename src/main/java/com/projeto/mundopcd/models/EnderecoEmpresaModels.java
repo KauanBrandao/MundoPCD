@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "enderecos_empresas")
-public class EnderecoEmpresa {
+public class EnderecoEmpresaModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class EnderecoEmpresa {
     @Column(name = "id_empresa")
     private Integer idEmpresa;
 
-    public EnderecoEmpresa(String cep, String cidade, EmpresaModels empresaModels, String estado, String logradouro, String numero) {
+    public EnderecoEmpresaModels(String cep, String cidade, EmpresaModels empresaModels, String estado, String logradouro, String numero) {
         this.cep = cep;
         this.cidade = cidade;
         this.empresaModels = empresaModels;
@@ -42,7 +42,7 @@ public class EnderecoEmpresa {
     }
 
 
-    public EnderecoEmpresa() {
+    public EnderecoEmpresaModels() {
 
     }
 

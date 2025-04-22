@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.models.Candidatura;
+import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.repositories.CandidaturaRepository;
 import org.springframework.stereotype.Component;
 import java.util.List;
@@ -18,15 +18,15 @@ public class CandidaturaApplication {
         return candidaturaRepository.listar();
     }
 
-    public Candidatura buscarPorId(int id) {
+    public CandidaturaModels buscarPorId(int id) {
         return candidaturaRepository.buscarPorId(id);
     }
 
-    public Candidatura cadastrar(Candidatura curso){
+    public CandidaturaModels cadastrar(CandidaturaModels curso){
         return candidaturaRepository.cadastrar(curso);
     }
 
-    public void atualizar(Candidatura curso){
+    public void atualizar(CandidaturaModels curso){
         candidaturaRepository.atualizar(curso);
     }
 

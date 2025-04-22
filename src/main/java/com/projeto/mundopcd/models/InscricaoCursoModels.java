@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "inscricoes_cursos")
-public class InscricaoCurso {
+public class InscricaoCursoModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,32 +13,32 @@ public class InscricaoCurso {
     
     @ManyToOne
     @JoinColumn(name = "id_curso", referencedColumnName = "id_curso", insertable = false, updatable = false)
-    private Curso curso;
+    private CursoModels cursoModels;
 
     @Column(name = "id_curso")
     private Integer idCurso;
 
     @ManyToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato", insertable = false, updatable = false)
-    private Candidato candidato;
+    private CandidatoModels candidatoModels;
 
     @Column(name = "id_candidato")
     private Integer idCandidato;
 
-    public InscricaoCurso() {
+    public InscricaoCursoModels() {
 
     }
 
-    public Curso getCurso() {
-        return curso;
+    public CursoModels getCurso() {
+        return cursoModels;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setCurso(CursoModels cursoModels) {
+        this.cursoModels = cursoModels;
     }
 
-    public Candidato getCandidato() {
-        return candidato;
+    public CandidatoModels getCandidato() {
+        return candidatoModels;
     }
 
     public void setIdCandidato(Integer idCandidato) {
@@ -49,8 +49,8 @@ public class InscricaoCurso {
         this.idCurso = idCurso;
     }
 
-    public void setCandidato(Candidato candidato) {
-        this.candidato = candidato;
+    public void setCandidato(CandidatoModels candidatoModels) {
+        this.candidatoModels = candidatoModels;
     }
 
     public int getIdInscricaoCurso() {

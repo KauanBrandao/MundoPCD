@@ -3,7 +3,7 @@ package com.projeto.mundopcd.repositories;
 import com.projeto.mundopcd.repositories.JPA.AdministradorEmpresaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.projeto.mundopcd.models.AdministradorEmpresa;
+import com.projeto.mundopcd.models.AdministradorEmpresaModels;
 import java.util.List;
 
 @Repository
@@ -19,20 +19,20 @@ public class AdministradorEmpresaRepository {
         return this.administradorEmpresaJpa.existsById(id);
     }
 
-    public AdministradorEmpresa buscarPorId(int id) {
+    public AdministradorEmpresaModels buscarPorId(int id) {
        return this.administradorEmpresaJpa.findById(id).get();
     }
 
-    public List<AdministradorEmpresa> listar() {
+    public List<AdministradorEmpresaModels> listar() {
         return this.administradorEmpresaJpa.findAll();
     }
 
-    public AdministradorEmpresa cadastrar(AdministradorEmpresa administradorEmpresa) {
-        return administradorEmpresaJpa.save(administradorEmpresa);
+    public AdministradorEmpresaModels cadastrar(AdministradorEmpresaModels administradorEmpresaModels) {
+        return administradorEmpresaJpa.save(administradorEmpresaModels);
     }
 
-    public void atualizar(AdministradorEmpresa administradorEmpresa) {
-        administradorEmpresaJpa.save(administradorEmpresa);
+    public void atualizar(AdministradorEmpresaModels administradorEmpresaModels) {
+        administradorEmpresaJpa.save(administradorEmpresaModels);
     }
 
     public void deletar(int id) {

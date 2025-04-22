@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Candidatura;
+import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.repositories.JPA.CandidaturaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,16 +24,16 @@ public class CandidaturaRepository {
         return this.candidaturaJpa.existsById(id);
     }
 
-    public Candidatura buscarPorId(int id) {
+    public CandidaturaModels buscarPorId(int id) {
         return this.candidaturaJpa.findById(id).get();
     }
 
-    public Candidatura cadastrar(Candidatura candidatura){
-        return candidaturaJpa.save(candidatura);
+    public CandidaturaModels cadastrar(CandidaturaModels candidaturaModels){
+        return candidaturaJpa.save(candidaturaModels);
     }
 
-    public void atualizar(Candidatura candidatura) {
-        this.candidaturaJpa.save(candidatura);
+    public void atualizar(CandidaturaModels candidaturaModels) {
+        this.candidaturaJpa.save(candidaturaModels);
     }
 
     public void deletar(int id){

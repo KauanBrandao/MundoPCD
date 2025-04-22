@@ -26,10 +26,7 @@ public class EmpresaApplication {
         Empresa empresa = new Empresa();
 
 
-        empresa.validarCNPJ(empresaModels.getCnpj());
-        empresa.validarTelefone(empresaModels.getTelefone());
-        empresa.validarEmail(empresaModels.getEmail());
-
+        empresa.validar();
         return empresaRepository.cadastrar(empresaModels);
     }
 

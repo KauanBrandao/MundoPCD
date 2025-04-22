@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.CursoFacade;
-import com.projeto.mundopcd.models.Curso;
+import com.projeto.mundopcd.models.CursoModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,13 +29,13 @@ public class CursoController {
     }
 
     @PostMapping("/cadastrar")
-    public Object cadastrar(@RequestBody Curso curso){
-        return cursoFacade.cadastrar(curso);
+    public Object cadastrar(@RequestBody CursoModels cursoModels){
+        return cursoFacade.cadastrar(cursoModels);
     }
 
     @PutMapping("/atualizar")
-    public void atualizar(@RequestBody Curso curso){
-        cursoFacade.atualizar(curso);
+    public void atualizar(@RequestBody CursoModels cursoModels){
+        cursoFacade.atualizar(cursoModels);
     }
 
     @DeleteMapping("/deletar/{id}")
