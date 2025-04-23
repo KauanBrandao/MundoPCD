@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.application;
 
+import com.projeto.mundopcd.entities.Candidatura;
 import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.repositories.CandidaturaRepository;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ public class CandidaturaApplication {
     private CandidaturaRepository candidaturaRepository;
 
     public CandidaturaApplication(CandidaturaRepository candidaturaRepository) {
+        //Candidatura c = new Candidatura();
         this.candidaturaRepository = candidaturaRepository;
     }
 
