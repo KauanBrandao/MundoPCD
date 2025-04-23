@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.application;
 
+import com.projeto.mundopcd.entities.Candidato;
 import com.projeto.mundopcd.models.CandidatoModels;
 import com.projeto.mundopcd.repositories.CandidatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ public class CandidatoApplication {
     private CandidatoRepository candidatoRepository;
 
     public CandidatoApplication(CandidatoRepository candidatoRepository){
+        Candidato c = new Candidato();
+        c.validar();
         this.candidatoRepository = candidatoRepository;
     }
 

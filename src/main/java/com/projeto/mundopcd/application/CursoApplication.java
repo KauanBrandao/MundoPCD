@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.application;
 
+import com.projeto.mundopcd.entities.Curso;
 import com.projeto.mundopcd.models.CursoModels;
 import com.projeto.mundopcd.repositories.CursoRepository;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,8 @@ public class CursoApplication {
     private CursoRepository cursoRepository;
 
     public CursoApplication(CursoRepository cursoRepository) {
+        //Curso c = new Curso();
+        //c.validar();
         this.cursoRepository = cursoRepository;
     }
 
