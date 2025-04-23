@@ -23,18 +23,18 @@ public class AdministradorEmpresaModels {
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
-    private EmpresaModels empresaModels;
+    private EmpresaModels empresa;
 
     @Column(name = "id_empresa")
     private Integer idEmpresa;
 
     public AdministradorEmpresaModels() {}
 
-    public AdministradorEmpresaModels(String nome, String email, String senha, EmpresaModels empresaModels) {
+    public AdministradorEmpresaModels(String nome, String email, String senha, EmpresaModels empresa) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.empresaModels = empresaModels;
+        this.empresa = empresa;
     }
 
     public int getIdAdmin() {

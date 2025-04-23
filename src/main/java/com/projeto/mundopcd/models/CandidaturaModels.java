@@ -14,14 +14,14 @@ public class CandidaturaModels {
 
     @ManyToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato", insertable = false, updatable = false)
-    private CandidatoModels candidatoModels;
+    private CandidatoModels candidato;
 
     @Column(name = "id_candidato")
     private Integer idCandidato;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga", insertable = false, updatable = false)
-    private VagaModels vagaModels;
+    private VagaModels vaga;
 
 
     @Column(name = "id_vaga", nullable = false )
@@ -60,11 +60,11 @@ public class CandidaturaModels {
 //    }
 
     public VagaModels getVaga() {
-        return vagaModels;
+        return vaga;
     }
 
     public void setVaga(VagaModels vagaModels) {
-        this.vagaModels = vagaModels;
+        this.vaga = vagaModels;
     }
 
     public Date getDataAplicacao() {

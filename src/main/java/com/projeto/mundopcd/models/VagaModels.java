@@ -31,18 +31,18 @@ public class VagaModels {
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
-    private EmpresaModels empresaModels;
+    private EmpresaModels empresa;
 
     @Column(name = "id_empresa")
     private Integer idEmpresa;
 
     @OneToMany(mappedBy = "vaga")
-    private List<CandidaturaModels> candidaturaModels;
+    private List<CandidaturaModels> candidatura;
 
-    public VagaModels(List<CandidaturaModels> candidaturaModels, String descricao, EmpresaModels empresaModels, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
-        this.candidaturaModels = candidaturaModels;
+    public VagaModels(List<CandidaturaModels> candidatura, String descricao, EmpresaModels empresa, String localizacao, String requisitos, double salario, String tipoContratacao, String titulo) {
+        this.candidatura = candidatura;
         this.descricao = descricao;
-        this.empresaModels = empresaModels;
+        this.empresa = empresa;
         this.localizacao = localizacao;
         this.requisitos = requisitos;
         this.salario = salario;

@@ -32,14 +32,14 @@ public class EmpresaModels {
 
     @ManyToOne
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
-    private PlanoModels planoModels;
+    private PlanoModels plano;
 
     @Column(name = "id_plano")
     private Integer idPlano;
 
     @OneToOne
     @JoinColumn(name = "id_endereco_empresa", referencedColumnName = "id_endereco_empresa", insertable = false, updatable = false)
-    private EnderecoEmpresaModels enderecoEmpresaModels;
+    private EnderecoEmpresaModels enderecoEmpresa;
 
     @Column(name = "id_endereco_empresa")
     private Integer idEnderecoEmpresa;
@@ -51,7 +51,7 @@ public class EmpresaModels {
     private List<VagaModels> vagas;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-    private List<EmpresaCursoModels> empresaCursoModels;
+    private List<EmpresaCursoModels> empresaCurso;
 
     public EmpresaModels() {}
 
@@ -128,19 +128,19 @@ public class EmpresaModels {
     }
 
     public PlanoModels getPlano() {
-        return planoModels;
+        return plano;
     }
 
     public void setPlano(PlanoModels planoModels) {
-        this.planoModels = planoModels;
+        this.plano = planoModels;
     }
 
     public EnderecoEmpresaModels getEnderecoEmpresa() {
-        return enderecoEmpresaModels;
+        return enderecoEmpresa;
     }
 
     public void setEnderecoEmpresa(EnderecoEmpresaModels enderecoEmpresaModels) {
-        this.enderecoEmpresaModels = enderecoEmpresaModels;
+        this.enderecoEmpresa = enderecoEmpresaModels;
     }
 
     public List<AdministradorEmpresaModels> getAdministradores() {

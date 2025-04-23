@@ -12,14 +12,14 @@ public class EmpresaCursoModels {
 
     @ManyToOne
     @JoinColumn(name = "id_curso", referencedColumnName = "id_curso", insertable = false, updatable = false)
-    private CursoModels cursoModels;
+    private CursoModels curso;
 
     @Column(name = "id_curso")
     private int idCurso;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
-    private EmpresaModels empresaModels;
+    private EmpresaModels empresa;
 
     @Column(name = "id_empresa")
     private int idEmpresa;

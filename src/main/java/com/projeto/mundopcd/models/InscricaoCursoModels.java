@@ -13,14 +13,14 @@ public class InscricaoCursoModels {
     
     @ManyToOne
     @JoinColumn(name = "id_curso", referencedColumnName = "id_curso", insertable = false, updatable = false)
-    private CursoModels cursoModels;
+    private CursoModels curso;
 
     @Column(name = "id_curso")
     private Integer idCurso;
 
     @ManyToOne
     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato", insertable = false, updatable = false)
-    private CandidatoModels candidatoModels;
+    private CandidatoModels candidato;
 
     @Column(name = "id_candidato")
     private Integer idCandidato;
@@ -30,15 +30,15 @@ public class InscricaoCursoModels {
     }
 
     public CursoModels getCurso() {
-        return cursoModels;
+        return curso;
     }
 
     public void setCurso(CursoModels cursoModels) {
-        this.cursoModels = cursoModels;
+        this.curso = cursoModels;
     }
 
     public CandidatoModels getCandidato() {
-        return candidatoModels;
+        return candidato;
     }
 
     public void setIdCandidato(Integer idCandidato) {
@@ -50,7 +50,7 @@ public class InscricaoCursoModels {
     }
 
     public void setCandidato(CandidatoModels candidatoModels) {
-        this.candidatoModels = candidatoModels;
+        this.candidato = candidatoModels;
     }
 
     public int getIdInscricaoCurso() {

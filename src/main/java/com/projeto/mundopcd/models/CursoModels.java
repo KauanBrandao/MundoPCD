@@ -21,7 +21,7 @@ public class CursoModels {
     private int cargaHoraria;
 
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
-    private List<EmpresaCursoModels> empresaCursoModels;
+    private List<EmpresaCursoModels> empresaCurso;
 
     @OneToMany(mappedBy = "curso")
     private List<InscricaoCursoModels> inscricoesCursos;

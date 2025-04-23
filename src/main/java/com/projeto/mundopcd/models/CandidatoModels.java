@@ -41,7 +41,7 @@ public class CandidatoModels {
 
     @ManyToOne
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
-    private PlanoModels planoModels;
+    private PlanoModels plano;
 
     @Column(name = "id_plano")
     private Integer idPlano;
@@ -54,12 +54,12 @@ public class CandidatoModels {
     private Integer idEnderecoCandidato;
 
     @OneToMany(mappedBy = "candidato")
-    private List<CandidaturaModels> candidaturaModels;
+    private List<CandidaturaModels> candidatura;
 
     public CandidatoModels() {}
 
-    public CandidatoModels(List<CandidaturaModels> candidaturaModels, String cpf, String curriculo, String email, EnderecoCandidatoModels endereco, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, PlanoModels planoModels, String telefone, String tipoDeficiencia) {
-        this.candidaturaModels = candidaturaModels;
+    public CandidatoModels(List<CandidaturaModels> candidatura, String cpf, String curriculo, String email, EnderecoCandidatoModels endereco, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, PlanoModels plano, String telefone, String tipoDeficiencia) {
+        this.candidatura = candidatura;
         this.cpf = cpf;
         this.curriculo = curriculo;
         this.email = email;
@@ -70,7 +70,7 @@ public class CandidatoModels {
         this.idEnderecoCandidato = idEnderecoCandidato;
         this.idPlano = idPlano;
         this.nome = nome;
-        this.planoModels = planoModels;
+        this.plano = plano;
         this.telefone = telefone;
         this.tipoDeficiencia = tipoDeficiencia;
     }
@@ -164,11 +164,11 @@ public class CandidatoModels {
     }
 
     public PlanoModels getPlano() {
-        return planoModels;
+        return plano;
     }
 
     public void setPlano(PlanoModels planoModels) {
-        this.planoModels = planoModels;
+        this.plano = planoModels;
     }
 
     public EnderecoCandidatoModels getEndereco() {
@@ -180,10 +180,10 @@ public class CandidatoModels {
     }
 
     public List<CandidaturaModels> getCandidaturas() {
-        return candidaturaModels;
+        return candidatura;
     }
 
     public void setCandidaturas(List<CandidaturaModels> candidaturaModels) {
-        this.candidaturaModels = candidaturaModels;
+        this.candidatura = candidaturaModels;
     }
 }
