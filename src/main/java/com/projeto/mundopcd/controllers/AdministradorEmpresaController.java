@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.controllers;
 
 import com.projeto.mundopcd.facade.AdministradorEmpresaFacade;
-import com.projeto.mundopcd.models.AdministradorEmpresa;
+import com.projeto.mundopcd.models.AdministradorEmpresaModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,15 +29,13 @@ public class AdministradorEmpresaController {
     }
 
     @PostMapping("/cadastrar")
-    public AdministradorEmpresa cadastrar(@RequestBody AdministradorEmpresa administradorEmpresa){
-        return administradorEmpresaFacade.cadastrar(administradorEmpresa);
+    public AdministradorEmpresaModels cadastrar(@RequestBody AdministradorEmpresaModels administradorEmpresaModels){
+        return administradorEmpresaFacade.cadastrar(administradorEmpresaModels);
     }
 
-    @PutMapping("/atualizar/{id}")
-    public void atualizar(@RequestBody AdministradorEmpresa administradorEmpresa, @PathVariable int id){
-        administradorEmpresaFacade.atualizar(administradorEmpresa, id);
+    @PutMapping("/atualizar")
+    public void atualizar(@RequestBody AdministradorEmpresaModels administradorEmpresaModels){
+        administradorEmpresaFacade.atualizar(administradorEmpresaModels);
     }
 
 }
-
-

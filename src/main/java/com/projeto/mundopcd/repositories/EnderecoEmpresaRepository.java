@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.EnderecoEmpresa;
+import com.projeto.mundopcd.models.EnderecoEmpresaModels;
 import com.projeto.mundopcd.repositories.JPA.EnderecoEmpresaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,28 +20,20 @@ public class EnderecoEmpresaRepository {
         return this.enderecoEmpresaJpa.existsById(id);
     }
 
-    public EnderecoEmpresa buscarPorId(int id) {
+    public EnderecoEmpresaModels buscarPorId(int id) {
         return this.enderecoEmpresaJpa.findById(id).get();
     }
 
-    public List<EnderecoEmpresa> listar() {
+    public List<EnderecoEmpresaModels> listar() {
         return this.enderecoEmpresaJpa.findAll();
     }
 
-    public EnderecoEmpresa cadastrar(EnderecoEmpresa enderecoEmpresa) {
-        return this.enderecoEmpresaJpa.save(enderecoEmpresa);
+    public EnderecoEmpresaModels cadastrar(EnderecoEmpresaModels enderecoEmpresaModels) {
+        return this.enderecoEmpresaJpa.save(enderecoEmpresaModels);
     }
 
-    public void atualizar(EnderecoEmpresa enderecoEmpresa, int id) {
-        EnderecoEmpresa enderecoInBD = this.enderecoEmpresaJpa.findById(id).get();
-        if (enderecoInBD != null) {
-            enderecoInBD.setLagradouro(enderecoEmpresa.getLogradouro());
-            enderecoInBD.setNumero(enderecoEmpresa.getNumero());
-            enderecoInBD.setCidade(enderecoEmpresa.getCidade());
-            enderecoInBD.setEstado(enderecoEmpresa.getEstado());
-            enderecoInBD.setCep(enderecoEmpresa.getCep());
-            this.enderecoEmpresaJpa.save(enderecoInBD);
-        }
+    public void atualizar(EnderecoEmpresaModels enderecoEmpresaModels) {
+        this.enderecoEmpresaJpa.save(enderecoEmpresaModels);
     }
 
     public void deletar(int id) {

@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.facade;
 
 import com.projeto.mundopcd.application.EnderecoCandidatoApplication;
-import com.projeto.mundopcd.models.EnderecoCandidato;
+import com.projeto.mundopcd.models.EnderecoCandidatoModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,19 +17,19 @@ public class EnderecoCandidatoFacade {
         return enderecoCandidatoApplication.buscarPorId(id);
     }
 
-    public List<EnderecoCandidato> listar() {
+    public List<EnderecoCandidatoModels> listar() {
         return enderecoCandidatoApplication.listar();
     }
 
-    public EnderecoCandidato cadastrar(EnderecoCandidato endereco) {
-        return enderecoCandidatoApplication.cadastrar(endereco);
+    public EnderecoCandidatoModels cadastrar(EnderecoCandidatoModels enderecoCandidatoModels) {
+        return enderecoCandidatoApplication.cadastrar(enderecoCandidatoModels);
     }
 
     public void deletar(int id) {
         enderecoCandidatoApplication.deletar(id);
     }
 
-    public void atualizar(EnderecoCandidato endereco, int id) {
-        enderecoCandidatoApplication.atualizar(endereco, id);
+    public void atualizar(EnderecoCandidatoModels enderecoCandidatoModels) {
+        enderecoCandidatoApplication.atualizar(enderecoCandidatoModels);
     }
 }

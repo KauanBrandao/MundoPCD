@@ -1,7 +1,7 @@
 package com.projeto.mundopcd.repositories;
 
-import com.projeto.mundopcd.models.Planos;
-import com.projeto.mundopcd.repositories.JPA.PlanosJPA;
+import com.projeto.mundopcd.models.PlanoModels;
+import com.projeto.mundopcd.repositories.JPA.PlanoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,39 +10,30 @@ import java.util.List;
 @Repository
 public class PlanoRepository {
 
-    private final PlanosJPA planosJpa;
+    private final PlanoJPA planoJpa;
 
     @Autowired
-    public PlanoRepository(PlanosJPA planosJpa) {
-        this.planosJpa = planosJpa;
+    public PlanoRepository(PlanoJPA planoJpa) {
+        this.planoJpa = planoJpa;
     }
 
-    public List<Planos> listar() {
-        return this.planosJpa.findAll();
+    public List<PlanoModels> listar() {
+        return this.planoJpa.findAll();
     }
 
-    public Planos buscarPorId(int id) {
-        return this.planosJpa.findById(id).get();
+    public PlanoModels buscarPorId(int id) {
+        return this.planoJpa.findById(id).get();
     }
 
-    public Planos cadastrar(Planos plano) {
-        return this.planosJpa.save(plano);
+    public PlanoModels cadastrar(PlanoModels planoModels) {
+        return this.planoJpa.save(planoModels);
     }
 
-    public void atualizar(Planos plano, int id) {
-        Planos planoInDb = this.planosJpa.findById(id).get();
-
-        if (planoInDb != null) {
-            planoInDb.setNomePlano(plano.getNomePlano());
-            planoInDb.setNomeCandidatura(plano.getNomeCandidatura());
-            planoInDb.setNomeCandidato(plano.getNomeCandidato());
-            planoInDb.setIdCandidatura(plano.getIdCandidatura());
-            planoInDb.setIdCandidato(plano.getIdCandidato());
-            this.planosJpa.save(planoInDb);
-        }
+    public void atualizar(PlanoModels planoModels) {
+        this.planoJpa.save(planoModels);
     }
 
     public void deletar(int id) {
-        this.planosJpa.deleteById(id);
+        this.planoJpa.deleteById(id);
     }
 }
