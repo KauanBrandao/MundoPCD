@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.application;
 
+import com.projeto.mundopcd.entities.InscricaoCurso;
 import com.projeto.mundopcd.models.InscricaoCursoModels;
 import com.projeto.mundopcd.repositories.InscricaoCursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class InscricaoCursoApplication {
     }
 
     public InscricaoCursoModels cadastrar(InscricaoCursoModels inscricao) {
+        InscricaoCurso inscricaoCurso = InscricaoCurso.toInscricaoCurso(inscricao);
+
+        inscricaoCurso.executarValidacoes();
         return inscricaoCursoRepository.cadastrar(inscricao);
     }
 

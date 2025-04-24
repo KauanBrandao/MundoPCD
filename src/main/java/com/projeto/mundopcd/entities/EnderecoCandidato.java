@@ -1,6 +1,7 @@
 package com.projeto.mundopcd.entities;
 
 import com.projeto.mundopcd.models.CandidatoModels;
+import com.projeto.mundopcd.models.EnderecoCandidatoModels;
 
 public class EnderecoCandidato {
     private int idEnderecoCandidato;
@@ -26,9 +27,19 @@ public class EnderecoCandidato {
 
     public EnderecoCandidato() {
     }
+    public static EnderecoCandidato toEnderecoCandidato(EnderecoCandidatoModels enderecoCandidatoModels) {
+        EnderecoCandidato enderecoCandidato = new EnderecoCandidato();
+        enderecoCandidato.setIdEnderecoCandidato(enderecoCandidatoModels.getIdEnderecoCandidato());
+        enderecoCandidato.setLogradouro(enderecoCandidatoModels.getLogradouro());
+        enderecoCandidato.setNumero(enderecoCandidatoModels.getNumero());
+        enderecoCandidato.setCidade(enderecoCandidatoModels.getCidade());
+        enderecoCandidato.setEstado(enderecoCandidatoModels.getEstado());
+        enderecoCandidato.setCep(enderecoCandidatoModels.getCep());
+        enderecoCandidato.setCandidato(enderecoCandidatoModels.getCandidato());
+        return enderecoCandidato;
 
+    }
     public void executarValidacoes() {
-        idEnderecoCandidatoIsInvalid();
         logradouroIsInvalid();
         numeroIsInvalid();
         cidadeIsInvalid();

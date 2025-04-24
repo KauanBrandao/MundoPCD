@@ -14,8 +14,6 @@ public class CandidatoApplication {
     private CandidatoRepository candidatoRepository;
 
     public CandidatoApplication(CandidatoRepository candidatoRepository){
-        Candidato c = new Candidato();
-        c.validar();
         this.candidatoRepository = candidatoRepository;
     }
 
@@ -32,6 +30,9 @@ public class CandidatoApplication {
     }
 
     public CandidatoModels cadastrar(CandidatoModels candidatoModels) {
+
+        Candidato candidato = Candidato.toCandidato(candidatoModels);
+        candidato.validar();
         return candidatoRepository.cadastrar(candidatoModels);
     }
 

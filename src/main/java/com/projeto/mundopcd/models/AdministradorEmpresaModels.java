@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.projeto.mundopcd.entities.Empresa;
 import jakarta.persistence.*;
 
 @Entity
@@ -73,11 +74,11 @@ public class AdministradorEmpresaModels {
         this.senha = senha;
     }
 
-//    public Empresa getEmpresa() {
-//        return empresa;
-//    }
-//
-//    public void setEmpresa(Empresa empresa) {
-//        this.empresa = empresa;
-//    }
+public EmpresaModels getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(EmpresaModels empresa) {
+        this.empresa = empresa;
+    }
 }

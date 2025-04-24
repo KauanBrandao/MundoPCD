@@ -66,5 +66,21 @@ public class CursoModels {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+    public List<EmpresaCursoModels> getEmpresaCurso() {
+        return empresaCurso;
+    }
+
+    public void setEmpresaCurso(List<EmpresaCursoModels> empresaCurso) {
+        this.empresaCurso = empresaCurso;
+    }
+
+    public List<InscricaoCursoModels> getInscricoesCursos() {
+        return inscricoesCursos;
+    }
+
+    public void setInscricoesCursos(List<InscricaoCursoModels> inscricoesCursos) {
+        this.inscricoesCursos = inscricoesCursos;
+    }
+
 }
 

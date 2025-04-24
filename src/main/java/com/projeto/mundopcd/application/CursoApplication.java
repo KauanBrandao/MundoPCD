@@ -12,8 +12,6 @@ public class CursoApplication {
     private CursoRepository cursoRepository;
 
     public CursoApplication(CursoRepository cursoRepository) {
-        //Curso c = new Curso();
-        //c.validar();
         this.cursoRepository = cursoRepository;
     }
 
@@ -26,6 +24,9 @@ public class CursoApplication {
     }
 
     public CursoModels cadastrar(CursoModels cursoModels){
+        Curso curso = Curso.toCurso(cursoModels);
+
+        curso.validar();
         return cursoRepository.cadastrar(cursoModels);
     }
 

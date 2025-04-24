@@ -1,5 +1,7 @@
 package com.projeto.mundopcd.entities;
 
+
+import com.projeto.mundopcd.models.CursoModels;
 import com.projeto.mundopcd.models.EmpresaCursoModels;
 import com.projeto.mundopcd.models.InscricaoCursoModels;
 import java.util.List;
@@ -15,12 +17,23 @@ public class Curso {
     public Curso() {
     }
 
-//    public void validar(){
-//        validarTitulo();
-//        validarDescricao();
-//        validarCargaHoraria();
-//        validarEmpresaCursos();
-//    }
+    public static Curso toCurso(CursoModels cursoModels) {
+        Curso curso = new Curso();
+        curso.setIdCurso(cursoModels.getIdCurso());
+        curso.setTitulo(cursoModels.getTitulo());
+        curso.setDescricao(cursoModels.getDescricao());
+        curso.setCargaHoraria(cursoModels.getCargaHoraria());
+        curso.setInscricoesCursos(cursoModels.getInscricoesCursos());
+        curso.setEmpresaCursos(cursoModels.getEmpresaCurso());
+        return curso;
+    }
+
+    public void validar(){
+        validarTitulo();
+        validarDescricao();
+        validarCargaHoraria();
+        validarEmpresaCursos();
+    }
 
     public int getCargaHoraria() {
         return cargaHoraria;

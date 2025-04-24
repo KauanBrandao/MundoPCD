@@ -23,10 +23,10 @@ public class EmpresaApplication {
     }
 
     public EmpresaModels cadastrar(EmpresaModels empresaModels) {
-        Empresa empresa = new Empresa();
 
+        Empresa empresa = Empresa.toEmpresa(empresaModels);
 
-        empresa.executarValidacoes();
+        empresa.validarTudo();
         return empresaRepository.cadastrar(empresaModels);
     }
 

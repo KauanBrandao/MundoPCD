@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.application;
 
+import com.projeto.mundopcd.entities.Plano;
 import com.projeto.mundopcd.models.PlanoModels;
 import com.projeto.mundopcd.repositories.PlanoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class PlanoApplication {
     }
 
     public PlanoModels cadastrar(PlanoModels planoModels) {
+        Plano plano = Plano.toPlano(planoModels);
+
+        plano.executarValidacoes();
         return planoRepository.cadastrar(planoModels);
     }
 
