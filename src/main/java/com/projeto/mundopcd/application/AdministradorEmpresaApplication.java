@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.application;
 
+import com.projeto.mundopcd.entities.AdministradorEmpresa;
 import com.projeto.mundopcd.models.AdministradorEmpresaModels;
 import com.projeto.mundopcd.repositories.AdministradorEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class AdministradorEmpresaApplication {
     }
 
     public AdministradorEmpresaModels cadastrar(AdministradorEmpresaModels administradorEmpresaModels) {
+        AdministradorEmpresa administradorEmpresa = AdministradorEmpresa.toAdministradorEmpresa(administradorEmpresaModels);
+
+        administradorEmpresa.validarAdministrador();
         return administradorEmpresaRepository.cadastrar(administradorEmpresaModels);
     }
 

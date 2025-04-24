@@ -51,13 +51,13 @@ public class CandidaturaModels {
         this.idCandidato = idCandidato;
     }
 
-//    public Candidato getCandidato() {
-//        return candidato;
-//    }
-//
-//    public void setCandidato(Candidato candidato) {
-//        this.candidato = candidato;
-//    }
+    public CandidatoModels getCandidato() {
+        return candidato;
+    }
+
+    public void setCandidato(CandidatoModels candidato) {
+        this.candidato = candidato;
+    }
 
     public VagaModels getVaga() {
         return vaga;

@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.application;
 
-import com.projeto.mundopcd.entities.Vagas;
+import com.projeto.mundopcd.entities.Vaga;
 import com.projeto.mundopcd.models.VagaModels;
 import com.projeto.mundopcd.repositories.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class VagaApplication {
     }
 
     public VagaModels cadastrar(VagaModels vagaModels) {
-        Vagas vaga = new Vagas();
+        Vaga vaga = Vaga.toVaga(vagaModels);
 
         vaga.executarValidacoes();
         return vagaRepository.cadastrar(vagaModels);

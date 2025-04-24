@@ -22,10 +22,10 @@ public class EnderecoCandidatoApplication {
         return enderecoCandidatoRepository.listar();
     }
 
-    public EnderecoCandidatoModels cadastrar(EnderecoCandidatoModels endereco) {
-        EnderecoCandidato enderecoCandidato = new EnderecoCandidato();
+    public EnderecoCandidatoModels cadastrar(EnderecoCandidatoModels enderecoCandidatoModels) {
+        EnderecoCandidato enderecoCandidato = EnderecoCandidato.toEnderecoCandidato(enderecoCandidatoModels);
         enderecoCandidato.executarValidacoes();
-        return enderecoCandidatoRepository.cadastrar(endereco);
+        return enderecoCandidatoRepository.cadastrar(enderecoCandidatoModels);
     }
 
     public void deletar(int id) {

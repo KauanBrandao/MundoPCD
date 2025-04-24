@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.projeto.mundopcd.entities.Candidatura;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -113,19 +114,21 @@ public class VagaModels {
         this.localizacao = localizacao;
     }
 
-//    public Empresa getEmpresa() {
-//        return empresa;
-//    }
-//
-//    public void setEmpresa(Empresa empresa) {
-//        this.empresa = empresa;
-//    }
 
-//    public List<Candidatura> getCandidaturas() {
-//        return candidaturas;
-//    }
+    public EmpresaModels getEmpresa() {
+        return empresa;
+    }
 
-//    public void setCandidaturas(List<Candidatura> candidaturas) {
-//        this.candidaturas = candidaturas;
-//    }
+    public void setEmpresa(EmpresaModels empresaModels) {
+       this.empresa = empresaModels;
+   }
+
+
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public List<CandidaturaModels> getCandidaturaModels() {
+        return candidatura;
+    }
 }

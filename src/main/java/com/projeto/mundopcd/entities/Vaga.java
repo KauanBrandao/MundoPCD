@@ -2,10 +2,11 @@ package com.projeto.mundopcd.entities;
 
 import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.models.EmpresaModels;
+import com.projeto.mundopcd.models.VagaModels;
 
 import java.util.List;
 
-public class Vagas {
+public class Vaga {
     private int idVaga;
     private String titulo;
     private String descricao;
@@ -17,7 +18,7 @@ public class Vagas {
     private Integer idEmpresa;
     private List<CandidaturaModels> candidaturaModels;
 
-    public Vagas(int idVaga, String titulo, String descricao, String requisitos, double salario, String tipoContratacao, String localizacao, EmpresaModels empresaModels, Integer idEmpresa, List<CandidaturaModels> candidaturaModels) {
+    public Vaga(int idVaga, String titulo, String descricao, String requisitos, double salario, String tipoContratacao, String localizacao, EmpresaModels empresaModels, Integer idEmpresa, List<CandidaturaModels> candidaturaModels) {
         this.idVaga = idVaga;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -31,11 +32,24 @@ public class Vagas {
 
     }
 
-    public Vagas() {
+    public Vaga() {
+    }
+
+    public static Vaga toVaga(VagaModels vagaModels) {
+        Vaga vaga = new Vaga();
+        vaga.setIdVaga(vagaModels.getIdVaga());
+        vaga.setTitulo(vagaModels.getTitulo());
+        vaga.setDescricao(vagaModels.getDescricao());
+        vaga.setRequisitos(vagaModels.getRequisitos());
+        vaga.setSalario(vagaModels.getSalario());
+        vaga.setTipoContratacao(vagaModels.getTipoContratacao());
+        vaga.setLocalizacao(vagaModels.getLocalizacao());
+        vaga.setIdEmpresa(vagaModels.getIdEmpresa());
+        vaga.setCandidaturaModels(vagaModels.getCandidaturaModels());
+        return vaga;
     }
 
     public void executarValidacoes() {
-        idVagaIsInvalid();
         tituloIsInvalid();
         descricaoIsInvalid();
         requisitosIsInvalid();

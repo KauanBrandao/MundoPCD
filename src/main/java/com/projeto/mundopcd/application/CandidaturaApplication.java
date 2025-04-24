@@ -12,7 +12,7 @@ public class CandidaturaApplication {
     private CandidaturaRepository candidaturaRepository;
 
     public CandidaturaApplication(CandidaturaRepository candidaturaRepository) {
-        //Candidatura c = new Candidatura();
+
         this.candidaturaRepository = candidaturaRepository;
     }
 
@@ -24,12 +24,15 @@ public class CandidaturaApplication {
         return candidaturaRepository.buscarPorId(id);
     }
 
-    public CandidaturaModels cadastrar(CandidaturaModels curso){
-        return candidaturaRepository.cadastrar(curso);
+    public CandidaturaModels cadastrar(CandidaturaModels candidaturaModels){
+        Candidatura candidatura = Candidatura.toCandidatura(candidaturaModels);
+
+        candidatura.validarCandidatura();
+        return candidaturaRepository.cadastrar(candidaturaModels);
     }
 
-    public void atualizar(CandidaturaModels curso){
-        candidaturaRepository.atualizar(curso);
+    public void atualizar(CandidaturaModels candidaturaModels){
+        candidaturaRepository.atualizar(candidaturaModels);
     }
 
     public void deletar(int id){

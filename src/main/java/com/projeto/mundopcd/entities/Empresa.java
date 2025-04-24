@@ -1,15 +1,18 @@
 package com.projeto.mundopcd.entities;
 
+import com.projeto.mundopcd.entities.SubEntities.Email;
+import com.projeto.mundopcd.entities.SubEntities.Nome;
+import com.projeto.mundopcd.entities.SubEntities.Telefone;
 import com.projeto.mundopcd.models.*;
+
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Empresa {
     private int idEmpresa;
-    private String nome;
+    private Nome nome = new Nome();
     private String cnpj;
-    private String email;
-    private String telefone;
+    private Email email = new Email();
+    private Telefone telefone = new Telefone();
     private String setor;
     private String politicaInclusao;
     private PlanoModels planoModels;
@@ -20,107 +23,105 @@ public class Empresa {
     private List<VagaModels> vagas;
     private List<EmpresaCursoModels> empresaCursoModels;
 
-    public Empresa(int idEmpresa, String nome, String cnpj, String email, String telefone, String setor, String politicaInclusao, PlanoModels planoModels, Integer idPlano, EnderecoEmpresaModels enderecoEmpresaModels, Integer idEnderecoEmpresa, List<AdministradorEmpresaModels> administradores, List<VagaModels> vagas, List<EmpresaCursoModels> empresaCursoModels) {
+    public Empresa() {}
+
+    public Empresa(int idEmpresa, String nome, String cnpj, String email, String telefone, String setor, String politicaInclusao, PlanoModels planoModels, Integer idPlano, EnderecoEmpresaModels enderecoEmpresaModels, Integer idEnderecoEmpresa, List<AdministradorEmpresaModels> administradores, List<VagaModels> vagas) {
         this.idEmpresa = idEmpresa;
-        this.nome = nome;
+        this.nome.setNome(nome);
         this.cnpj = cnpj;
-        this.email = email;
-        this.telefone = telefone;
+        this.email.setEmail(email);
+        this.telefone.setTelefone(telefone);
         this.setor = setor;
         this.politicaInclusao = politicaInclusao;
         this.planoModels = planoModels;
-        this.idPlano = idPlano;
         this.enderecoEmpresaModels = enderecoEmpresaModels;
-        this.idEnderecoEmpresa = idEnderecoEmpresa;
         this.administradores = administradores;
         this.vagas = vagas;
-        this.empresaCursoModels = empresaCursoModels;
-
     }
 
-    public Empresa() {
-    }
-
-    public void executarValidacoes() {
-        idEmpresaIsInvalid();
-        nomeIsInvalid();
-        cnpjIsInvalid();
-        emailIsInvalid();
-        telefoneIsInvalid();
-        setorIsInvalid();
-        politicaInclusaoIsInvalid();
-    }
-
-    public void idEmpresaIsInvalid() {
-        if (idEmpresa <= 0) {
-            throw new IllegalArgumentException("O ID da empresa deve ser maior que zero.");
-        }
-    }
-
-    public void nomeIsInvalid() {
-        if (nome == null || nome.trim().isEmpty() || nome.length() < 3 || nome.length() > 100) {
-            throw new IllegalArgumentException("O nome da empresa deve ter entre 3 e 100 caracteres.");
-        }
-    }
-
-    public void cnpjIsInvalid() {
-        String cnpjNumerico = cnpj.replaceAll("\\D", "");
-        if (cnpjNumerico.length() != 14 || !isCNPJValido(cnpjNumerico)) {
-            throw new IllegalArgumentException("CNPJ inválido.");
-        }
-    }
-
-    public boolean isCNPJValido(String cnpj) {
-        int[] peso1 = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
-        int[] peso2 = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
+    // ------------------- 1. CNPJ válido -------------------
+    public boolean validarCNPJ() {
+        if (cnpj == null) return false;
+        String cnpjNum = cnpj.replaceAll("[^\\d]", "");
+        if (cnpjNum.length() != 14 || cnpjNum.matches("(\\d)\\1{13}")) return false;
 
         try {
-            int soma = 0;
-            for (int i = 0; i < 12; i++) {
-                soma += Character.getNumericValue(cnpj.charAt(i)) * peso1[i];
-            }
-            int digito1 = 11 - (soma % 11);
-            digito1 = (digito1 >= 10) ? 0 : digito1;
-
-            soma = 0;
-            for (int i = 0; i < 13; i++) {
-                soma += Character.getNumericValue(cnpj.charAt(i)) * peso2[i];
-            }
-            int digito2 = 11 - (soma % 11);
-            digito2 = (digito2 >= 10) ? 0 : digito2;
-
-            return digito1 == Character.getNumericValue(cnpj.charAt(12)) &&
-                    digito2 == Character.getNumericValue(cnpj.charAt(13));
-        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            char dig13 = calcularDigitoVerificador(cnpjNum, 12);
+            char dig14 = calcularDigitoVerificador(cnpjNum, 13);
+            return cnpjNum.charAt(12) == dig13 && cnpjNum.charAt(13) == dig14;
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public void emailIsInvalid() {
-        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-        if (email == null || !Pattern.matches(emailRegex, email)) {
-            throw new IllegalArgumentException("E-mail inválido.");
+    private char calcularDigitoVerificador(String cnpj, int posicao) {
+        int peso = posicao - 7;
+        int soma = 0;
+        for (int i = 0; i < posicao; i++) {
+            int num = cnpj.charAt(i) - '0';
+            soma += num * peso;
+            peso = (peso - 1 < 2) ? 9 : peso - 1;
         }
+        int resto = soma % 11;
+        return (resto < 2) ? '0' : (char) ((11 - resto) + '0');
     }
 
-    public void telefoneIsInvalid() {
-        String telefoneRegex = "^\\(\\d{2}\\) \\d{4,5}-\\d{4}$";
-        if (telefone == null || !Pattern.matches(telefoneRegex, telefone)) {
-            throw new IllegalArgumentException("Telefone inválido.");
-        }
+
+     boolean validarSetor() {
+        return setor != null && !setor.trim().isEmpty();
     }
 
-    public void setorIsInvalid() {
-        if (setor == null || setor.trim().isEmpty()) {
-            throw new IllegalArgumentException("O setor é obrigatório.");
-        }
+    public boolean validarPoliticaInclusao() {
+        return politicaInclusao != null && politicaInclusao.trim().length() >= 10;
     }
 
-    public void politicaInclusaoIsInvalid() {
-        if (politicaInclusao == null || politicaInclusao.length() < 10) {
-            throw new IllegalArgumentException("A política de inclusão deve ter no mínimo 10 caracteres.");
-        }
+
+
+
+
+
+    public void validarTudo() {
+        if (!validarCNPJ()) throw new IllegalArgumentException("CNPJ inválido.");
+        nome.validarNome();
+        email.verificaEmail();
+        telefone.verificaTelefone();
+        if (!validarSetor()) throw new IllegalArgumentException("Setor obrigatório.");
+        if (!validarPoliticaInclusao()) throw new IllegalArgumentException("Política de inclusão deve ter no mínimo 10 caracteres.");
+
     }
+
+
+    public static Empresa toEmpresa(EmpresaModels empresaModels) {
+        Empresa empresa = new Empresa();
+        empresa.setIdEmpresa(empresaModels.getIdEmpresa());
+
+        Nome nome = new Nome();
+        nome.setNome(empresaModels.getNome());
+        empresa.nome = nome; // <-- Faltava isso aqui
+
+        Email email = new Email();
+        email.setEmail(empresaModels.getEmail());
+        empresa.email = email;
+
+        Telefone telefone = new Telefone();
+        telefone.setTelefone(empresaModels.getTelefone());
+        empresa.telefone = telefone;
+
+        empresa.setCnpj(empresaModels.getCnpj());
+        empresa.setSetor(empresaModels.getSetor());
+        empresa.setPoliticaInclusao(empresaModels.getPoliticaInclusao());
+
+        empresa.setPlanoModels(empresaModels.getPlano());
+        empresa.setEnderecoEmpresaModels(empresaModels.getEnderecoEmpresa());
+
+        empresa.setAdministradores(empresaModels.getAdministradores());
+        empresa.setVagas(empresaModels.getVagas());
+        empresa.setAdministradores(empresaModels.getAdministradores());
+        empresa.setVagas(empresaModels.getVagas());
+
+        return empresa;
+    }
+
 
     public int getIdEmpresa() {
         return idEmpresa;
@@ -131,11 +132,11 @@ public class Empresa {
     }
 
     public String getNome() {
-        return nome;
+        return nome.getNome();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome.setNome(nome);
     }
 
     public String getCnpj() {
@@ -147,19 +148,19 @@ public class Empresa {
     }
 
     public String getEmail() {
-        return email;
+        return email.getEmail();
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email.setEmail(email);
     }
 
     public String getTelefone() {
-        return telefone;
+        return telefone.getTelefone();
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        this.telefone.setTelefone(telefone);
     }
 
     public String getSetor() {
