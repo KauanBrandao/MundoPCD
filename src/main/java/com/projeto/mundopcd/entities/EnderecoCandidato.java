@@ -10,8 +10,7 @@ public class EnderecoCandidato {
     private String cidade;
     private String estado;
     private String cep;
-    private CandidatoModels candidatoModels;
-    private Integer idCandidato;
+    private int idCandidato;
 
     public EnderecoCandidato(int idEnderecoCandidato, String logradouro, String numero, String cidade, String estado, String cep, CandidatoModels candidatoModels, Integer idCandidato) {
         this.idEnderecoCandidato = idEnderecoCandidato;
@@ -20,7 +19,6 @@ public class EnderecoCandidato {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
-        this.candidatoModels = candidatoModels;
         this.idCandidato = idCandidato;
 
     }
@@ -35,7 +33,8 @@ public class EnderecoCandidato {
         enderecoCandidato.setCidade(enderecoCandidatoModels.getCidade());
         enderecoCandidato.setEstado(enderecoCandidatoModels.getEstado());
         enderecoCandidato.setCep(enderecoCandidatoModels.getCep());
-        enderecoCandidato.setCandidato(enderecoCandidatoModels.getCandidato());
+
+        enderecoCandidato.setIdCandidato(enderecoCandidatoModels.getIdCandidato());
         return enderecoCandidato;
 
     }
@@ -45,7 +44,6 @@ public class EnderecoCandidato {
         cidadeIsInvalid();
         estadoIsInvalid();
         cepIsInvalid();
-        candidatoIsNull();
     }
 
     public void idEnderecoCandidatoIsInvalid() {
@@ -82,12 +80,6 @@ public class EnderecoCandidato {
         String cepRegex = "^\\d{5}-\\d{3}$";
         if (cep == null || !cep.matches(cepRegex)) {
             throw new IllegalArgumentException("O CEP deve estar no formato 12345-678.");
-        }
-    }
-
-    public void candidatoIsNull() {
-        if (candidatoModels == null) {
-            throw new IllegalArgumentException("O candidato associado ao endereço deve ser válido.");
         }
     }
 
@@ -139,19 +131,11 @@ public class EnderecoCandidato {
         this.cep = cep;
     }
 
-    public CandidatoModels getCandidato() {
-        return candidatoModels;
-    }
-
-    public void setCandidato(CandidatoModels candidatoModels) {
-        this.candidatoModels = candidatoModels;
-    }
-
     public Integer getIdCandidato() {
         return idCandidato;
     }
 
-    public void setIdCandidato(Integer idCandidato) {
+    public void setIdCandidato(int idCandidato) {
         this.idCandidato = idCandidato;
     }
 }

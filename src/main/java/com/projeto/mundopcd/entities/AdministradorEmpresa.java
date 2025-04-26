@@ -33,9 +33,11 @@ public class AdministradorEmpresa {
 
         Nome nome = new Nome();
         nome.setNome(administradorEmpresaModels.getNome());
+        administradorEmpresa.nome = nome;
 
         Email email = new Email();
         email.setEmail(administradorEmpresaModels.getEmail());
+        administradorEmpresa.email = email;
 
         administradorEmpresa.setSenha(administradorEmpresaModels.getSenha());
         administradorEmpresa.setEmpresa(administradorEmpresaModels.getEmpresa());

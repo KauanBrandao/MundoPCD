@@ -7,6 +7,7 @@ import com.projeto.mundopcd.models.CandidatoModels;
 import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.models.EnderecoCandidatoModels;
 import com.projeto.mundopcd.models.PlanoModels;
+
 import java.util.List;
 
 public class Candidato {
@@ -16,67 +17,67 @@ public class Candidato {
     private String cpf;
     private Telefone telefone = new Telefone();
     private String tipoDeficiencia;
-    private String formacao;
-    private String experiencia;
-    private String habilidades;
     private String curriculo;
-    private PlanoModels planoModels;
-    private EnderecoCandidatoModels endereco;
-    private Integer idEnderecoCandidato;
-    private List<CandidaturaModels> candidaturaModels;
+    private PlanoModels plano;
+    private Integer idPlano;
 
+    private EnderecoCandidatoModels enderecoCandidato;
 
-    public void validar() {
-        email.verificaEmail();
-        telefone.verificaTelefone();
-        isCpfValido();
-        nome.validarNome();
-        isCurriculoValido();
-        isFormacaoValida();
-        isTipoDeficienciaValido();
+    private List<CandidaturaModels> candidaturas;
+
+    public Candidato() {}
+
+    public Candidato(String tipoDeficiencia, String telefone, PlanoModels plano, String nome, Integer enderecoCandidato,
+                     int idCandidato, String curriculo, String email, String cpf,
+                     List<CandidaturaModels> candidaturas) {
+        this.tipoDeficiencia = tipoDeficiencia;
+        this.telefone.setTelefone(telefone);
+        this.plano = plano;
+        this.nome.setNome(nome);
+        this.idCandidato = idCandidato;
+        this.email.setEmail(email);
+        this.curriculo = curriculo;
+        this.cpf = cpf;
+        this.candidaturas = candidaturas;
     }
 
     public static Candidato toCandidato(CandidatoModels candidatoModels) {
         Candidato candidato = new Candidato();
+
         candidato.setIdCandidato(candidatoModels.getIdCandidato());
 
         Nome nome = new Nome();
         nome.setNome(candidatoModels.getNome());
+        candidato.setNome(nome);
 
         Email email = new Email();
         email.setEmail(candidatoModels.getEmail());
-
-        candidato.setCpf(candidatoModels.getCpf());
+        candidato.setEmail(email);
 
         Telefone telefone = new Telefone();
         telefone.setTelefone(candidatoModels.getTelefone());
-        candidato.setTipoDeficiencia(candidatoModels.getTipoDeficiencia());
-        candidato.setFormacao(candidatoModels.getFormacao());
-        candidato.setExperiencia(candidatoModels.getExperiencia());
-        candidato.setHabilidades(candidatoModels.getHabilidades());
+        candidato.setTelefone(telefone);
+
+        candidato.setCpf(candidatoModels.getCpf());
         candidato.setCurriculo(candidatoModels.getCurriculo());
-        candidato.setPlanoModels(candidatoModels.getPlano());
+        candidato.setTipoDeficiencia(candidatoModels.getTipoDeficiencia());
+
+        candidato.setPlano(candidatoModels.getPlano());
+
+        candidato.setEnderecoCandidato(candidatoModels.getEnderecoCandidato());
+
+        candidato.setCandidaturas(candidatoModels.getCandidaturas());
+
         return candidato;
     }
 
-    public Candidato(String tipoDeficiencia, String telefone, PlanoModels planoModels, String nome, Integer idEnderecoCandidato, int idCandidato, String habilidades, String formacao, String experiencia, EnderecoCandidatoModels endereco, String email, String curriculo, String cpf, List<CandidaturaModels> candidaturaModels) {
-        this.tipoDeficiencia = tipoDeficiencia;
-        this.telefone.setTelefone(telefone);
-        this.planoModels = planoModels;
-        this.nome.setNome(nome);
-        this.idEnderecoCandidato = idEnderecoCandidato;
-        this.idCandidato = idCandidato;
-        this.habilidades = habilidades;
-        this.formacao = formacao;
-        this.experiencia = experiencia;
-        this.endereco = endereco;
-        this.email.setEmail(email);
-        this.curriculo = curriculo;
-        this.cpf = cpf;
-        this.candidaturaModels = candidaturaModels;
-    }
-
-    public Candidato() {
+    public void validar() {
+        email.verificaEmail();
+        telefone.verificaTelefone();
+        if (!isCpfValido()) throw new IllegalArgumentException("CPF inválido.");
+        nome.validarNome();
+        if (!isCurriculoValido()) throw new IllegalArgumentException("Currículo inválido.");
+        if (!isTipoDeficienciaValido()) throw new IllegalArgumentException("Tipo de deficiência inválido.");
     }
 
     public boolean isCpfValido() {
@@ -87,8 +88,7 @@ public class Candidato {
         int[] peso2 = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
         try {
-            int soma1 = 0;
-            int soma2 = 0;
+            int soma1 = 0, soma2 = 0;
             for (int i = 0; i < 9; i++) {
                 int digito = Character.getNumericValue(cpf.charAt(i));
                 soma1 += digito * peso1[i];
@@ -104,18 +104,13 @@ public class Candidato {
 
             return digito1 == Character.getNumericValue(cpf.charAt(9)) &&
                     digito2 == Character.getNumericValue(cpf.charAt(10));
-        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             return false;
         }
     }
 
-
     public boolean isCurriculoValido() {
         return curriculo != null && curriculo.length() <= 1000;
-    }
-
-    public boolean isFormacaoValida() {
-        return formacao != null && !formacao.trim().isEmpty();
     }
 
     public boolean isTipoDeficienciaValido() {
@@ -129,7 +124,7 @@ public class Candidato {
         return false;
     }
 
-
+    // Getters e Setters
     public int getIdCandidato() {
         return idCandidato;
     }
@@ -178,30 +173,6 @@ public class Candidato {
         this.tipoDeficiencia = tipoDeficiencia;
     }
 
-    public String getFormacao() {
-        return formacao;
-    }
-
-    public void setFormacao(String formacao) {
-        this.formacao = formacao;
-    }
-
-    public String getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(String experiencia) {
-        this.experiencia = experiencia;
-    }
-
-    public String getHabilidades() {
-        return habilidades;
-    }
-
-    public void setHabilidades(String habilidades) {
-        this.habilidades = habilidades;
-    }
-
     public String getCurriculo() {
         return curriculo;
     }
@@ -210,35 +181,36 @@ public class Candidato {
         this.curriculo = curriculo;
     }
 
-    public PlanoModels getPlanoModels() {
-        return planoModels;
+    public PlanoModels getPlano() {
+        return plano;
     }
 
-    public void setPlanoModels(PlanoModels planoModels) {
-        this.planoModels = planoModels;
+    public void setPlano(PlanoModels plano) {
+        this.plano = plano;
     }
 
-    public EnderecoCandidatoModels getEndereco() {
-        return endereco;
+    public Integer getIdPlano() {
+        return idPlano;
     }
 
-    public void setEndereco(EnderecoCandidatoModels endereco) {
-        this.endereco = endereco;
+    public void setIdPlano(Integer idPlano) {
+        this.idPlano = idPlano;
     }
 
-    public Integer getIdEnderecoCandidato() {
-        return idEnderecoCandidato;
+    public EnderecoCandidatoModels getEnderecoCandidato() {
+        return enderecoCandidato;
     }
 
-    public void setIdEnderecoCandidato(Integer idEnderecoCandidato) {
-        this.idEnderecoCandidato = idEnderecoCandidato;
+    public void setEnderecoCandidato(EnderecoCandidatoModels enderecoCandidato) {
+        this.enderecoCandidato = enderecoCandidato;
     }
 
-    public List<CandidaturaModels> getCandidaturaModels() {
-        return candidaturaModels;
+
+    public List<CandidaturaModels> getCandidaturas() {
+        return candidaturas;
     }
 
-    public void setCandidaturaModels(List<CandidaturaModels> candidaturaModels) {
-        this.candidaturaModels = candidaturaModels;
+    public void setCandidaturas(List<CandidaturaModels> candidaturas) {
+        this.candidaturas = candidaturas;
     }
 }

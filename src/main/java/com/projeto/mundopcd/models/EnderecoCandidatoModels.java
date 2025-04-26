@@ -44,6 +44,14 @@ public class EnderecoCandidatoModels {
         this.candidato = candidatoModels;
     }
 
+    public Integer getIdCandidato() {
+        return idCandidato;
+    }
+
+    public void setIdCandidato(Integer idCandidato) {
+        this.idCandidato = idCandidato;
+    }
+
     public String getLogradouro() {
         return logradouro;
     }

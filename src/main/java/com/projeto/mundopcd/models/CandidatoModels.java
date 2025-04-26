@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -27,20 +28,12 @@ public class CandidatoModels {
     @Column(name = "tipo_deficiencia")
     private String tipoDeficiencia;
 
-    @Column(name = "formacao")
-    private String formacao;
-
-    @Column(name = "experiencia")
-    private String experiencia;
-
-    @Column(name = "habilidades")
-    private String habilidades;
-
     @Column(name = "curriculo")
     private String curriculo;
 
     @ManyToOne
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
+    @JsonBackReference
     private PlanoModels plano;
 
     @Column(name = "id_plano")
@@ -48,31 +41,44 @@ public class CandidatoModels {
 
     @OneToOne
     @JoinColumn(name = "id_endereco_candidato", insertable = false, updatable = false)
-    private EnderecoCandidatoModels endereco;
+    private EnderecoCandidatoModels enderecoCandidato;
 
     @Column(name = "id_endereco_candidato")
     private Integer idEnderecoCandidato;
 
     @OneToMany(mappedBy = "candidato")
-    private List<CandidaturaModels> candidatura;
+    private List<CandidaturaModels> candidaturas;
 
     public CandidatoModels() {}
 
-    public CandidatoModels(List<CandidaturaModels> candidatura, String cpf, String curriculo, String email, EnderecoCandidatoModels endereco, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, PlanoModels plano, String telefone, String tipoDeficiencia) {
-        this.candidatura = candidatura;
+    public CandidatoModels(List<CandidaturaModels> candidaturas, String cpf, String curriculo, String email, EnderecoCandidatoModels enderecoCandidato, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, PlanoModels plano, String telefone, String tipoDeficiencia) {
+        this.candidaturas = candidaturas;
         this.cpf = cpf;
         this.curriculo = curriculo;
         this.email = email;
-        this.endereco = endereco;
-        this.experiencia = experiencia;
-        this.formacao = formacao;
-        this.habilidades = habilidades;
+        this.enderecoCandidato = enderecoCandidato;
         this.idEnderecoCandidato = idEnderecoCandidato;
         this.idPlano = idPlano;
         this.nome = nome;
         this.plano = plano;
         this.telefone = telefone;
         this.tipoDeficiencia = tipoDeficiencia;
+    }
+
+    public Integer getIdPlano() {
+        return idPlano;
+    }
+
+    public Integer getIdEnderecoCandidato() {
+        return idEnderecoCandidato;
+    }
+
+    public List<CandidaturaModels> getCandidaturas() {
+        return candidaturas;
+    }
+
+    public void setCandidaturas(List<CandidaturaModels> candidaturas) {
+        this.candidaturas = candidaturas;
     }
 
     public int getIdCandidato() {
@@ -90,6 +96,8 @@ public class CandidatoModels {
     public void setIdEnderecoCandidato(Integer idEndereoCandidato) {
         this.idEnderecoCandidato = idEndereoCandidato;
     }
+
+
 
     public String getNome() {
         return nome;
@@ -131,29 +139,6 @@ public class CandidatoModels {
         this.tipoDeficiencia = tipoDeficiencia;
     }
 
-    public String getFormacao() {
-        return formacao;
-    }
-
-    public void setFormacao(String formacao) {
-        this.formacao = formacao;
-    }
-
-    public String getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(String experiencia) {
-        this.experiencia = experiencia;
-    }
-
-    public String getHabilidades() {
-        return habilidades;
-    }
-
-    public void setHabilidades(String habilidades) {
-        this.habilidades = habilidades;
-    }
 
     public String getCurriculo() {
         return curriculo;
@@ -171,19 +156,11 @@ public class CandidatoModels {
         this.plano = planoModels;
     }
 
-    public EnderecoCandidatoModels getEndereco() {
-        return endereco;
+    public EnderecoCandidatoModels getEnderecoCandidato() {
+        return enderecoCandidato;
     }
 
-    public void setEndereco(EnderecoCandidatoModels endereco) {
-        this.endereco = endereco;
-    }
-
-    public List<CandidaturaModels> getCandidaturas() {
-        return candidatura;
-    }
-
-    public void setCandidaturas(List<CandidaturaModels> candidaturaModels) {
-        this.candidatura = candidaturaModels;
+    public void setEnderecoCandidato(EnderecoCandidatoModels enderecoCandidato) {
+        this.enderecoCandidato = enderecoCandidato;
     }
 }
