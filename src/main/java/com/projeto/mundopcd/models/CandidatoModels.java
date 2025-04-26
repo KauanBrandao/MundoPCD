@@ -1,6 +1,8 @@
 package com.projeto.mundopcd.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -33,7 +35,6 @@ public class CandidatoModels {
 
     @ManyToOne
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
-    @JsonBackReference
     private PlanoModels plano;
 
     @Column(name = "id_plano")
@@ -73,6 +74,7 @@ public class CandidatoModels {
         return idEnderecoCandidato;
     }
 
+    @JsonIgnore
     public List<CandidaturaModels> getCandidaturas() {
         return candidaturas;
     }
@@ -96,8 +98,6 @@ public class CandidatoModels {
     public void setIdEnderecoCandidato(Integer idEndereoCandidato) {
         this.idEnderecoCandidato = idEndereoCandidato;
     }
-
-
 
     public String getNome() {
         return nome;
@@ -138,7 +138,6 @@ public class CandidatoModels {
     public void setTipoDeficiencia(String tipoDeficiencia) {
         this.tipoDeficiencia = tipoDeficiencia;
     }
-
 
     public String getCurriculo() {
         return curriculo;

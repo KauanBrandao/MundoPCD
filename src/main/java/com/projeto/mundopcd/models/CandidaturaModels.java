@@ -1,4 +1,6 @@
 package com.projeto.mundopcd.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -22,7 +24,6 @@ public class CandidaturaModels {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_vaga", referencedColumnName = "id_vaga", insertable = false, updatable = false)
     private VagaModels vaga;
-
 
     @Column(name = "id_vaga", nullable = false )
     private Integer idVaga;
@@ -51,8 +52,12 @@ public class CandidaturaModels {
         this.idCandidato = idCandidato;
     }
 
-    public CandidatoModels getCandidato() {
-        return candidato;
+//    public CandidatoModels getCandidato() {
+//        return candidato;
+//    }
+
+    public Integer getIdCandidato() {
+        return idCandidato;
     }
 
     public void setCandidato(CandidatoModels candidato) {
@@ -61,6 +66,10 @@ public class CandidaturaModels {
 
     public VagaModels getVaga() {
         return vaga;
+    }
+
+    public Integer getIdVaga() {
+        return idVaga;
     }
 
     public void setVaga(VagaModels vagaModels) {

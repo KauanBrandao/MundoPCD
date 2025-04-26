@@ -9,6 +9,7 @@ public class Candidatura {
 
     private int idCandidatura;
     private CandidatoModels candidato;
+    private Integer idCandidato;
     private VagaModels vaga;
     private Integer idVaga;
     private Date dataAplicacao;
@@ -21,35 +22,29 @@ public class Candidatura {
         Candidatura candidatura = new Candidatura();
 
         candidatura.setIdCandidatura(candidaturaModels.getIdCandidatura());
-        candidatura.setCandidato(candidaturaModels.getCandidato());
-        candidatura.setVaga(candidaturaModels.getVaga());
+        candidatura.setIdCandidato(candidaturaModels.getIdCandidato());
+        candidatura.setIdVaga(candidaturaModels.getIdVaga());
         candidatura.setDataAplicacao(candidaturaModels.getDataAplicacao());
         candidatura.setStatus(candidaturaModels.getStatus());
+        candidatura.setDataAplicacao(new Date());
         return candidatura;
     }
 
     public void validarCandidatura() {
         validarCandidato();
         validarVaga();
-        validarIdVaga();
         validarDataAplicacao();
     }
 
     private void validarCandidato() {
-        if (candidato == null) {
+        if (idCandidato == null) {
             throw new IllegalArgumentException("Candidato não pode ser nulo.");
         }
     }
 
     private void validarVaga() {
-        if (vaga == null) {
+        if (idVaga == null) {
             throw new IllegalArgumentException("Vaga não pode ser nula.");
-        }
-    }
-
-    private void validarIdVaga() {
-        if (idVaga == null || idVaga <= 0) {
-            throw new IllegalArgumentException("ID da vaga deve ser positivo.");
         }
     }
 
@@ -76,6 +71,14 @@ public class Candidatura {
 
     public void setDataAplicacao(Date dataAplicacao) {
         this.dataAplicacao = dataAplicacao;
+    }
+
+    public Integer getIdCandidato() {
+        return idCandidato;
+    }
+
+    public void setIdCandidato(Integer idCandidato) {
+        this.idCandidato = idCandidato;
     }
 
     public int getIdCandidatura() {

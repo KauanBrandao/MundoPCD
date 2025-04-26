@@ -20,14 +20,13 @@ public class Candidato {
     private String curriculo;
     private PlanoModels plano;
     private Integer idPlano;
-
+    private Integer idEnderecoCandidato;
     private EnderecoCandidatoModels enderecoCandidato;
-
     private List<CandidaturaModels> candidaturas;
 
     public Candidato() {}
 
-    public Candidato(String tipoDeficiencia, String telefone, PlanoModels plano, String nome, Integer enderecoCandidato,
+    public Candidato(String tipoDeficiencia, String telefone, PlanoModels plano, String nome, Integer idEnderecoCandidato, EnderecoCandidatoModels enderecoCandidato,
                      int idCandidato, String curriculo, String email, String cpf,
                      List<CandidaturaModels> candidaturas) {
         this.tipoDeficiencia = tipoDeficiencia;
@@ -35,6 +34,8 @@ public class Candidato {
         this.plano = plano;
         this.nome.setNome(nome);
         this.idCandidato = idCandidato;
+        this.idEnderecoCandidato = idEnderecoCandidato;
+        this.enderecoCandidato = enderecoCandidato;
         this.email.setEmail(email);
         this.curriculo = curriculo;
         this.cpf = cpf;
@@ -62,9 +63,9 @@ public class Candidato {
         candidato.setCurriculo(candidatoModels.getCurriculo());
         candidato.setTipoDeficiencia(candidatoModels.getTipoDeficiencia());
 
-        candidato.setPlano(candidatoModels.getPlano());
+        candidato.setIdPlano(candidatoModels.getIdPlano());
 
-        candidato.setEnderecoCandidato(candidatoModels.getEnderecoCandidato());
+        candidato.setIdEnderecoCandidato(candidatoModels.getIdEnderecoCandidato());
 
         candidato.setCandidaturas(candidatoModels.getCandidaturas());
 
@@ -124,7 +125,6 @@ public class Candidato {
         return false;
     }
 
-    // Getters e Setters
     public int getIdCandidato() {
         return idCandidato;
     }
@@ -163,6 +163,10 @@ public class Candidato {
 
     public void setTelefone(Telefone telefone) {
         this.telefone = telefone;
+    }
+
+    public void setIdEnderecoCandidato(Integer idEndereoCandidato) {
+        this.idEnderecoCandidato = idEndereoCandidato;
     }
 
     public String getTipoDeficiencia() {

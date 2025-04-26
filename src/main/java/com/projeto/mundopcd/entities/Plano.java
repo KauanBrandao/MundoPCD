@@ -21,7 +21,7 @@ public class Plano {
 
     public void executarValidacoes() {
         nomeIsInvalid();
-        descricaoIsInvalid();
+        //descricaoIsInvalid();
         valorIsInvalid();
     }
 

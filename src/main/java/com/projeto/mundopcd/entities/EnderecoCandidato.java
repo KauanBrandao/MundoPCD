@@ -36,7 +36,6 @@ public class EnderecoCandidato {
 
         enderecoCandidato.setIdCandidato(enderecoCandidatoModels.getIdCandidato());
         return enderecoCandidato;
-
     }
     public void executarValidacoes() {
         logradouroIsInvalid();
@@ -77,9 +76,9 @@ public class EnderecoCandidato {
     }
 
     public void cepIsInvalid() {
-        String cepRegex = "^\\d{5}-\\d{3}$";
+        String cepRegex = "^\\d{8}$";
         if (cep == null || !cep.matches(cepRegex)) {
-            throw new IllegalArgumentException("O CEP deve estar no formato 12345-678.");
+            throw new IllegalArgumentException("O CEP deve conter exatamente 8 dígitos numéricos, sem hífen.");
         }
     }
 
