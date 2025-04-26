@@ -1,5 +1,7 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.projeto.mundopcd.entities.Candidatura;
 import jakarta.persistence.*;
 import java.util.List;
