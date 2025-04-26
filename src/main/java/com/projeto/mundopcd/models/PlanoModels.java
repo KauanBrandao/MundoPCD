@@ -23,11 +23,9 @@ public class PlanoModels {
     private String tipo;
 
     @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private List<EmpresaModels> empresas;
 
     @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private List<CandidatoModels> candidatos;
 
     public PlanoModels(List<CandidatoModels> candidatos, List<EmpresaModels> empresas, String nome, Double valor, String tipo) {
@@ -66,17 +64,17 @@ public class PlanoModels {
         this.idPlano = idPlano;
     }
 
-    public List<CandidatoModels> getCandidatos() {
-        return candidatos;
-    }
+//    public List<CandidatoModels> getCandidatos() {
+//        return candidatos;
+//    }
 
     public void setCandidatos(List<CandidatoModels> candidatoes) {
         this.candidatos = candidatoes;
     }
 
-    public List<EmpresaModels> getEmpresas() {
-        return empresas;
-    }
+//    public List<EmpresaModels> getEmpresas() {
+//        return empresas;
+//    }
 
     public void setEmpresas(List<EmpresaModels> empresas) {
         this.empresas = empresas;

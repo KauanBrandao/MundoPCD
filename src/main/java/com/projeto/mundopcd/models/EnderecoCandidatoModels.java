@@ -36,9 +36,9 @@ public class EnderecoCandidatoModels {
     public EnderecoCandidatoModels() {
     }
 
-    public CandidatoModels getCandidato() {
-        return candidato;
-    }
+//    public CandidatoModels getCandidato() {
+//        return candidato;
+//    }
 
     public void setCandidato(CandidatoModels candidatoModels) {
         this.candidato = candidatoModels;

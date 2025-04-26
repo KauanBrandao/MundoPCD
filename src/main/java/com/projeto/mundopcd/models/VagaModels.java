@@ -1,8 +1,5 @@
 package com.projeto.mundopcd.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.projeto.mundopcd.entities.Candidatura;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -116,7 +113,6 @@ public class VagaModels {
         this.localizacao = localizacao;
     }
 
-
     public EmpresaModels getEmpresa() {
         return empresa;
     }
@@ -124,7 +120,6 @@ public class VagaModels {
     public void setEmpresa(EmpresaModels empresaModels) {
        this.empresa = empresaModels;
    }
-
 
     public Integer getIdEmpresa() {
         return idEmpresa;
