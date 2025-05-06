@@ -31,6 +31,10 @@ public class AdministradorEmpresaModels {
 
     public AdministradorEmpresaModels() {}
 
+    public Integer getIdEmpresa() {
+        return idEmpresa;
+    }
+
     public AdministradorEmpresaModels(String nome, String email, String senha, EmpresaModels empresa) {
         this.nome = nome;
         this.email = email;
@@ -74,7 +78,7 @@ public class AdministradorEmpresaModels {
         this.senha = senha;
     }
 
-public EmpresaModels getEmpresa() {
+    public EmpresaModels getEmpresa() {
         return empresa;
     }
 

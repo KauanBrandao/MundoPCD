@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -44,6 +45,7 @@ public class EnderecoCandidatoModels {
         this.candidato = candidatoModels;
     }
 
+    @JsonIgnore
     public Integer getIdCandidato() {
         return idCandidato;
     }

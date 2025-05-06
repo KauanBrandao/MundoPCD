@@ -1,8 +1,6 @@
 package com.projeto.mundopcd.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -66,15 +64,16 @@ public class CandidatoModels {
         this.tipoDeficiencia = tipoDeficiencia;
     }
 
+    @JsonIgnore
     public Integer getIdPlano() {
         return idPlano;
     }
 
+    @JsonIgnore
     public Integer getIdEnderecoCandidato() {
         return idEnderecoCandidato;
     }
 
-    @JsonIgnore
     public List<CandidaturaModels> getCandidaturas() {
         return candidaturas;
     }

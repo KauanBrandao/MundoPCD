@@ -33,7 +33,6 @@ public class InscricaoCursoModels {
 
     public InscricaoCursoModels() {}
 
-    // Getters e Setters
     public int getIdInscricaoCurso() {
         return idInscricaoCurso;
     }

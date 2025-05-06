@@ -39,7 +39,39 @@ public class Empresa {
         this.vagas = vagas;
     }
 
-    // ------------------- 1. CNPJ válido -------------------
+    public static Empresa toEmpresa(EmpresaModels empresaModels) {
+        Empresa empresa = new Empresa();
+        empresa.setIdEmpresa(empresaModels.getIdEmpresa());
+
+        Nome nome = new Nome();
+        nome.setNome(empresaModels.getNome());
+        empresa.nome = nome;
+
+        Email email = new Email();
+        email.setEmail(empresaModels.getEmail());
+        empresa.email = email;
+
+        Telefone telefone = new Telefone();
+        telefone.setTelefone(empresaModels.getTelefone());
+        empresa.telefone = telefone;
+
+        empresa.setCnpj(empresaModels.getCnpj());
+        empresa.setSetor(empresaModels.getSetor());
+        empresa.setPoliticaInclusao(empresaModels.getPoliticaInclusao());
+
+        empresa.setPlanoModels(empresaModels.getPlano());
+        empresa.setIdPlano(empresaModels.getIdPlano());
+        empresa.setEnderecoEmpresaModels(empresaModels.getEnderecoEmpresa());
+        empresa.setIdEnderecoEmpresa(empresaModels.getIdEnderecoEmpresa());
+
+        empresa.setAdministradores(empresaModels.getAdministradores());
+        empresa.setVagas(empresaModels.getVagas());
+        empresa.setAdministradores(empresaModels.getAdministradores());
+        empresa.setVagas(empresaModels.getVagas());
+
+        return empresa;
+    }
+
     public boolean validarCNPJ() {
         if (cnpj == null) return false;
         String cnpjNum = cnpj.replaceAll("[^\\d]", "");
@@ -66,19 +98,13 @@ public class Empresa {
         return (resto < 2) ? '0' : (char) ((11 - resto) + '0');
     }
 
-
-     boolean validarSetor() {
+    boolean validarSetor() {
         return setor != null && !setor.trim().isEmpty();
     }
 
     public boolean validarPoliticaInclusao() {
         return politicaInclusao != null && politicaInclusao.trim().length() >= 10;
     }
-
-
-
-
-
 
     public void validarTudo() {
         if (!validarCNPJ()) throw new IllegalArgumentException("CNPJ inválido.");
@@ -89,39 +115,6 @@ public class Empresa {
         if (!validarPoliticaInclusao()) throw new IllegalArgumentException("Política de inclusão deve ter no mínimo 10 caracteres.");
 
     }
-
-
-    public static Empresa toEmpresa(EmpresaModels empresaModels) {
-        Empresa empresa = new Empresa();
-        empresa.setIdEmpresa(empresaModels.getIdEmpresa());
-
-        Nome nome = new Nome();
-        nome.setNome(empresaModels.getNome());
-        empresa.nome = nome; // <-- Faltava isso aqui
-
-        Email email = new Email();
-        email.setEmail(empresaModels.getEmail());
-        empresa.email = email;
-
-        Telefone telefone = new Telefone();
-        telefone.setTelefone(empresaModels.getTelefone());
-        empresa.telefone = telefone;
-
-        empresa.setCnpj(empresaModels.getCnpj());
-        empresa.setSetor(empresaModels.getSetor());
-        empresa.setPoliticaInclusao(empresaModels.getPoliticaInclusao());
-
-        empresa.setPlanoModels(empresaModels.getPlano());
-        empresa.setEnderecoEmpresaModels(empresaModels.getEnderecoEmpresa());
-
-        empresa.setAdministradores(empresaModels.getAdministradores());
-        empresa.setVagas(empresaModels.getVagas());
-        empresa.setAdministradores(empresaModels.getAdministradores());
-        empresa.setVagas(empresaModels.getVagas());
-
-        return empresa;
-    }
-
 
     public int getIdEmpresa() {
         return idEmpresa;

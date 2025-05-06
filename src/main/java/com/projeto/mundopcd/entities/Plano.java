@@ -12,16 +12,16 @@ public class Plano {
     public Plano() {
     }
 
-    public Plano(int idPlano, String nome, String descricao, double valor) {
+    public Plano(int idPlano, String nome, String tipo, double valor) {
         this.idPlano = idPlano;
         this.nome = nome;
-        this.tipo = descricao;
+        this.tipo = tipo;
         this.valor = valor;
     }
 
     public void executarValidacoes() {
         nomeIsInvalid();
-        //descricaoIsInvalid();
+        tipoIsInvalid();
         valorIsInvalid();
     }
 
@@ -47,9 +47,9 @@ public class Plano {
         }
     }
 
-    public void descricaoIsInvalid() {
-        if (tipo == null || tipo.trim().isEmpty() || tipo.length() < 10) {
-            throw new IllegalArgumentException("A descrição do plano deve ter no mínimo 10 caracteres.");
+    public void tipoIsInvalid() {
+        if (tipo == null || tipo.trim().isEmpty() || tipo.length() < 3) {
+            throw new IllegalArgumentException("O tipo do plano deve ter no mínimo 3 caracteres.");
         }
     }
 

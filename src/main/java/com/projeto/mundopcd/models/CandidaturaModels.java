@@ -1,8 +1,7 @@
 package com.projeto.mundopcd.models;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -55,19 +54,22 @@ public class CandidaturaModels {
 //    public CandidatoModels getCandidato() {
 //        return candidato;
 //    }
+//
 
+    @JsonIgnore
     public Integer getIdCandidato() {
         return idCandidato;
     }
 
-    public void setCandidato(CandidatoModels candidato) {
-        this.candidato = candidato;
-    }
+//    public void setCandidato(CandidatoModels candidato) {
+//        this.candidato = candidato;
+//    }
 
     public VagaModels getVaga() {
         return vaga;
     }
 
+    @JsonIgnore
     public Integer getIdVaga() {
         return idVaga;
     }
