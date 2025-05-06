@@ -3,7 +3,6 @@ package com.projeto.mundopcd.entities;
 import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.models.EmpresaModels;
 import com.projeto.mundopcd.models.VagaModels;
-
 import java.util.List;
 
 public class Vaga {

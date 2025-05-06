@@ -61,6 +61,14 @@ public class EmpresaModels {
         return vagas;
     }
 
+    public Integer getIdPlano() {
+        return idPlano;
+    }
+
+    public Integer getIdEnderecoEmpresa() {
+        return idEnderecoEmpresa;
+    }
+
     public void setVagas(List<VagaModels> vagas) {
         this.vagas = vagas;
     }

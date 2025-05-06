@@ -24,21 +24,6 @@ public class EnderecoEmpresa {
     public EnderecoEmpresa() {
     }
 
-    public String getCep() {
-        return cep;
-    }
-
-    public void validarTudo() {
-        setCep(this.cep); // Valida o CEP
-        setCidade(this.cidade); // Valida a cidade
-        setEstado(this.estado); // Valida o estado
-        setLogradouro(this.logradouro); // Valida o logradouro
-        setNumero(this.numero); // Valida o número
-        if (this.empresa == null) {
-            throw new IllegalArgumentException("Empresa não pode ser nula.");
-        }
-    }
-
     public static EnderecoEmpresa toEnderecoEmpresa(EnderecoEmpresaModels enderecoEmpresaModels) {
         EnderecoEmpresa enderecoEmpresa = new EnderecoEmpresa();
         enderecoEmpresa.setCep(enderecoEmpresaModels.getCep());
@@ -49,10 +34,57 @@ public class EnderecoEmpresa {
         return enderecoEmpresa;
     }
 
-    public void setCep(String cep) {
-        if (cep == null || cep.isEmpty() || !cep.matches("\\d{5}-\\d{3}")) {
-            throw new IllegalArgumentException("CEP inválido. Deve estar no formato 00000-000.");
+    public void validarTudo() {
+        cepIsInvalid();
+        cidadeIsInvalid();
+        estadoIsInvalid();
+        logradouroIsInvalid();
+        numeroIsInvalid();
+        empresaIsInvalid();
+    }
+
+    public void cepIsInvalid() {
+        String cepRegex = "^\\d{8}$";
+        if (cep == null || !cep.matches(cepRegex)) {
+            throw new IllegalArgumentException("O CEP deve conter exatamente 8 dígitos numéricos.");
         }
+    }
+
+    public void cidadeIsInvalid() {
+        if (cidade == null || cidade.trim().isEmpty() || cidade.length() < 2 || cidade.length() > 100) {
+            throw new IllegalArgumentException("A cidade deve ter entre 2 e 100 caracteres.");
+        }
+    }
+
+    public void estadoIsInvalid() {
+        if (estado == null || estado.trim().isEmpty() || estado.length() != 2) {
+            throw new IllegalArgumentException("O estado deve ser uma sigla válida de 2 caracteres.");
+        }
+    }
+
+    public void logradouroIsInvalid() {
+        if (logradouro == null || logradouro.trim().isEmpty() || logradouro.length() < 3 || logradouro.length() > 255) {
+            throw new IllegalArgumentException("O logradouro deve ter entre 3 e 255 caracteres.");
+        }
+    }
+
+    public void numeroIsInvalid() {
+        if (numero == null || numero.trim().isEmpty()) {
+            throw new IllegalArgumentException("O número do endereço é obrigatório.");
+        }
+    }
+
+    public void empresaIsInvalid() {
+        if (empresa == null) {
+            throw new IllegalArgumentException("Empresa não pode ser nula.");
+        }
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
@@ -61,9 +93,6 @@ public class EnderecoEmpresa {
     }
 
     public void setCidade(String cidade) {
-        if (cidade == null || cidade.trim().isEmpty()) {
-            throw new IllegalArgumentException("Cidade não pode ser nula ou vazia.");
-        }
         this.cidade = cidade;
     }
 
@@ -72,9 +101,6 @@ public class EnderecoEmpresa {
     }
 
     public void setEmpresa(EmpresaModels empresa) {
-        if (empresa == null) {
-            throw new IllegalArgumentException("Empresa não pode ser nula.");
-        }
         this.empresa = empresa;
     }
 
@@ -83,9 +109,6 @@ public class EnderecoEmpresa {
     }
 
     public void setEstado(String estado) {
-        if (estado == null || estado.trim().isEmpty() || estado.length() != 2) {
-            throw new IllegalArgumentException("Estado inválido. Deve conter a sigla de 2 caracteres.");
-        }
         this.estado = estado;
     }
 
@@ -94,9 +117,6 @@ public class EnderecoEmpresa {
     }
 
     public void setLogradouro(String logradouro) {
-        if (logradouro == null || logradouro.trim().isEmpty()) {
-            throw new IllegalArgumentException("Logradouro não pode ser nulo ou vazio.");
-        }
         this.logradouro = logradouro;
     }
 
@@ -105,9 +125,7 @@ public class EnderecoEmpresa {
     }
 
     public void setNumero(String numero) {
-        if (numero == null || numero.trim().isEmpty()) {
-            throw new IllegalArgumentException("Número não pode ser nulo ou vazio.");
-        }
         this.numero = numero;
     }
+
 }
