@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -22,14 +23,14 @@ public class PlanoModels {
     private String tipo;
 
     @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
-    private List<EmpresaModels> empresa;
+    private List<EmpresaModels> empresas;
 
     @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL)
-    private List<CandidatoModels> candidato;
+    private List<CandidatoModels> candidatos;
 
-    public PlanoModels(List<CandidatoModels> candidato, List<EmpresaModels> empresa, String nome, Double valor, String tipo) {
-        this.candidato = candidato;
-        this.empresa = empresa;
+    public PlanoModels(List<CandidatoModels> candidatos, List<EmpresaModels> empresas, String nome, Double valor, String tipo) {
+        this.candidatos = candidatos;
+        this.empresas = empresas;
         this.nome = nome;
         this.valor = valor;
         this.tipo = tipo;
@@ -63,21 +64,21 @@ public class PlanoModels {
         this.idPlano = idPlano;
     }
 
-//    public List<Candidato> getCandidatos() {
-//        return candidatoes;
-//    }
-//
-//    public void setCandidatos(List<Candidato> candidatoes) {
-//        this.candidatoes = candidatoes;
+//    public List<CandidatoModels> getCandidatos() {
+//        return candidatos;
 //    }
 
-//    public List<Empresa> getEmpresas() {
+    public void setCandidatos(List<CandidatoModels> candidatoes) {
+        this.candidatos = candidatoes;
+    }
+
+//    public List<EmpresaModels> getEmpresas() {
 //        return empresas;
 //    }
-//
-//    public void setEmpresas(List<Empresa> empresas) {
-//        this.empresas = empresas;
-//    }
+
+    public void setEmpresas(List<EmpresaModels> empresas) {
+        this.empresas = empresas;
+    }
 
     public String getNome() {
         return nome;

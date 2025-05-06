@@ -28,19 +28,17 @@ public class AdministradorEmpresa {
 
     public static AdministradorEmpresa toAdministradorEmpresa(AdministradorEmpresaModels administradorEmpresaModels) {
         AdministradorEmpresa administradorEmpresa = new AdministradorEmpresa();
-
         administradorEmpresa.setIdAdmin(administradorEmpresaModels.getIdAdmin());
-
         Nome nome = new Nome();
         nome.setNome(administradorEmpresaModels.getNome());
-
+        administradorEmpresa.nome = nome;
         Email email = new Email();
         email.setEmail(administradorEmpresaModels.getEmail());
-
+        administradorEmpresa.email = email;
         administradorEmpresa.setSenha(administradorEmpresaModels.getSenha());
         administradorEmpresa.setEmpresa(administradorEmpresaModels.getEmpresa());
+        administradorEmpresa.setIdEmpresa(administradorEmpresaModels.getIdEmpresa());
         return administradorEmpresa;
-
     }
 
     public void validarAdministrador() {

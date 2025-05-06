@@ -3,7 +3,6 @@ package com.projeto.mundopcd.entities;
 import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.models.EmpresaModels;
 import com.projeto.mundopcd.models.VagaModels;
-
 import java.util.List;
 
 public class Vaga {
@@ -102,7 +101,7 @@ public class Vaga {
     }
 
     public void empresaIsNull() {
-        if (empresaModels == null) {
+        if (idEmpresa == null) {
             throw new IllegalArgumentException("A empresa associada deve ser válida.");
         }
     }

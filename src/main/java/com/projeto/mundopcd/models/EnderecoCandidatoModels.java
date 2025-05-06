@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -36,12 +37,21 @@ public class EnderecoCandidatoModels {
     public EnderecoCandidatoModels() {
     }
 
-    public CandidatoModels getCandidato() {
-        return candidato;
-    }
+//    public CandidatoModels getCandidato() {
+//        return candidato;
+//    }
 
     public void setCandidato(CandidatoModels candidatoModels) {
         this.candidato = candidatoModels;
+    }
+
+    @JsonIgnore
+    public Integer getIdCandidato() {
+        return idCandidato;
+    }
+
+    public void setIdCandidato(Integer idCandidato) {
+        this.idCandidato = idCandidato;
     }
 
     public String getLogradouro() {

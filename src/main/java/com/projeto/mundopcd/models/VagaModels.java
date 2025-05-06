@@ -1,6 +1,6 @@
 package com.projeto.mundopcd.models;
 
-import com.projeto.mundopcd.entities.Candidatura;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -114,7 +114,7 @@ public class VagaModels {
         this.localizacao = localizacao;
     }
 
-
+    @JsonIgnore
     public EmpresaModels getEmpresa() {
         return empresa;
     }
@@ -123,11 +123,12 @@ public class VagaModels {
        this.empresa = empresaModels;
    }
 
-
+    @JsonIgnore
     public Integer getIdEmpresa() {
         return idEmpresa;
     }
 
+    @JsonIgnore
     public List<CandidaturaModels> getCandidaturaModels() {
         return candidatura;
     }

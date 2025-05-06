@@ -1,5 +1,6 @@
 package com.projeto.mundopcd.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class EmpresaModels {
 
     @ManyToOne
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
+    @JsonBackReference
     private PlanoModels plano;
 
     @Column(name = "id_plano")
@@ -59,8 +61,16 @@ public class EmpresaModels {
         return vagas;
     }
 
-    public void setVagas(List<VagaModels> vagases) {
-        this.vagas = vagases;
+    public Integer getIdPlano() {
+        return idPlano;
+    }
+
+    public Integer getIdEnderecoEmpresa() {
+        return idEnderecoEmpresa;
+    }
+
+    public void setVagas(List<VagaModels> vagas) {
+        this.vagas = vagas;
     }
 
     public void setIdPlano(Integer idPlano) {
