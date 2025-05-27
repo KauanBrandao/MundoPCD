@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "empresas")
-public class EmpresaModels {
+public class EmpresaModels{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,9 +45,6 @@ public class EmpresaModels {
 
     @Column(name = "id_endereco_empresa")
     private Integer idEnderecoEmpresa;
-
-    @OneToMany(mappedBy = "empresa")
-    private List<AdministradorEmpresaModels> administradores;
 
     @OneToMany(mappedBy = "empresa")
     private List<VagaModels> vagas;
@@ -113,6 +110,10 @@ public class EmpresaModels {
         this.email = email;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getTelefone() {
         return telefone;
     }
@@ -151,13 +152,5 @@ public class EmpresaModels {
 
     public void setEnderecoEmpresa(EnderecoEmpresaModels enderecoEmpresaModels) {
         this.enderecoEmpresa = enderecoEmpresaModels;
-    }
-
-    public List<AdministradorEmpresaModels> getAdministradores() {
-        return administradores;
-    }
-
-    public void setAdministradores(List<AdministradorEmpresaModels> administradores) {
-        this.administradores = administradores;
     }
 }
