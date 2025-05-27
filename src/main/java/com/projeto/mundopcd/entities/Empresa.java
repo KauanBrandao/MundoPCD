@@ -19,23 +19,23 @@ public class Empresa {
     private Integer idPlano;
     private EnderecoEmpresaModels enderecoEmpresaModels;
     private Integer idEnderecoEmpresa;
-    private List<AdministradorEmpresaModels> administradores;
     private List<VagaModels> vagas;
     private List<EmpresaCursoModels> empresaCursoModels;
 
     public Empresa() {}
 
-    public Empresa(int idEmpresa, String nome, String cnpj, String email, String telefone, String setor, String politicaInclusao, PlanoModels planoModels, Integer idPlano, EnderecoEmpresaModels enderecoEmpresaModels, Integer idEnderecoEmpresa, List<AdministradorEmpresaModels> administradores, List<VagaModels> vagas) {
-        this.idEmpresa = idEmpresa;
-        this.nome.setNome(nome);
+    public Empresa(String cnpj, Email email, List<EmpresaCursoModels> empresaCursoModels, EnderecoEmpresaModels enderecoEmpresaModels, Integer idEnderecoEmpresa, Integer idPlano, Nome nome, PlanoModels planoModels, String politicaInclusao, String setor, Telefone telefone, List<VagaModels> vagas) {
         this.cnpj = cnpj;
-        this.email.setEmail(email);
-        this.telefone.setTelefone(telefone);
-        this.setor = setor;
-        this.politicaInclusao = politicaInclusao;
-        this.planoModels = planoModels;
+        this.email = email;
+        this.empresaCursoModels = empresaCursoModels;
         this.enderecoEmpresaModels = enderecoEmpresaModels;
-        this.administradores = administradores;
+        this.idEnderecoEmpresa = idEnderecoEmpresa;
+        this.idPlano = idPlano;
+        this.nome = nome;
+        this.planoModels = planoModels;
+        this.politicaInclusao = politicaInclusao;
+        this.setor = setor;
+        this.telefone = telefone;
         this.vagas = vagas;
     }
 
@@ -64,9 +64,6 @@ public class Empresa {
         empresa.setEnderecoEmpresaModels(empresaModels.getEnderecoEmpresa());
         empresa.setIdEnderecoEmpresa(empresaModels.getIdEnderecoEmpresa());
 
-        empresa.setAdministradores(empresaModels.getAdministradores());
-        empresa.setVagas(empresaModels.getVagas());
-        empresa.setAdministradores(empresaModels.getAdministradores());
         empresa.setVagas(empresaModels.getVagas());
 
         return empresa;
@@ -114,6 +111,18 @@ public class Empresa {
         if (!validarSetor()) throw new IllegalArgumentException("Setor obrigatório.");
         if (!validarPoliticaInclusao()) throw new IllegalArgumentException("Política de inclusão deve ter no mínimo 10 caracteres.");
 
+    }
+
+    public void setEmail(Email email) {
+        this.email = email;
+    }
+
+    public void setNome(Nome nome) {
+        this.nome = nome;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
     }
 
     public int getIdEmpresa() {
@@ -202,14 +211,6 @@ public class Empresa {
 
     public void setIdEnderecoEmpresa(Integer idEnderecoEmpresa) {
         this.idEnderecoEmpresa = idEnderecoEmpresa;
-    }
-
-    public List<AdministradorEmpresaModels> getAdministradores() {
-        return administradores;
-    }
-
-    public void setAdministradores(List<AdministradorEmpresaModels> administradores) {
-        this.administradores = administradores;
     }
 
     public List<VagaModels> getVagas() {

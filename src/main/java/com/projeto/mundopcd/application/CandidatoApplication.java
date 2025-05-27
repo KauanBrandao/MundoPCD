@@ -1,7 +1,6 @@
 package com.projeto.mundopcd.application;
 
 import com.projeto.mundopcd.entities.Candidato;
-import com.projeto.mundopcd.entities.Empresa;
 import com.projeto.mundopcd.models.CandidatoModels;
 import com.projeto.mundopcd.repositories.CandidatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +30,10 @@ public class CandidatoApplication {
     }
 
     public CandidatoModels cadastrar(CandidatoModels candidatoModels) {
-
         Candidato candidato = Candidato.toCandidato(candidatoModels);
         candidato.validar();
+
+
         return candidatoRepository.cadastrar(candidatoModels);
     }
 

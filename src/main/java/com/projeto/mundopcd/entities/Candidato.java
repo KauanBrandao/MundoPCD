@@ -145,6 +145,10 @@ public class Candidato {
         return email;
     }
 
+    public Integer getIdEnderecoCandidato() {
+        return idEnderecoCandidato;
+    }
+
     public void setEmail(Email email) {
         this.email = email;
     }
