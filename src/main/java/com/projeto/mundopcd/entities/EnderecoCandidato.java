@@ -46,12 +46,6 @@ public class EnderecoCandidato {
         cepIsInvalid();
     }
 
-    public void idEnderecoCandidatoIsInvalid() {
-        if (idEnderecoCandidato <= 0) {
-            throw new IllegalArgumentException("O ID do endereço do candidato deve ser maior que zero.");
-        }
-    }
-
     public void logradouroIsInvalid() {
         if (logradouro == null || logradouro.trim().isEmpty() || logradouro.length() < 3 || logradouro.length() > 255) {
             throw new IllegalArgumentException("O logradouro deve ter entre 3 e 255 caracteres.");

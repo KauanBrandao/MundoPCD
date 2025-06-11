@@ -2,54 +2,44 @@ package com.projeto.mundopcd.entities;
 
 import com.projeto.mundopcd.entities.SubEntities.Email;
 import com.projeto.mundopcd.entities.SubEntities.Nome;
-import com.projeto.mundopcd.models.AdministradorEmpresaModels;
-import com.projeto.mundopcd.models.EmpresaModels;
+import com.projeto.mundopcd.models.AdministradorModels;
 
-public class AdministradorEmpresa {
+public class Administrador {
 
     private int idAdmin;
     private Nome nome = new Nome();
     private Email email = new Email();
     private String senha;
-    private EmpresaModels empresa;
-    private Integer idEmpresa;
 
-    public AdministradorEmpresa() {
+    public Administrador() {
     }
 
-    public AdministradorEmpresa(int idAdmin, String nome, String email, String senha, EmpresaModels empresa, Integer idEmpresa) {
+    public Administrador(int idAdmin, String nome, String email, String senha) {
         this.idAdmin = idAdmin;
         this.nome.setNome(nome);
         this.email.setEmail(email);
         this.senha = senha;
-        this.empresa = empresa;
-        this.idEmpresa = idEmpresa;
     }
 
-    public static AdministradorEmpresa toAdministradorEmpresa(AdministradorEmpresaModels administradorEmpresaModels) {
-        AdministradorEmpresa administradorEmpresa = new AdministradorEmpresa();
-        administradorEmpresa.setIdAdmin(administradorEmpresaModels.getIdAdmin());
+    public static Administrador toAdministradorEmpresa(AdministradorModels administradorModels) {
+        Administrador administrador = new Administrador();
+        administrador.setIdAdmin(administradorModels.getIdAdmin());
         Nome nome = new Nome();
-        nome.setNome(administradorEmpresaModels.getNome());
-        administradorEmpresa.nome = nome;
+        nome.setNome(administradorModels.getNome());
+        administrador.nome = nome;
         Email email = new Email();
-        email.setEmail(administradorEmpresaModels.getEmail());
-        administradorEmpresa.email = email;
-        administradorEmpresa.setSenha(administradorEmpresaModels.getSenha());
-        administradorEmpresa.setEmpresa(administradorEmpresaModels.getEmpresa());
-        administradorEmpresa.setIdEmpresa(administradorEmpresaModels.getIdEmpresa());
-        return administradorEmpresa;
+        email.setEmail(administradorModels.getEmail());
+        administrador.email = email;
+        administrador.setSenha(administradorModels.getSenha());
+        return administrador;
     }
 
     public void validarAdministrador() {
         nome.validarNome();
         email.verificaEmail();
         senhaIsValid();
-        validarEmpresa();
         validarIdAdmin();
     }
-
-
 
     private void senhaIsValid() {
         if (senha == null || senha.length() < 8) {
@@ -60,19 +50,11 @@ public class AdministradorEmpresa {
         }
     }
 
-    private void validarEmpresa() {
-        if (empresa == null) {
-            throw new IllegalArgumentException("Administrador deve estar associado a uma empresa.");
-        }
-
-    }
-
     private void validarIdAdmin() {
         if (idAdmin <= 0) {
             throw new IllegalArgumentException("ID do administrador deve ser positivo.");
         }
     }
-
 
     public int getIdAdmin() {
         return idAdmin;
@@ -104,21 +86,5 @@ public class AdministradorEmpresa {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public EmpresaModels getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(EmpresaModels empresa) {
-        this.empresa = empresa;
-    }
-
-    public Integer getIdEmpresa() {
-        return idEmpresa;
-    }
-
-    public void setIdEmpresa(Integer idEmpresa) {
-        this.idEmpresa = idEmpresa;
     }
 }
