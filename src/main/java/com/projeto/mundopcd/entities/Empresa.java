@@ -1,19 +1,19 @@
 package com.projeto.mundopcd.entities;
 
 import com.projeto.mundopcd.entities.SubEntities.Email;
-import com.projeto.mundopcd.entities.SubEntities.Nome;
 import com.projeto.mundopcd.entities.SubEntities.Telefone;
 import com.projeto.mundopcd.models.*;
-
 import java.util.List;
 
 public class Empresa {
     private int idEmpresa;
-    private Nome nome = new Nome();
+    private String nomeEmpresa;
+    private String nomeResponsavel;
     private String cnpj;
     private Email email = new Email();
     private Telefone telefone = new Telefone();
     private String setor;
+    private String senha;
     private String politicaInclusao;
     private PlanoModels planoModels;
     private Integer idPlano;
@@ -24,14 +24,16 @@ public class Empresa {
 
     public Empresa() {}
 
-    public Empresa(String cnpj, Email email, List<EmpresaCursoModels> empresaCursoModels, EnderecoEmpresaModels enderecoEmpresaModels, Integer idEnderecoEmpresa, Integer idPlano, Nome nome, PlanoModels planoModels, String politicaInclusao, String setor, Telefone telefone, List<VagaModels> vagas) {
+    public Empresa(String cnpj, Email email, List<EmpresaCursoModels> empresaCursoModels, EnderecoEmpresaModels enderecoEmpresaModels, String senha, Integer idEnderecoEmpresa, Integer idPlano, String nomeEmpresa, String nomeResponsavel, PlanoModels planoModels, String politicaInclusao, String setor, Telefone telefone, List<VagaModels> vagas) {
         this.cnpj = cnpj;
         this.email = email;
+        this.senha = senha;
         this.empresaCursoModels = empresaCursoModels;
         this.enderecoEmpresaModels = enderecoEmpresaModels;
         this.idEnderecoEmpresa = idEnderecoEmpresa;
         this.idPlano = idPlano;
-        this.nome = nome;
+        this.nomeEmpresa = nomeEmpresa;
+        this.nomeResponsavel = nomeResponsavel;
         this.planoModels = planoModels;
         this.politicaInclusao = politicaInclusao;
         this.setor = setor;
@@ -43,13 +45,14 @@ public class Empresa {
         Empresa empresa = new Empresa();
         empresa.setIdEmpresa(empresaModels.getIdEmpresa());
 
-        Nome nome = new Nome();
-        nome.setNome(empresaModels.getNome());
-        empresa.nome = nome;
+        empresa.setNomeEmpresa(empresaModels.getNomeEmpresa());
+        empresa.setNomeResponsavel(empresaModels.getNomeResponsavel());
 
         Email email = new Email();
         email.setEmail(empresaModels.getEmail());
         empresa.email = email;
+
+        empresa.setSenha(empresaModels.getSenha());
 
         Telefone telefone = new Telefone();
         telefone.setTelefone(empresaModels.getTelefone());
@@ -105,20 +108,15 @@ public class Empresa {
 
     public void validarTudo() {
         if (!validarCNPJ()) throw new IllegalArgumentException("CNPJ inválido.");
-        nome.validarNome();
         email.verificaEmail();
         telefone.verificaTelefone();
-        if (!validarSetor()) throw new IllegalArgumentException("Setor obrigatório.");
-        if (!validarPoliticaInclusao()) throw new IllegalArgumentException("Política de inclusão deve ter no mínimo 10 caracteres.");
+        //if (!validarSetor()) throw new IllegalArgumentException("Setor obrigatório.");
+        //if (!validarPoliticaInclusao()) throw new IllegalArgumentException("Política de inclusão deve ter no mínimo 10 caracteres.");
 
     }
 
     public void setEmail(Email email) {
         this.email = email;
-    }
-
-    public void setNome(Nome nome) {
-        this.nome = nome;
     }
 
     public void setTelefone(Telefone telefone) {
@@ -133,12 +131,20 @@ public class Empresa {
         this.idEmpresa = idEmpresa;
     }
 
-    public String getNome() {
-        return nome.getNome();
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
     }
 
-    public void setNome(String nome) {
-        this.nome.setNome(nome);
+    public void setNomeEmpresa(String nomeEmpresa) {
+        this.nomeEmpresa = nomeEmpresa;
+    }
+
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
+    }
+
+    public void setNomeResponsavel(String nomeResponsavel) {
+        this.nomeResponsavel = nomeResponsavel;
     }
 
     public String getCnpj() {
@@ -227,5 +233,13 @@ public class Empresa {
 
     public void setEmpresaCursoModels(List<EmpresaCursoModels> empresaCursoModels) {
         this.empresaCursoModels = empresaCursoModels;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

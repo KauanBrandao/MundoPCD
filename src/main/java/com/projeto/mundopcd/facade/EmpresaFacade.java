@@ -3,8 +3,8 @@ package com.projeto.mundopcd.facade;
 import com.projeto.mundopcd.application.EmpresaApplication;
 import com.projeto.mundopcd.models.EmpresaModels;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component
@@ -31,5 +31,9 @@ public class EmpresaFacade {
 
     public void atualizar(EmpresaModels empresaModels) {
         empresaApplication.atualizar(empresaModels);
+    }
+
+    public ResponseEntity<?> login(EmpresaModels empresaModels){
+        return empresaApplication.login(empresaModels);
     }
 }

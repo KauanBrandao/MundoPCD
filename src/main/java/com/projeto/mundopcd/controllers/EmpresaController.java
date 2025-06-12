@@ -3,12 +3,14 @@ package com.projeto.mundopcd.controllers;
 import com.projeto.mundopcd.facade.EmpresaFacade;
 import com.projeto.mundopcd.models.EmpresaModels;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/empresas")
+@CrossOrigin(origins = "*")
 public class EmpresaController {
 
     private EmpresaFacade empresaFacade;
@@ -36,5 +38,10 @@ public class EmpresaController {
     @PutMapping("/atualizar")
     public void atualizar (@RequestBody EmpresaModels empresaModels) {
         empresaFacade.atualizar(empresaModels);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody EmpresaModels empresaModels){
+        return empresaFacade.login(empresaModels);
     }
 }
