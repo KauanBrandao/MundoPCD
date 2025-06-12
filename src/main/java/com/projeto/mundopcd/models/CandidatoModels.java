@@ -85,12 +85,10 @@ public class CandidatoModels{
         this.tipoDeficiencia = tipoDeficiencia;
     }
 
-    @JsonIgnore
     public Integer getIdPlano() {
         return idPlano;
     } 
 
-    @JsonIgnore
     public Integer getIdEnderecoCandidato() {
         return idEnderecoCandidato;
     }
