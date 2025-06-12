@@ -45,7 +45,6 @@ public class EnderecoCandidatoModels {
         this.candidato = candidatoModels;
     }
 
-    @JsonIgnore
     public Integer getIdCandidato() {
         return idCandidato;
     }

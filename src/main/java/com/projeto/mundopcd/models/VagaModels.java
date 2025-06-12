@@ -125,21 +125,18 @@ public class VagaModels {
         this.localizacao = localizacao;
     }
 
-    @JsonIgnore
-    public EmpresaModels getEmpresa() {
-        return empresa;
-    }
+//    public EmpresaModels getEmpresa() {
+//        return empresa;
+//    }
 
     public void setEmpresa(EmpresaModels empresaModels) {
        this.empresa = empresaModels;
    }
 
-    @JsonIgnore
     public Integer getIdEmpresa() {
         return idEmpresa;
     }
 
-    @JsonIgnore
     public List<CandidaturaModels> getCandidaturaModels() {
         return candidatura;
     }
