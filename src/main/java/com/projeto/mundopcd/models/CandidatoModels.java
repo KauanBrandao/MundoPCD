@@ -2,6 +2,8 @@ package com.projeto.mundopcd.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -31,6 +33,24 @@ public class CandidatoModels{
     @Column(name = "curriculo")
     private String curriculo;
 
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
+
+    @Column(name = "senha")
+    private String senha;
+
+    @Column(name = "estado_civil")
+    private String estadoCivil;
+
+    @Column(name = "genero")
+    private String genero;
+
+    @Column(name = "mae")
+    private String mae;
+
+    @Column(name = "pai")
+    private String pai;
+
     @ManyToOne
     @JoinColumn(name = "id_plano", referencedColumnName = "id_plano", insertable = false, updatable = false)
     private PlanoModels plano;
@@ -50,11 +70,12 @@ public class CandidatoModels{
 
     public CandidatoModels() {}
 
-    public CandidatoModels(List<CandidaturaModels> candidaturas, String cpf, String curriculo, String email, EnderecoCandidatoModels enderecoCandidato, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, PlanoModels plano, String telefone, String tipoDeficiencia) {
+    public CandidatoModels(List<CandidaturaModels> candidaturas, String cpf, String curriculo, String email, EnderecoCandidatoModels enderecoCandidato, String senha, String experiencia, String formacao, String habilidades, Integer idEnderecoCandidato, Integer idPlano, String nome, PlanoModels plano, String telefone, String tipoDeficiencia) {
         this.candidaturas = candidaturas;
         this.cpf = cpf;
         this.curriculo = curriculo;
         this.email = email;
+        this.senha = senha;
         this.enderecoCandidato = enderecoCandidato;
         this.idEnderecoCandidato = idEnderecoCandidato;
         this.idPlano = idPlano;
@@ -67,7 +88,7 @@ public class CandidatoModels{
     @JsonIgnore
     public Integer getIdPlano() {
         return idPlano;
-    }
+    } 
 
     @JsonIgnore
     public Integer getIdEnderecoCandidato() {
@@ -104,6 +125,46 @@ public class CandidatoModels{
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getMae() {
+        return mae;
+    }
+
+    public void setMae(String mae) {
+        this.mae = mae;
+    }
+
+    public String getPai() {
+        return pai;
+    }
+
+    public void setPai(String pai) {
+        this.pai = pai;
     }
 
     public String getEmail() {
@@ -160,5 +221,13 @@ public class CandidatoModels{
 
     public void setEnderecoCandidato(EnderecoCandidatoModels enderecoCandidato) {
         this.enderecoCandidato = enderecoCandidato;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

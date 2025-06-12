@@ -7,7 +7,7 @@ import com.projeto.mundopcd.models.CandidatoModels;
 import com.projeto.mundopcd.models.CandidaturaModels;
 import com.projeto.mundopcd.models.EnderecoCandidatoModels;
 import com.projeto.mundopcd.models.PlanoModels;
-
+import java.time.LocalDate;
 import java.util.List;
 
 public class Candidato {
@@ -17,28 +17,42 @@ public class Candidato {
     private String cpf;
     private Telefone telefone = new Telefone();
     private String tipoDeficiencia;
+    private LocalDate dataNascimento;
     private String curriculo;
+    private String senha;
+    private String estadoCivil;
+    private String genero;
+    private String mae;
+    private String pai;
     private PlanoModels plano;
     private Integer idPlano;
     private Integer idEnderecoCandidato;
     private EnderecoCandidatoModels enderecoCandidato;
     private List<CandidaturaModels> candidaturas;
 
-    public Candidato() {}
+    public Candidato() {
+    }
 
-    public Candidato(String tipoDeficiencia, String telefone, PlanoModels plano, String nome, Integer idEnderecoCandidato, EnderecoCandidatoModels enderecoCandidato,
-                     int idCandidato, String curriculo, String email, String cpf,
-                     List<CandidaturaModels> candidaturas) {
+    public Candidato(Nome nome, Email email, String cpf, Telefone telefone, LocalDate dataNascimento, String tipoDeficiencia, String curriculo,
+            String senha, String estadoCivil, String genero, String mae, String pai, PlanoModels plano, Integer idPlano,
+            Integer idEnderecoCandidato, EnderecoCandidatoModels enderecoCandidato,
+            List<CandidaturaModels> candidaturas) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
         this.tipoDeficiencia = tipoDeficiencia;
-        this.telefone.setTelefone(telefone);
+        this.curriculo = curriculo;
+        this.senha = senha;
+        this.estadoCivil = estadoCivil;
+        this.genero = genero;
+        this.mae = mae;
+        this.pai = pai;
         this.plano = plano;
-        this.nome.setNome(nome);
-        this.idCandidato = idCandidato;
+        this.idPlano = idPlano;
         this.idEnderecoCandidato = idEnderecoCandidato;
         this.enderecoCandidato = enderecoCandidato;
-        this.email.setEmail(email);
-        this.curriculo = curriculo;
-        this.cpf = cpf;
         this.candidaturas = candidaturas;
     }
 
@@ -59,6 +73,14 @@ public class Candidato {
         telefone.setTelefone(candidatoModels.getTelefone());
         candidato.setTelefone(telefone);
 
+        candidato.setEstadoCivil(candidatoModels.getEstadoCivil());
+        candidato.setGenero(candidatoModels.getGenero());
+        candidato.setMae(candidatoModels.getMae());
+        candidato.setPai(candidatoModels.getPai());
+        candidato.setDataNascimento(candidatoModels.getDataNascimento());
+
+        candidato.setSenha(candidatoModels.getSenha());
+
         candidato.setCpf(candidatoModels.getCpf());
         candidato.setCurriculo(candidatoModels.getCurriculo());
         candidato.setTipoDeficiencia(candidatoModels.getTipoDeficiencia());
@@ -75,18 +97,23 @@ public class Candidato {
     public void validar() {
         email.verificaEmail();
         telefone.verificaTelefone();
-        if (!isCpfValido()) throw new IllegalArgumentException("CPF inválido.");
+        if (!isCpfValido())
+            throw new IllegalArgumentException("CPF inválido.");
         nome.validarNome();
-        if (!isCurriculoValido()) throw new IllegalArgumentException("Currículo inválido.");
-        if (!isTipoDeficienciaValido()) throw new IllegalArgumentException("Tipo de deficiência inválido.");
+        generoValido();
+        estadoCivilValido();
+        // if (!isCurriculoValido()) throw new IllegalArgumentException("Currículo
+        // inválido.");
+        // if (!isTipoDeficienciaValido()) throw new IllegalArgumentException("Tipo de
+        // deficiência inválido.");
     }
 
     public boolean isCpfValido() {
         if (cpf == null || cpf.length() != 11 || !cpf.matches("\\d+")) {
             return false;
         }
-        int[] peso1 = {10, 9, 8, 7, 6, 5, 4, 3, 2};
-        int[] peso2 = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
+        int[] peso1 = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+        int[] peso2 = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
         try {
             int soma1 = 0, soma2 = 0;
@@ -116,9 +143,30 @@ public class Candidato {
 
     public boolean isTipoDeficienciaValido() {
         String[] tiposValidos = {"Física", "Auditiva", "Visual", "Intelectual", "Múltipla"};
-        if (tipoDeficiencia == null) return false;
+        if (tipoDeficiencia == null)
+            return false;
         for (String tipo : tiposValidos) {
             if (tipoDeficiencia.equalsIgnoreCase(tipo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean generoValido() {
+        String[] generosValidos = {"Homem", "Mulher", "Outros"};
+        for (String g : generosValidos) {
+            if (g.equalsIgnoreCase(this.genero)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean estadoCivilValido() {
+        String[] estadosCivisValidos = {"Solteiro", "Casado", "Divorciado", "Viúvo"};
+        for (String e : estadosCivisValidos) {
+            if (e.equalsIgnoreCase(this.estadoCivil)) {
                 return true;
             }
         }
@@ -145,6 +193,14 @@ public class Candidato {
         return email;
     }
 
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     public Integer getIdEnderecoCandidato() {
         return idEnderecoCandidato;
     }
@@ -159,6 +215,38 @@ public class Candidato {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getMae() {
+        return mae;
+    }
+
+    public void setMae(String mae) {
+        this.mae = mae;
+    }
+
+    public String getPai() {
+        return pai;
+    }
+
+    public void setPai(String pai) {
+        this.pai = pai;
     }
 
     public Telefone getTelefone() {
@@ -213,12 +301,19 @@ public class Candidato {
         this.enderecoCandidato = enderecoCandidato;
     }
 
-
     public List<CandidaturaModels> getCandidaturas() {
         return candidaturas;
     }
 
     public void setCandidaturas(List<CandidaturaModels> candidaturas) {
         this.candidaturas = candidaturas;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/enderecos-candidatos")
+@CrossOrigin(origins = "*")
 public class EnderecoCandidatoController {
 
     private EnderecoCandidatoFacade enderecoCandidatoFacade;

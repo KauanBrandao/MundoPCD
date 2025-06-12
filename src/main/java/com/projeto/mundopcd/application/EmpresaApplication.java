@@ -4,6 +4,7 @@ import com.projeto.mundopcd.entities.Empresa;
 import com.projeto.mundopcd.models.EmpresaModels;
 import com.projeto.mundopcd.repositories.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,5 +37,9 @@ public class EmpresaApplication {
 
     public void atualizar(EmpresaModels empresaModels) {
         empresaRepository.atualizar(empresaModels);
+    }
+
+    public ResponseEntity<?> login(EmpresaModels empresaModels){
+        return empresaRepository.login(empresaModels);
     }
 }

@@ -1,8 +1,11 @@
 package com.projeto.mundopcd.repositories;
 
+import com.projeto.mundopcd.models.CandidatoModels;
 import com.projeto.mundopcd.models.EmpresaModels;
 import com.projeto.mundopcd.repositories.JPA.EmpresaJPA;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -39,6 +42,21 @@ public class EmpresaRepository {
 
     public void deletar(int id) {
         this.empresaJpa.deleteById(id);
+    }
+
+     public ResponseEntity<?> login(EmpresaModels empresaModels){
+        EmpresaModels empresa = empresaJpa.findByEmail(empresaModels.getEmail());
+
+        if(empresa == null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou senha incorretos.");
+        }
+
+        if(!empresa.getSenha().equals(empresaModels.getSenha())){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou senha incorretos.");
+        }
+
+        return ResponseEntity.ok(empresa);
+
     }
 
 
