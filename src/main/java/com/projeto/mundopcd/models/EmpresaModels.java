@@ -13,14 +13,20 @@ public class EmpresaModels{
     @Column(name = "id_empresa")
     private int idEmpresa;
 
-    @Column(name = "nome")
-    private String nome;
+    @Column(name = "nome_empresa")
+    private String nomeEmpresa;
+
+    @Column(name = "nome_responsavel")
+    private String nomeResponsavel;
 
     @Column(name = "cnpj")
     private String cnpj;
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "senha")
+    private String senha;
 
     @Column(name = "telefone")
     private String telefone;
@@ -74,6 +80,22 @@ public class EmpresaModels{
         this.idPlano = idPlano;
     }
 
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setNomeResponsavel(String nomeResponsavel) {
+        this.nomeResponsavel = nomeResponsavel;
+    }
+
     public void setIdEnderecoEmpresa(Integer idEnderecoEmpresa) {
         this.idEnderecoEmpresa = idEnderecoEmpresa;
     }
@@ -86,12 +108,12 @@ public class EmpresaModels{
         this.idEmpresa = idEmpresa;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
     }
 
-    public void setNomeEmpresa(String nome) {
-        this.nome = nome;
+    public void setNomeEmpresa(String nomeEmpresa) {
+        this.nomeEmpresa = nomeEmpresa;
     }
 
     public String getCnpj() {
@@ -108,10 +130,6 @@ public class EmpresaModels{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getTelefone() {

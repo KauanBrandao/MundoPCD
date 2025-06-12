@@ -4,6 +4,8 @@ import com.projeto.mundopcd.models.CandidatoModels;
 import com.projeto.mundopcd.repositories.JPA.CandidatoJPA;
 import com.projeto.mundopcd.repositories.JPA.EnderecoCandidatoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -41,6 +43,21 @@ public class CandidatoRepository {
 
     public void deletar(int id){
         this.candidatoJpa.deleteById(id);
+    }
+
+    public ResponseEntity<?> login(CandidatoModels candidatoModels){
+        CandidatoModels candidato = candidatoJpa.findByEmail(candidatoModels.getEmail());
+
+        if(candidato == null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário ou senha incorretos.");
+        }
+
+        if(!candidato.getSenha().equals(candidatoModels.getSenha())){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário ou senha incorretos.");
+        }
+
+        return ResponseEntity.ok(candidato);
+
     }
 
 }

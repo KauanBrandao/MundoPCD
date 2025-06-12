@@ -30,6 +30,9 @@ public class VagaModels {
     @Column(name = "localizacao")
     private String localizacao;
 
+    @Column(name = "modalidade")
+    private String modalidade;
+
     @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", insertable = false, updatable = false)
     private EmpresaModels empresa;
@@ -76,6 +79,14 @@ public class VagaModels {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public String getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
     }
 
     public void setDescricao(String descricao) {

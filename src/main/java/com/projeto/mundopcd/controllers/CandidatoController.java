@@ -3,12 +3,14 @@ package com.projeto.mundopcd.controllers;
 import com.projeto.mundopcd.facade.CandidatoFacade;
 import com.projeto.mundopcd.models.CandidatoModels;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/candidatos")
+@CrossOrigin(origins = "*")
 public class CandidatoController {
 
     private CandidatoFacade candidatoFacade;
@@ -29,7 +31,7 @@ public class CandidatoController {
     }
 
     @PostMapping("/cadastrar")
-    public CandidatoModels cadastrar(@RequestBody CandidatoModels candidatoModels){
+    public ResponseEntity<?> cadastrar(@RequestBody CandidatoModels candidatoModels){
         return this.candidatoFacade.cadastrar(candidatoModels);
     }
 
@@ -42,4 +44,11 @@ public class CandidatoController {
     public void deletar(@PathVariable int id){
         candidatoFacade.deletar(id);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody CandidatoModels candidato){
+        return candidatoFacade.login(candidato);
+    }
+
+
 }

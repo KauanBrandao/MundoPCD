@@ -25,7 +25,7 @@ public class EnderecoEmpresaApplication {
     public EnderecoEmpresaModels cadastrar(EnderecoEmpresaModels enderecoEmpresaModels){
          EnderecoEmpresa enderecoEmpresa = EnderecoEmpresa.toEnderecoEmpresa(enderecoEmpresaModels);
 
-            enderecoEmpresa.validarTudo();
+         enderecoEmpresa.validarTudo();
         return enderecoEmpresaRepository.cadastrar(enderecoEmpresaModels);
     }
 

@@ -55,7 +55,6 @@ public class Vaga {
         salarioIsNotPositive();
         tipoContratacaoIsInvalid();
         localizacaoIsInvalid();
-        empresaIsNull();
     }
 
     public void idVagaIsInvalid() {
@@ -98,12 +97,6 @@ public class Vaga {
         return tipoContratacao.equalsIgnoreCase("CLT") ||
                 tipoContratacao.equalsIgnoreCase("PJ") ||
                 tipoContratacao.equalsIgnoreCase("Freelancer");
-    }
-
-    public void empresaIsNull() {
-        if (idEmpresa == null) {
-            throw new IllegalArgumentException("A empresa associada deve ser válida.");
-        }
     }
 
     public void localizacaoIsInvalid() {
